@@ -6,7 +6,8 @@ export const Footer = () => {
     <footer>
       <img src={MotorsShop} alt="logo" />
       <p>© 2022 - Todos os direitos reservados.</p>
-      <BsFillArrowUpSquareFill />
+      <a href="#header">
+        <BsFillArrowUpSquareFill/></a>
     </footer>
   );
 };
