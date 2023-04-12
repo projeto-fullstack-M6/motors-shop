@@ -5,5 +5,5 @@ export interface IInput {
   type: "text" | "email" | "password";
   register: UseFormRegisterReturn<string>;
   error?: FieldError;
-  defaultValue: string | undefined;
+  defaultValue?: string | undefined;
 }
