@@ -55,7 +55,8 @@ export const Global = createGlobalStyle`
         --random-12: #30007d;
 
         /* --- Fonts --- */
-        --font: 'Lexend', sans-serif;
+        --font-family-lexend: 'Lexend', sans-serif;
+        --font-family-inter: 'Inter', sans-serif;
 
         /* --- Font Sizes --- */
         /* Headings */
@@ -76,9 +77,63 @@ export const Global = createGlobalStyle`
         --weight-500: 500;
         --weight-600: 600;
         --weight-700: 700;
+
+        /* --- Gap --- */
+        --gap-10: 10px;
+        --gap-15: 15px;
+        --gap-20: 20px;
+
+        /* --- Boder Radius --- */
+        --border-radius-4: 4px;
+        --border-radius-8: 8px;
     }
 
+    html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, img, small, strong, form, label, article, aside, figure, figcaption, footer, header, nav, section, button, textarea, option, input, select,ul,li {
+        margin: 0;
+        padding: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        text-decoration: none;
+        border: none;
+        box-sizing: border-box;
+        background: none;
+    }
+    
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+    
+    article, aside, details, figcaption, figure, 
+    footer, header, nav, section {
+        display: block;
+    }
+    
     body {
-        font-family: 'Lexend', sans-serif;
+        font-family: var(--font-family-lexend);
+        width: 100vw;
+        height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    ul,li {
+        list-style: none;
+    }
+
+    input, select{
+        outline: none;
+        background: transparent;
+        font-family: var(--font-family-inter);
+    }
+
+    button{
+        cursor: pointer;
+        display: inline-flex;
+	    align-items: center;
+	    justify-content: center;
+        font-family: var(--font-family-inter);
+        border: none;
+        background: transparent;
+        transition: 0.3s;
     }
 `;

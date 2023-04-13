@@ -2,14 +2,10 @@ import styled, { css } from "styled-components";
 import { IButton } from "../interfaces/button.interface";
 
 export const StyledButton = styled.button<IButton>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 4px;
-
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
+  gap: var(--gap-10);
+  border-radius: var(--border-radius-4);
+  font-size: var(--size-h7);
+  font-weight: var(--weight-600);
 
   ${({ width }) => {
     switch (width) {
@@ -50,7 +46,7 @@ export const StyledButton = styled.button<IButton>`
         return css`
           width: 132px;
         `;
-      case "eigth":
+      case "eight":
         return css`
           width: 108px;
         `;
@@ -82,92 +78,90 @@ ${({ buttonStyled }) => {
     switch (buttonStyled) {
       case "black":
         return css`
-          background-color: #0b0d0d;
-          color: #ffffff;
+          background-color: var(--grey-0);
+          color: var(--white);
           &:hover {
-            background-color: #212529;
+            background-color: var(--grey-1);
           }
         `;
       case "grey-black":
         return css`
-          background-color: #dee2e6;
-          color: #495057;
+          background-color: var(--grey-6);
+          color: var(--grey-2);
           &:hover {
-            background-color: #ced4da;
+            background-color: var(--grey-5);
           }
         `;
       case "grey-white":
         return css`
-          background-color: #ced4da;
-          color: #ffffff;
+          background-color: var(--grey-5);
+          color: var(--white);
         `;
       case "blue":
         return css`
-          background-color: #4529e6;
-          color: #ffffff;
+          background-color: var(--brand-1);
+          color: var(--white);
           &:hover {
-            background-color: #5126ea;
+            background-color: var(--brand-2);
           }
         `;
       case "light-blue":
         return css`
-          background-color: #edeafd;
-          color: #4529e6;
+          background-color: var(--brand-4);
+          color: var(--brand-1);
         `;
       case "white":
         return css`
-          background-color: #fdfdfd;
-          color: #212529;
+          background-color: var(--grey-10);
+          color: var(--grey-1);
         `;
       case "border-black":
         return css`
-          background-color: transparent;
-          color: #0b0d0d;
-          border: 1px solid #0b0d0d;
+          color: var(--grey-0);
+          border: 1px solid var(--grey-0);
           &:hover {
-            background-color: #212529;
-            color: #fdfdfd;
+            background-color: var(--grey-1);
+            color: var(--grey-10);
           }
         `;
       case "border-grey":
         return css`
-          background-color: transparent;
-          color: #0b0d0d;
-          border: 1px solid #adb5bd;
+          color: var(--grey-0);
+          border: 1px solid var(--grey-4);
           &:hover {
-            background-color: #212529;
-            color: #fdfdfd;
+            background-color: var(--grey-1);
+            color: var(--grey-10);
           }
         `;
       case "border-blue":
         return css`
-          background-color: transparent;
-          color: #4529e6;
-          border: 1px solid #4529e6;
+          color: var(--brand-1);
+          border: 1px solid var(--brand-1);
           &:hover {
-            background-color: #edeafd;
+            background-color: var(--brand-4);
           }
         `;
       case "feedback-alert":
         return css`
-          background-color: #ffe5e5;
-          color: #cd2b31;
+          background-color: var(--alert-3);
+          color: var(--alert-1);
           &:hover {
-            background-color: #fdd8d8;
+            background-color: var(--alert-2);
           }
         `;
       case "feedback-sucess":
         return css`
-          background-color: #ddf3e4;
-          color: #18794e;
+          background-color: var(--success-3);
+          color: var(--success-1);
           &:hover {
-            background-color: #ccebd7;
+            background-color: var(--success-2);
           }
         `;
       case "disable":
         return css`
-          background-color: #b0a6f0;
-          color: #edeafd;
+          background-color: var(--brand-3);
+          color: var(--brand-4);
+          cursor: not-allowed;
         `;
     }
   }}

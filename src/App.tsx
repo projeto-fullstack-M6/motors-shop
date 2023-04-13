@@ -1,17 +1,7 @@
-import { Routes } from "react-router-dom";
-import "./App.css";
-import AppRoutes from "./routes";
-import { Global } from "./styles/global";
+import { Modal } from "./components/Modal";
 
 function App() {
-  
-  return (
-    <>
-      <Global/>
-      <AppRoutes/>
-    </>
-  )  
-  
+  return <Modal />;
 }
 
 export default App;
