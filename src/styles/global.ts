@@ -2,6 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
     :root {
+        
+        #root{
+            width: 100vw;
+            background: linear-gradient(to bottom, rgba(69, 41, 230, 1) 50% , rgb(222, 226, 230) 50%);
+            padding: 0;
+        }
         /* --- Colors --- */
         /* Brand */
         --brand-1: #4529e6;
