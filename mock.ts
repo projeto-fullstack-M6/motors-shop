@@ -1,6 +1,6 @@
 export const car = {
   img: "https://garagem360.com.br/wp-content/uploads/2021/08/ALTA20-1.jpeg",
-  brand: "Peugeot",
+  brand: "Peugeot A 200 CGI ADVANCE SEDAN Mercedes Benz A 200",
   model: "3008 Griffe",
   year: 2023,
   fuel: "Gasolina",
