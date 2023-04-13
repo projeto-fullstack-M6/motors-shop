@@ -1,19 +1,13 @@
 import { Footer } from "../../components/Footer/Footer";
-import MotorsShop from "../../assets/MotorsShop.svg";
-import { Div, Header } from "./style";
+import { Div } from "./style";
 import { car } from "../../../mock";
 import { StyledButton } from "../../styles/button";
+import { HeaderIn } from "../../components/Header/HeaderIn";
 
 const Adverts = () => {
   return (
     <>
-      <Header>
-        <img src={MotorsShop} alt="logo" />
-        <div>
-          <p className="acronym">PL</p>
-          <p className="name">Petrus Lobato</p>
-        </div>
-      </Header>
+      <HeaderIn />
 
       <Div>
         <section className="secRight">

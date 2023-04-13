@@ -1,11 +1,9 @@
-import { Footer } from "./components/Footer/Footer";
-import { Modal } from "./components/Modal";
-import Adverts from "./pages/Adverts/index";
+import { Header } from "./components/Header/Header";
 
 function App() {
   return (
     <>
-      <Adverts />
+      <Header />
     </>
   );
 }
