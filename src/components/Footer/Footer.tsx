@@ -1,14 +1,18 @@
 import motorsshopwhite from "../../assets/motorsshopwhite.png";
 import { BsFillArrowUpSquareFill } from "react-icons/bs";
-import { Footers } from "./style";
+import { StyledFooter } from "./style";
+import { StyledTitle } from "../../styles/typography";
 
 export const Footer = () => {
   return (
-    <Footers>
+    <StyledFooter>
       <img src={motorsshopwhite} alt="logo" />
-      <p>© 2022 - Todos os direitos reservados.</p>
+      <StyledTitle tag="p" fontSize="body-2-400" color="white">
+        © 2022 - Todos os direitos reservados.
+      </StyledTitle>
       <a href="#header">
-        <BsFillArrowUpSquareFill/></a>
-    </Footers>
+        ^
+      </a>
+    </StyledFooter>
   );
 };

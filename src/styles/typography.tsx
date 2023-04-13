@@ -103,4 +103,13 @@ export const StyledTitle = styled(BaseTitle)<IText>`
         `;
     }
   }}
+
+  ${({ color }) => {
+    switch (color) {
+      case "white":
+        return css`
+          color: var(--white);
+        `;
+    }
+  }}
 `;

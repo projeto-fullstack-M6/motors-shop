@@ -6,5 +6,5 @@ export interface ITypography {
 
 export interface IText {
   fontSize: string;
-  fontFamily: string;
+  color?: string;
 }
