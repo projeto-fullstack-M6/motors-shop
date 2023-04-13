@@ -1,7 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
-const Global = createGlobalStyle`
+export const Global = createGlobalStyle`
     :root {
+
+        #root{
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(69, 41, 230, 1) 60% , white 40%);
+            padding: 0;
+        }
         /* --- Colors --- */
         /* Brand */
         --brand-1: #4529e6;
