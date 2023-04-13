@@ -74,6 +74,8 @@ export const Global = createGlobalStyle`
 
         /* --- Gap --- */
         --gap-10: 10px;
+        --gap-15: 15px;
+        --gap-20: 20px;
 
         /* --- Boder Radius --- */
         --border-radius-4: 4px

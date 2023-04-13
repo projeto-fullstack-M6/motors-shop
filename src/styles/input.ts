@@ -9,6 +9,7 @@ export const StyledDivInput = styled.div`
 export const StyledLabel = styled.label`
   font-family: var(--font-family-inter);
   font-weight: var(--weight-500);
+  font-size: var(--size-body-2);
 `;
 
 export const StyledInput = styled.input`
