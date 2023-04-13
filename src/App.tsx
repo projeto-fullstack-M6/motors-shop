@@ -1,7 +1,7 @@
-import { Modal } from "./components/Modal";
+import { Card } from "./components/Card/Card";
 
 function App() {
-  return <Modal />;
+  return <Card />;
 }
 
 export default App;
