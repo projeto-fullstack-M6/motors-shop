@@ -95,10 +95,10 @@ export const StyledTitle = styled(BaseTitle)<IText>`
           font-weight: var(--weight-400);
           font-family: var(--font-family-inter);
         `;
-      case "body-2-600":
+      case "body-2-500":
         return css`
           font-size: var(--size-body-2);
-          font-weight: var(--weight-600);
+          font-weight: var(--weight-500);
           font-family: var(--font-family-inter);
         `;
       case "body-2-700":
@@ -115,6 +115,10 @@ export const StyledTitle = styled(BaseTitle)<IText>`
       case "white":
         return css`
           color: var(--white);
+        `;
+      case "grey-1":
+        return css`
+          color: var(--grey-1);
         `;
       case "grey-2":
         return css`

@@ -58,6 +58,10 @@ export const StyledButton = styled.button<IButton>`
         return css`
           width: 80px;
         `;
+      case "eleven":
+        return css`
+          width: 50px;
+        `;
     }
   }}
 
@@ -70,6 +74,10 @@ export const StyledButton = styled.button<IButton>`
       case "two":
         return css`
           height: 38px;
+        `;
+      case "three":
+        return css`
+          height: 32px;
         `;
     }
   }}
@@ -109,6 +117,9 @@ ${({ buttonStyled }) => {
         return css`
           background-color: var(--brand-4);
           color: var(--brand-1);
+          font-size: var(--size-body-2);
+          font-weight: var(--weight-500);
+          cursor: default;
         `;
       case "white":
         return css`
