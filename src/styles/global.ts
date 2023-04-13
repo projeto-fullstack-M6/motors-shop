@@ -78,7 +78,8 @@ export const Global = createGlobalStyle`
         --gap-20: 20px;
 
         /* --- Boder Radius --- */
-        --border-radius-4: 4px
+        --border-radius-4: 4px;
+        --border-radius-8: 8px;
     }
 
     html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, img, small, strong, form, label, article, aside, figure, figcaption, footer, header, nav, section, button, textarea, option, input, select,ul,li {

@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const StyledDivInput = styled.div`
   display: flex;
   flex-direction: column;
+
+  width: 100%;
   gap: var(--gap-10);
 `;
 
@@ -13,7 +15,7 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 315px;
+  width: 100%;
   height: 48px;
   padding: 10px;
   border: 1.5px solid var(--grey-7);
