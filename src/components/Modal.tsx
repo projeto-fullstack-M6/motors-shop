@@ -5,6 +5,9 @@ import { StyledForm } from "../styles/form";
 import { StyledSectionModal } from "../styles/section";
 import { AiOutlineClose } from "react-icons/ai";
 
+// É APENAS UM EXEMPLO DO QUE EU PENSEI PARA O MODAL
+// A ESTILIZAÇÃO DELE ESTÁ EM: STYLES > SECTION.TS 
+
 export const Modal = () => {
   const {
     register,
