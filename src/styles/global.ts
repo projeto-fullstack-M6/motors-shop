@@ -73,6 +73,10 @@ export const Global = createGlobalStyle`
         --weight-700: 700;
 
         /* --- Gap --- */
+        --gap-10: 10px;
+
+        /* --- Boder Radius --- */
+        --border-radius-4: 4px
     }
 
     html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, img, small, strong, form, label, article, aside, figure, figcaption, footer, header, nav, section, button, textarea, option, input, select,ul,li {

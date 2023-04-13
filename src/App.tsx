@@ -3,7 +3,7 @@ import { StyledButton } from "./styles/button";
 function App() {
   return (
     <div className="App">
-      <StyledButton width="one" height="one" buttonStyled="black">
+      <StyledButton width="ten" height="two" buttonStyled="disable">
         Entrar
       </StyledButton>
     </div>
