@@ -242,6 +242,7 @@ export const Div = styled.div`
             border-radius: 4px;
             display: flex;
             flex-direction: column;
+            
            
 
             .minCar{
@@ -252,7 +253,7 @@ export const Div = styled.div`
                 justify-content: center;
 
                 img{
-                    width: 108px;
+                    width: 25%;
                     height: 108px;
                     border-radius: 4px;
                 }
