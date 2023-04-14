@@ -1,10 +1,10 @@
-import { Modal } from "./components/Modal";
+import { Card } from "./components/Card/Card";
 import AppRoutes from "./routes";
 
 function App() {
   return (
     <>
-      {/* <Modal /> */}
+      {/* <Card /> */}
       <AppRoutes />
     </>
   );

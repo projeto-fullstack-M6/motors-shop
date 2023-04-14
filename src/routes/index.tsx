@@ -6,7 +6,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route index element={<HomePage />} />
-      <Route path="adverts" element={<Adverts />} />
+      <Route path="/adverts" element={<Adverts />} />
     </Routes>
   );
 };
