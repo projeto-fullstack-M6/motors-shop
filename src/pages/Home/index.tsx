@@ -26,8 +26,10 @@ export const HomePage = () => {
         </nav>
       </StyledHeader>
       <StyledImg>
-        <h2>Motors Shop</h2>
-        <p>A melhor plataforma de anúncios de carros do país</p>
+        <div>
+          <h2>Motors Shop</h2>
+          <p>A melhor plataforma de anúncios de carros do país</p>
+        </div>
       </StyledImg>
       <StyledSection>
         <aside>

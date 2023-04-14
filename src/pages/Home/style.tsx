@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MainCard from "../../assets/MainCard.svg";
+import MainCard from "../../assets/MainCard.png";
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -25,24 +25,32 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledImg = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 60vh;
-  background: url(${MainCard});
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
+  background-image: url(${MainCard});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 
-  > h2 {
-    color: var(--grey-10);
-    font-size: 40px;
-    font-weight: 700;
-  }
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
 
-  > p {
-    color: var(--grey-10);
-    font-size: 30px;
+    > h2 {
+      color: var(--grey-10);
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    > p {
+      color: var(--grey-10);
+      font-size: 30px;
+    }
   }
 `;
 
@@ -98,7 +106,6 @@ export const StyledPageSection = styled.section`
   height: 15vh;
 
   > div {
-    border: 2px solid blue;
     display: flex;
     justify-content: space-between;
     align-items: center;
