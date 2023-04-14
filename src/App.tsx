@@ -1,7 +1,8 @@
-import { Card } from "./components/Card/Card";
+
+import AppRoutes from "./routes";
 
 function App() {
-  return <Card />;
+  return <AppRoutes />;
 }
 
 export default App;

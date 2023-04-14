@@ -4,6 +4,8 @@ import { car } from "../../../mock";
 import { StyledButton } from "../../styles/button";
 import { HeaderIn } from "../../components/Header/HeaderIn";
 
+import { StyledTitle } from "../../styles/typography";
+
 const Adverts = () => {
   return (
     <>
@@ -24,6 +26,7 @@ const Adverts = () => {
               </div>
               <p> R$ {car.price}</p>
             </div>
+
             <StyledButton width="eight" height="two" buttonStyled="blue">
               Comprar
             </StyledButton>
@@ -77,8 +80,7 @@ const Adverts = () => {
               <p className="name">Petrus Lobato</p>
             </div>
             <div className="divpublication">
-              <textarea className="publication" cols="80" rows="10">
-                Carro muito confortável, foi uma ótima experiência de compra...
+              <textarea className="publication" cols="80" rows="10" placeholder="Carro muito confortável, foi uma ótima experiência de compra...">
               </textarea>
               <StyledButton width="eight" height="two" buttonStyled="blue">
                 Comentar
@@ -112,7 +114,7 @@ const Adverts = () => {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's
             </p>
-            <StyledButton width="three" height="one" buttonStyled="black">
+            <StyledButton className="allComment" width="three" height="one" buttonStyled="black">
               {" "}
               Ver todos anuncios{" "}
             </StyledButton>

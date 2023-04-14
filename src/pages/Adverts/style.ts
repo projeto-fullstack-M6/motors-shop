@@ -38,7 +38,10 @@ export const Div = styled.div`
       border-radius: 4px;
       padding: 10px;
       box-sizing: border-box;
-      height: 200px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
 
       div {
         display: flex;
@@ -50,12 +53,13 @@ export const Div = styled.div`
         width: 20%;
         gap: 5px;
         p {
-          width: 50%;
-          height: 24px;
+          width: 40%;
+          height: 20px;
           font-size: 14px;
           background-color: var(--brand-4);
           border-radius: 4px;
           color: var(--brand-2);
+          text-align: center;
         }
       }
     }
@@ -73,6 +77,7 @@ export const Div = styled.div`
       background-color: var(--white);
       font-size: 16px;
       font-weight: var(--weight-400);
+      gap: 20px;
     }
 
     .card4 {
@@ -85,11 +90,18 @@ export const Div = styled.div`
       flex-direction: column;
       align-items: flex-start;
       text-align: justify;
+      gap: 40px;
+
+      .comment{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
 
       .comment > div {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 20px;
 
         .acronym {
           background-color: var(--brand-1);
@@ -151,13 +163,23 @@ export const Div = styled.div`
       }
 
       .divpublication {
+
+        border: 1px solid var(--grey-6);
+        border-radius: 4px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
         .publication {
           background-color: transparent;
           border-radius: 4px;
-          color: var(--grey-3);
-          border: 1px solid #dee2e6;
+          color: var(--black);
+          border: none;
           padding: 10px;
+          outline: 0;
         }
+
+        
       }
 
       span {
@@ -175,17 +197,19 @@ export const Div = styled.div`
 
     .card6 {
       background-color: var(--white);
-      height: 370px;
+      height: 330px;
       border-radius: 4px;
       display: flex;
       flex-direction: column;
+      justify-content: space-around;
+      padding: 0 10px;
 
       .minCar {
         display: flex;
         flex-direction: row;
         gap: 10px;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
 
         img {
           width: 25%;
@@ -227,6 +251,10 @@ export const Div = styled.div`
       .text1 {
         font-size: 16px;
         font-weight: var(--weight-400);
+      }
+
+      .allComment{
+        width: 60%;
       }
     }
   }
