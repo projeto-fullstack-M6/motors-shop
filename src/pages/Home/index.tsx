@@ -1,9 +1,14 @@
 import MotorsShop from "../../assets/MotorsShop.svg";
-import MainCard from "../../assets/MainCard.svg";
-import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer/Footer";
-import { StyledHeader, StyledImg, StyledSection } from "./style";
+import {
+  StyledHeader,
+  StyledImg,
+  StyledPageSection,
+  StyledSection,
+} from "./style";
 import { StyledButton } from "../../styles/button";
+import { Card } from "../../components/Card/Card";
+
 export const HomePage = () => {
   return (
     <>
@@ -127,13 +132,16 @@ export const HomePage = () => {
           <Card />
         </main>
       </StyledSection>
-      <footer>
+      <StyledPageSection>
         <div>
-          <p>1 de 2</p>
-          <button>Seguinte</button>
+          <div>
+            <p>1</p>
+            <span>de 2</span>
+          </div>
+          <button>Seguinte &gt;</button>
         </div>
-        <Footer />
-      </footer>
+      </StyledPageSection>
+      <Footer />
     </>
   );
 };
