@@ -9,8 +9,9 @@ export interface IButton {
     | "seven"
     | "eight"
     | "nine"
-    | "ten";
-  height: "one" | "two";
+    | "ten"
+    | "eleven";
+  height: "one" | "two" | "three";
   buttonStyled:
     | "black"
     | "grey-black"

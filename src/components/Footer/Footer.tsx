@@ -1,14 +1,15 @@
-import motorsshopwhite from "../../assets/motorsshopwhite.png";
-import { BsFillArrowUpSquareFill } from "react-icons/bs";
-import { Footers } from "./style";
+import MotorsShopWhite from "../../assets/MotorsShopWhite.svg";
+import { StyledFooter } from "./style";
+import { StyledTitle } from "../../styles/typography";
 
 export const Footer = () => {
   return (
-    <Footers>
-      <img src={motorsshopwhite} alt="logo" />
-      <p>© 2022 - Todos os direitos reservados.</p>
-      <a href="#header">
-        <BsFillArrowUpSquareFill/></a>
-    </Footers>
+    <StyledFooter>
+      <img src={MotorsShopWhite} alt="logo" />
+      <StyledTitle tag="p" fontSize="body-2-400" color="white">
+        © 2022 - Todos os direitos reservados.
+      </StyledTitle>
+      <a href="#header">^</a>
+    </StyledFooter>
   );
 };

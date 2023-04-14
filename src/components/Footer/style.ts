@@ -1,14 +1,28 @@
 import styled from "styled-components";
 
+export const StyledFooter = styled.footer`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-export const Footers = styled.footer`
+  height: 140px;
+  background-color: var(--grey-0);
 
-    background-color: var(--black);
+  img {
+    object-fit: cover;
+  }
+
+  a {
+    width: 40px;
+    height: 40px;
+
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
-
-
-
-`
+    color: var(--white);
+    background-color: var(--grey-1);
+    border-radius: var(--border-radius-4);
+    font-size: var(--size-h7);
+  }
+`;
