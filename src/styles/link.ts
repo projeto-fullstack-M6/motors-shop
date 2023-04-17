@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledLinkLogin = styled(Link)`
-  color: var(--grey-2);
+  color: var(--brand-1);
   font-weight: var(--weight-600);
   font-size: var(--size-h7);
   font-family: var(--font-family-inter);
