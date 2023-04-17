@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// SUBSTITUIR A ANCORA POR UM LINK AO FAZER AS ROTAS
-
 export const StyledLinkLogin = styled(Link)`
   color: var(--grey-2);
   font-weight: var(--weight-600);

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background-color: var(--white);
   width: 100%;
   height: 80px;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
+  
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey-6);
 
   img {
     object-fit: cover;
