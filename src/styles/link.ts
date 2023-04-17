@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // SUBSTITUIR A ANCORA POR UM LINK AO FAZER AS ROTAS
 
-export const StyledLinkLogin = styled.a`
+export const StyledLinkLogin = styled(Link)`
   color: var(--grey-2);
   font-weight: var(--weight-600);
   font-size: var(--size-h7);
@@ -11,7 +11,7 @@ export const StyledLinkLogin = styled.a`
   cursor: pointer;
 `;
 
-export const StyledLinkRegister = styled.a`
+export const StyledLinkRegister = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
