@@ -35,8 +35,13 @@ export const LoginForm = () => {
         error={errors.password as FieldError}
       />
 
-      <div>
-        <StyledTitle tag="span" fontSize="body-2-500" color="grey-2">
+      <div className="form-login">
+        <StyledTitle
+          tag="span"
+          fontSize="body-2-500"
+          color="grey-2"
+          align="align-self-end"
+        >
           Esqueci minha senha
         </StyledTitle>
 
@@ -44,9 +49,18 @@ export const LoginForm = () => {
           Login
         </StyledButton>
 
-        <span>Ainda não possui uma conta?</span>
+        <StyledTitle
+          tag="span"
+          fontSize="body-2-400"
+          color="grey-2"
+          align="align-self-center"
+        >
+          Ainda não possui uma conta?
+        </StyledTitle>
 
-        <StyledLinkRegister to={"/register"}> Cadastrar</StyledLinkRegister>
+        <StyledLinkRegister to={"/register"} className="width-register">
+          Cadastrar
+        </StyledLinkRegister>
       </div>
     </StyledForm>
   );

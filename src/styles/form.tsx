@@ -9,4 +9,10 @@ export const StyledForm = styled.form`
   justify-content: center;
   gap: var(--gap-20);
   padding: 20px 0;
+
+  .form-login {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-20);
+  }
 `;

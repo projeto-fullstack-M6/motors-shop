@@ -14,7 +14,6 @@ export const StyledLinkRegister = styled(Link)`
   justify-content: center;
   align-items: center;
 
-  width: 133px;
   height: 48px;
 
   color: var(--grey-0);
@@ -31,5 +30,13 @@ export const StyledLinkRegister = styled(Link)`
   &:hover {
     background-color: var(--grey-1);
     color: var(--grey-10);
+  }
+
+  &.width-header {
+    width: 133px;
+  }
+
+  &.width-register {
+    width: 315px;
   }
 `;

@@ -124,6 +124,23 @@ export const StyledTitle = styled(BaseTitle)<IText>`
         return css`
           color: var(--grey-2);
         `;
+      case "black":
+        return css`
+          color: var(--black);
+        `;
+    }
+  }}
+
+${({ align }) => {
+    switch (align) {
+      case "align-self-end":
+        return css`
+          align-self: end;
+        `;
+      case "align-self-center":
+        return css`
+          align-self: center;
+        `;
     }
   }}
 `;

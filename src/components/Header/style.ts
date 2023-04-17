@@ -6,7 +6,7 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   background-color: var(--white);
   border-bottom: 1px solid var(--grey-6);
 
@@ -21,9 +21,9 @@ export const StyledHeader = styled.header`
     align-items: center;
 
     height: 100%;
-    width: 25%;
+    width: 20%;
     border-left: 1px solid var(--grey-6);
-    gap: var(--gap-20);
+    gap: var(--gap-30);
   }
 
   div {

@@ -8,7 +8,7 @@ export const Header = () => {
       <img src={MotorsShop} alt="logo" />
       <nav>
         <StyledLinkLogin to="/login">Fazer Login</StyledLinkLogin>
-        <StyledLinkRegister to="/register" className="link-register">
+        <StyledLinkRegister to="/register" className="width-header">
           Cadastrar
         </StyledLinkRegister>
       </nav>
