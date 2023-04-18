@@ -36,4 +36,4 @@ export const createUserSchema = z
 		path: ["confirmPassword"],
 	});
 
-export const updateUserSchema = createUserSerializer.partial();
+export const updateUserSchema = createUserSchema.partial();
