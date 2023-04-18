@@ -1,4 +1,6 @@
 import { z } from "zod";
-import { addressCreateSchema } from "../serializers";
+import { addressCreateSchema, addressUpdateSchema } from "../serializers";
 
 type AddressCreateValues = z.infer<typeof addressCreateSchema>;
+
+type AddressUpdateValues = z.infer<typeof addressUpdateSchema>;
