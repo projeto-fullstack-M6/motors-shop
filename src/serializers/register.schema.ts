@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { addressCreateSchema } from "../serializers";
 
-export const registerSchema = z
+export const createUserSchema = z
 	.object({
 		name: z.string().min(1).trim(),
 		email: z
@@ -35,3 +35,5 @@ export const registerSchema = z
 		message: "Senhas não conferem",
 		path: ["confirmPassword"],
 	});
+
+export const updateUserSchema = createUserSerializer.partial();
