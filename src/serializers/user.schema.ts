@@ -3,7 +3,7 @@ import { createAddressSchema } from "./address.schema";
 
 export const createUserSchema = z
   .object({
-    name: z.string().min(1).trim(),
+    name: z.string().min(1, "Deve conter pelo menos 1 caractere").trim(),
     email: z
       .string()
       .nonempty("Email é um campo obrigatório")
@@ -11,24 +11,24 @@ export const createUserSchema = z
       .trim(),
     cpf: z
       .string()
-      .min(11)
-      .max(11)
+      .min(11, "Deve conter 11 caracteres")
+      .max(11, "Deve conter no máximo 11 caracteres")
       .nonempty("CPF é um campo obrigatório")
       .trim(),
-    cellPhone: z.string().min(11).trim(),
-    birthdate: z.string().min(8).trim(),
+    cellPhone: z.string().min(11, "Deve conter 11 caracteres").trim(),
+    birthdate: z.string().min(8, "Deve conter 8 caracteres").trim(),
     description: z.string().trim().nullable(),
     isBuyer: z.boolean(),
     password: z
       .string()
       .trim()
-      .regex(/[A-Z]/, "Must contain a capital letter")
-      .regex(/([a-z])/, "Must contain a lowercase")
-      .regex(/(\d)/, "Must contain a number")
-      .regex(/(\W)|_/, "Must contain a special character")
-      .regex(/.{8,}/, "Must contain at least 8 characters"),
-    confirmPassword: z.string().min(8).trim(),
-    address: createAddressSchema.nullable(),
+      .regex(/[A-Z]/, "Precisa conter pelo menos uma letra em caixa alta")
+      .regex(/([a-z])/, "Precisa conter pelo menos uma letra em caixa baixa")
+      .regex(/(\d)/, "Precisa conter pelo menos um número")
+      .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
+      .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
+    confirmPassword: z.string().optional(),
+    address: createAddressSchema,
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Senhas não conferem",
@@ -49,11 +49,11 @@ export const userResponseSchema = z.object({
   password: z
     .string()
     .trim()
-    .regex(/[A-Z]/, "Must contain a capital letter")
-    .regex(/([a-z])/, "Must contain a lowercase")
-    .regex(/(\d)/, "Must contain a number")
-    .regex(/(\W)|_/, "Must contain a special character")
-    .regex(/.{8,}/, "Must contain at least 8 characters"),
+    .regex(/[A-Z]/, "Precisa conter pelo menos uma letra em caixa alta")
+    .regex(/([a-z])/, "Precisa conter pelo menos uma letra em caixa baixa")
+    .regex(/(\d)/, "Precisa conter pelo menos um número")
+    .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
+    .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
   confirmPassword: z.string().min(8).trim(),
   description: z.string().trim().nullable(),
   isAdm: z.boolean(),
@@ -79,10 +79,10 @@ export const updateUserSchema = z.object({
   password: z
     .string()
     .trim()
-    .regex(/[A-Z]/, "Must contain a capital letter")
-    .regex(/([a-z])/, "Must contain a lowercase")
-    .regex(/(\d)/, "Must contain a number")
-    .regex(/(\W)|_/, "Must contain a special character")
-    .regex(/.{8,}/, "Must contain at least 8 characters"),
+    .regex(/[A-Z]/, "Precisa conter pelo menos uma letra em caixa alta")
+    .regex(/([a-z])/, "Precisa conter pelo menos uma letra em caixa baixa")
+    .regex(/(\d)/, "Precisa conter pelo menos um número")
+    .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
+    .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
   address: createAddressSchema.nullable(),
 });

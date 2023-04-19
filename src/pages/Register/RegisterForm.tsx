@@ -1,13 +1,12 @@
-import { FieldError, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { UserContext } from "../../providers/UserContext";
 
 import { Input } from "../../components/Input";
 
 import { createUserSchema } from "../../serializers";
-
 import { IUserRegister } from "../../interfaces/userSchema.interface";
 
 import { StyledForm } from "../../styles/form";
@@ -15,16 +14,26 @@ import { StyledTitle } from "../../styles/typography";
 import { StyledButton } from "../../styles/button";
 
 export const RegisterForm = () => {
-  const {} = useContext(UserContext);
+  const { userRegister } = useContext(UserContext);
+  const [isBuyer, setIsBuyer] = useState(true);
+
+  const handleBuyerClick = () => {
+    setIsBuyer(true);
+  };
+
+  const handleSellerClick = () => {
+    setIsBuyer(false);
+  };
 
   const {
     register,
     handleSubmit,
+    unregister,
     formState: { errors },
   } = useForm<IUserRegister>({ resolver: zodResolver(createUserSchema) });
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit(userRegister)}>
       <StyledTitle
         tag="h3"
         fontSize="body-2-500"
@@ -40,7 +49,7 @@ export const RegisterForm = () => {
         register={register("name")}
         defaultValue=""
         placeholder="Ex: Antonio Magalhães"
-        error={errors.name as FieldError}
+        error={errors.name}
       />
 
       <Input
@@ -49,7 +58,7 @@ export const RegisterForm = () => {
         register={register("email")}
         defaultValue=""
         placeholder="Ex: antonio.magalhaes@gmail.com"
-        error={errors.email as FieldError}
+        error={errors.email}
       />
 
       <Input
@@ -58,7 +67,7 @@ export const RegisterForm = () => {
         register={register("cpf")}
         defaultValue=""
         placeholder="000.000.000-00"
-        error={errors.cpf as FieldError}
+        error={errors.cpf}
       />
 
       <Input
@@ -67,7 +76,7 @@ export const RegisterForm = () => {
         register={register("cellPhone")}
         defaultValue=""
         placeholder="(DD) 90000-0000"
-        error={errors.cellPhone as FieldError}
+        error={errors.cellPhone}
       />
 
       <Input
@@ -76,7 +85,7 @@ export const RegisterForm = () => {
         register={register("birthdate")}
         defaultValue=""
         placeholder="00/00/0000"
-        error={errors.birthdate as FieldError}
+        error={errors.birthdate}
       />
 
       <Input
@@ -85,7 +94,7 @@ export const RegisterForm = () => {
         register={register("description")}
         defaultValue=""
         placeholder="Digitar descrição"
-        error={errors.description as FieldError}
+        error={errors.description}
       />
 
       <StyledTitle
@@ -103,7 +112,7 @@ export const RegisterForm = () => {
         register={register("address.zipcode")}
         defaultValue=""
         placeholder="00000-000"
-        error={errors.address?.zipcode as FieldError}
+        error={errors.address?.zipcode}
       />
 
       <div className="div-register">
@@ -113,7 +122,7 @@ export const RegisterForm = () => {
           register={register("address.state")}
           defaultValue=""
           placeholder="Digitar Estado"
-          error={errors.address?.state as FieldError}
+          error={errors.address?.state}
         />
 
         <Input
@@ -122,7 +131,7 @@ export const RegisterForm = () => {
           register={register("address.city")}
           defaultValue=""
           placeholder="Digitar Cidade"
-          error={errors.address?.city as FieldError}
+          error={errors.address?.city}
         />
       </div>
 
@@ -132,7 +141,7 @@ export const RegisterForm = () => {
         register={register("address.street")}
         defaultValue=""
         placeholder="Digitar Rua"
-        error={errors.address?.street as FieldError}
+        error={errors.address?.street}
       />
 
       <div className="div-register">
@@ -142,7 +151,7 @@ export const RegisterForm = () => {
           register={register("address.number")}
           defaultValue=""
           placeholder="Digitar Número"
-          error={errors.address?.number as FieldError}
+          error={errors.address?.number}
         />
 
         <Input
@@ -151,7 +160,7 @@ export const RegisterForm = () => {
           register={register("address.complement")}
           defaultValue=""
           placeholder="Ex: apart 307"
-          error={errors.address?.complement as FieldError}
+          error={errors.address?.complement}
         />
       </div>
 
@@ -165,10 +174,30 @@ export const RegisterForm = () => {
       </StyledTitle>
 
       <div className="div-register">
-        <StyledButton width="six" height="one" buttonStyled="blue" type="button">
+        <StyledButton
+          width="six"
+          height="one"
+          buttonStyled={isBuyer ? "blue" : "border-grey"}
+          type="button"
+          onClick={() => {
+            handleBuyerClick();
+            unregister("isBuyer", {});
+            register("isBuyer", { value: true });
+          }}
+        >
           Comprador
         </StyledButton>
-        <StyledButton width="six" height="one" buttonStyled="border-grey" type="button">
+        <StyledButton
+          width="six"
+          height="one"
+          buttonStyled={!isBuyer ? "blue" : "border-grey"}
+          type="button"
+          onClick={() => {
+            handleSellerClick();
+            unregister("isBuyer", {});
+            register("isBuyer", { value: false });
+          }}
+        >
           Anunciante
         </StyledButton>
       </div>
@@ -179,7 +208,7 @@ export const RegisterForm = () => {
         register={register("password")}
         defaultValue=""
         placeholder="Digitar senha"
-        error={errors.password as FieldError}
+        error={errors.password}
       />
 
       <Input
@@ -188,10 +217,10 @@ export const RegisterForm = () => {
         register={register("confirmPassword")}
         defaultValue=""
         placeholder="Digitar senha"
-        error={errors.confirmPassword as FieldError}
+        error={errors.confirmPassword}
       />
 
-      <StyledButton width="one" height="one" buttonStyled="blue">
+      <StyledButton width="one" height="one" buttonStyled="blue" type="submit">
         Finalizar Cadastro
       </StyledButton>
     </StyledForm>

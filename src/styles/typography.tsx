@@ -128,6 +128,10 @@ export const StyledTitle = styled(BaseTitle)<IText>`
         return css`
           color: var(--black);
         `;
+      case "blue":
+        return css`
+          color: var(--brand-1);
+        `;
     }
   }}
 
