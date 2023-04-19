@@ -1,12 +1,11 @@
-import { Card } from "./components/Card/Card";
+import { UserProvider } from "./providers/UserContext";
 import AppRoutes from "./routes";
 
 function App() {
   return (
-    <>
-      {/* <Card /> */}
+    <UserProvider>
       <AppRoutes />
-    </>
+    </UserProvider>
   );
 }
 

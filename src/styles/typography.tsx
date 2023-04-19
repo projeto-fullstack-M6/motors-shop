@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { BaseTitle } from "./components/Typography";
-import { IText } from "../interfaces/typhography.interface";
+import { IText } from "../interfaces/Style/typhography.interface";
 
 export const StyledTitle = styled(BaseTitle)<IText>`
   ${({ fontSize }) => {
@@ -123,6 +123,31 @@ export const StyledTitle = styled(BaseTitle)<IText>`
       case "grey-2":
         return css`
           color: var(--grey-2);
+        `;
+      case "black":
+        return css`
+          color: var(--black);
+        `;
+      case "blue":
+        return css`
+          color: var(--brand-1);
+        `;
+    }
+  }}
+
+${({ align }) => {
+    switch (align) {
+      case "align-self-end":
+        return css`
+          align-self: end;
+        `;
+      case "align-self-center":
+        return css`
+          align-self: center;
+        `;
+      case "align-self-start":
+        return css`
+          align-self: start;
         `;
     }
   }}

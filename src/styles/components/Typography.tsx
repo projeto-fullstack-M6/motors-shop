@@ -1,4 +1,4 @@
-import { ITypography } from "../../interfaces/typhography.interface";
+import { ITypography } from "../../interfaces/Style/typhography.interface";
 
 export const BaseTitle = ({ children, tag, className }: ITypography) => {
   return (

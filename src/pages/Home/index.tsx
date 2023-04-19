@@ -1,36 +1,22 @@
 import MotorsShop from "../../assets/MotorsShop.svg";
 import { Footer } from "../../components/Footer/Footer";
-import {
-  StyledHeader,
-  StyledImg,
-  StyledPageSection,
-  StyledSection,
-} from "./style";
+import { StyledImg, StyledPageSection, StyledSection } from "./style";
 import { StyledButton } from "../../styles/button";
 import { Card } from "../../components/Card/Card";
+import { Header } from "../../components/Header/Header";
 
 export const HomePage = () => {
   return (
     <>
-      <StyledHeader>
-        <div>
-          <img src={MotorsShop} alt="Logo MotorsShop"></img>
-        </div>
-        <nav>
-          <StyledButton width="nine" height="two" buttonStyled="white">
-            Fazer login
-          </StyledButton>
-          <StyledButton width="nine" height="two" buttonStyled="border-grey">
-            Cadastrar
-          </StyledButton>
-        </nav>
-      </StyledHeader>
+      <Header />
+
       <StyledImg>
         <div>
           <h2>Motors Shop</h2>
           <p>A melhor plataforma de anúncios de carros do país</p>
         </div>
       </StyledImg>
+
       <StyledSection>
         <aside>
           <div>
@@ -134,6 +120,7 @@ export const HomePage = () => {
           <Card />
         </main>
       </StyledSection>
+
       <StyledPageSection>
         <div>
           <div>
@@ -143,6 +130,7 @@ export const HomePage = () => {
           <button>Seguinte &gt;</button>
         </div>
       </StyledPageSection>
+      
       <Footer />
     </>
   );
