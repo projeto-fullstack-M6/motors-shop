@@ -39,7 +39,7 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       const user = await ApiRequests.post("/sessions", data);
       localStorage.setItem("@motors:token", user.data.token);
-
+      navigate("/dashboard");
       toast.success("Login realizado com sucesso.");
     } catch (error) {
       console.log(error);

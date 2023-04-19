@@ -27,5 +27,4 @@ export interface IButton {
     | "feedback-alert"
     | "feedback-sucess"
     | "disable";
-  // register?: UseFormRegisterReturn<string>;
 }

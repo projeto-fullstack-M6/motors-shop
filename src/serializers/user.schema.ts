@@ -22,8 +22,8 @@ export const createUserSchema = z
     password: z
       .string()
       .trim()
-      .regex(/[A-Z]/, "Precisa conter pelo menos uma letra em caixa alta")
-      .regex(/([a-z])/, "Precisa conter pelo menos uma letra em caixa baixa")
+      .regex(/[A-Z]/, "Precisa conter pelo menos uma letra maiúscula")
+      .regex(/([a-z])/, "Precisa conter pelo menos uma letra minúscula")
       .regex(/(\d)/, "Precisa conter pelo menos um número")
       .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
       .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
@@ -49,8 +49,8 @@ export const userResponseSchema = z.object({
   password: z
     .string()
     .trim()
-    .regex(/[A-Z]/, "Precisa conter pelo menos uma letra em caixa alta")
-    .regex(/([a-z])/, "Precisa conter pelo menos uma letra em caixa baixa")
+    .regex(/[A-Z]/, "Precisa conter pelo menos uma letra maiúscula")
+    .regex(/([a-z])/, "Precisa conter pelo menos uma letra minúscula")
     .regex(/(\d)/, "Precisa conter pelo menos um número")
     .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
     .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
@@ -79,8 +79,8 @@ export const updateUserSchema = z.object({
   password: z
     .string()
     .trim()
-    .regex(/[A-Z]/, "Precisa conter pelo menos uma letra em caixa alta")
-    .regex(/([a-z])/, "Precisa conter pelo menos uma letra em caixa baixa")
+    .regex(/[A-Z]/, "Precisa conter pelo menos uma letra maiúscula")
+    .regex(/([a-z])/, "Precisa conter pelo menos uma letra minúscula")
     .regex(/(\d)/, "Precisa conter pelo menos um número")
     .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
     .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
