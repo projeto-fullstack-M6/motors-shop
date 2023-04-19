@@ -5,8 +5,8 @@ import {
   updateAddressSchema,
 } from "../serializers";
 
-type IAddressRegister = z.infer<typeof createAddressSchema>;
+export type IAddressRegister = z.infer<typeof createAddressSchema>;
 
-type IAddressUpdate = z.infer<typeof updateAddressSchema>;
+export type IAddressUpdate = z.infer<typeof updateAddressSchema>;
 
-type IAddressResponse = z.infer<typeof addressResponseSchema>;
+export type IAddressResponse = z.infer<typeof addressResponseSchema>;

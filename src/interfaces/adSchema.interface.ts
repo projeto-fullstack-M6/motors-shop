@@ -5,8 +5,8 @@ import {
   adUpdateSchema,
 } from "../serializers";
 
-type IAdRegister = z.infer<typeof adCreateSchema>;
+export type IAdRegister = z.infer<typeof adCreateSchema>;
 
-type IAdUpdate = z.infer<typeof adUpdateSchema>;
+export type IAdUpdate = z.infer<typeof adUpdateSchema>;
 
-type IAdResponse = z.infer<typeof adResponseSchema>;
+export type IAdResponse = z.infer<typeof adResponseSchema>;

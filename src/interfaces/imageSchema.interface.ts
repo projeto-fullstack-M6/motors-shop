@@ -5,8 +5,8 @@ import {
   updateImageSchema,
 } from "../serializers";
 
-type IImageRegister = z.infer<typeof createImageSchema>;
+export type IImageRegister = z.infer<typeof createImageSchema>;
 
-type IImageUpdate = z.infer<typeof updateImageSchema>;
+export type IImageUpdate = z.infer<typeof updateImageSchema>;
 
-type IImageResponse = z.infer<typeof imageResponseSchema>;
+export type IImageResponse = z.infer<typeof imageResponseSchema>;

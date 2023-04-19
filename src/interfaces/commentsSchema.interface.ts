@@ -5,8 +5,8 @@ import {
   updateCommentSchema,
 } from "../serializers";
 
-type ICommentRegister = z.infer<typeof createCommentSchema>;
+export type ICommentRegister = z.infer<typeof createCommentSchema>;
 
-type ICommentUpdate = z.infer<typeof updateCommentSchema>;
+export type ICommentUpdate = z.infer<typeof updateCommentSchema>;
 
-type ICommentResponse = z.infer<typeof commentResponseSchema>;
+export type ICommentResponse = z.infer<typeof commentResponseSchema>;

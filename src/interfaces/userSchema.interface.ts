@@ -6,10 +6,10 @@ import {
   createUserSchema,
 } from "../serializers";
 
-type IUserLogin = z.infer<typeof loginSchema>;
+export type IUserLogin = z.infer<typeof loginSchema>;
 
-type IUserRegister = z.infer<typeof createUserSchema>;
+export type IUserRegister = z.infer<typeof createUserSchema>;
 
-type IUserUpdate = z.infer<typeof updateUserSchema>;
+export type IUserUpdate = z.infer<typeof updateUserSchema>;
 
-type IUserResponse = z.infer<typeof userResponseSchema>;
+export type IUserResponse = z.infer<typeof userResponseSchema>;
