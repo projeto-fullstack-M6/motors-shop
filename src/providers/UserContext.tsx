@@ -1,12 +1,16 @@
 import { createContext, useState } from "react";
-import { IChildren, IUserContext } from "../interfaces/Context/contexts.interface";
+import {
+  IChildren,
+  IUserContext,
+} from "../interfaces/Context/contexts.interface";
 import { ApiRequests } from "../services";
 import { toast } from "react-hot-toast";
+import { IUserLogin, IUserResponse } from "../interfaces/userSchema.interface";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IChildren) => {
-  const [user, setUser] = useState<IUser | null>(null);
+  const [user, setUser] = useState<IUserResponse | null>(null);
 
   const userLogin = async (data: IUserLogin) => {
     try {

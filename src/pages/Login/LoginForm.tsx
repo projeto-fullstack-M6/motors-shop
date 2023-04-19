@@ -1,7 +1,13 @@
-// import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
 import { FieldError, useForm } from "react-hook-form";
 
+import { UserContext } from "../../providers/UserContext";
+
 import { Input } from "../../components/Input";
+
+import { IUserLogin } from "../../interfaces/userSchema.interface";
+import { loginSchema } from "../../serializers";
 
 import { StyledForm } from "../../styles/form";
 import { StyledButton } from "../../styles/button";
@@ -9,14 +15,16 @@ import { StyledLinkRegister } from "../../styles/link";
 import { StyledTitle } from "../../styles/typography";
 
 export const LoginForm = () => {
+  const { userLogin } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({});
+  } = useForm<IUserLogin>({ resolver: zodResolver(loginSchema) });
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit(userLogin)}>
       <Input
         label="Usuário"
         type="email"
