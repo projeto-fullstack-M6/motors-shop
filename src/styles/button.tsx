@@ -28,7 +28,7 @@ export const StyledButton = styled.button<IButton>`
       case "three":
         return css`
           width: 262px;
-          @media (max-width: 375px) {
+          @media (max-width: 415px) {
             width: 159px;
           }
         `;
@@ -39,13 +39,21 @@ export const StyledButton = styled.button<IButton>`
       case "five":
         return css`
           width: 193px;
-          @media (max-width: 375px) {
+          @media (max-width: 415px) {
             width: 174px;
           }
         `;
       case "six":
         return css`
-          width: 160px;
+          width: 155px;
+
+          @media (max-width: 415px) {
+            width: 138px;
+          }
+
+          @media (max-width: 280px) {
+            width: 100px;
+          }
         `;
       case "seven":
         return css`

@@ -141,6 +141,10 @@ ${({ align }) => {
         return css`
           align-self: center;
         `;
+      case "align-self-start":
+        return css`
+          align-self: start;
+        `;
     }
   }}
 `;

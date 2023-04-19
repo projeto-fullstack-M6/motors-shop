@@ -10,7 +10,7 @@ export const LoginPage = () => {
     <>
       <Header />
 
-      <StyledLogin>
+      <StyledLogin className="login">
         <section className="section-login">
           <StyledTitle tag="h2" fontSize="heading-5-500" color="black">
             Login

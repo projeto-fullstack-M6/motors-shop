@@ -16,4 +16,9 @@ export const StyledForm = styled.form`
     align-items: center;
     gap: var(--gap-20);
   }
+
+  .div-register{
+    display: flex;
+    gap: var(--gap-10);
+  }
 `;

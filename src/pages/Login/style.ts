@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledLogin = styled.div`
   background-color: var(--grey-9);
   width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,6 +28,19 @@ export const StyledLogin = styled.div`
       width: 243px;
       height: 442px;
       padding: 24px 18px;
+    }
+  }
+
+  &.login {
+    height: 100vh;
+  }
+
+  &.register {
+    height: fit-content;
+    padding: 80px 0;
+
+    @media (max-width: 415px) {
+      padding: 40px 0;
     }
   }
 `;
