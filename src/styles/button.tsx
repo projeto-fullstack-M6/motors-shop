@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { IButton } from "../interfaces/button.interface";
+import { IButton } from "../interfaces/Style/button.interface";
 
 export const StyledButton = styled.button<IButton>`
   gap: var(--gap-10);

@@ -1,6 +1,12 @@
 import { z } from "zod";
-import { adCreateSchema, adUpdateSchema } from "../serializers";
+import {
+  adCreateSchema,
+  adResponseSchema,
+  adUpdateSchema,
+} from "../serializers";
 
-type AdCreateValues = z.infer<typeof adCreateSchema>;
+type IAdRegister = z.infer<typeof adCreateSchema>;
 
-type AdUpdateValues = z.infer<typeof adUpdateSchema>;
+type IAdUpdate = z.infer<typeof adUpdateSchema>;
+
+type IAdResponse = z.infer<typeof adResponseSchema>;

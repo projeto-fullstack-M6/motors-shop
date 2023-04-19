@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { BaseTitle } from "./components/Typography";
-import { IText } from "../interfaces/typhography.interface";
+import { IText } from "../interfaces/Style/typhography.interface";
 
 export const StyledTitle = styled(BaseTitle)<IText>`
   ${({ fontSize }) => {

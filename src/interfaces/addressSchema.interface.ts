@@ -1,6 +1,12 @@
 import { z } from "zod";
-import { addressCreateSchema, addressUpdateSchema } from "../serializers";
+import {
+  addressResponseSchema,
+  createAddressSchema,
+  updateAddressSchema,
+} from "../serializers";
 
-type AddressCreateValues = z.infer<typeof addressCreateSchema>;
+type IAddressRegister = z.infer<typeof createAddressSchema>;
 
-type AddressUpdateValues = z.infer<typeof addressUpdateSchema>;
+type IAddressUpdate = z.infer<typeof updateAddressSchema>;
+
+type IAddressResponse = z.infer<typeof addressResponseSchema>;

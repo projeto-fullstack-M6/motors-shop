@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { IChildren, IUserContext } from "../interfaces/contexts.interface";
+import { IChildren, IUserContext } from "../interfaces/Context/contexts.interface";
 import { ApiRequests } from "../services";
 import { toast } from "react-hot-toast";
 

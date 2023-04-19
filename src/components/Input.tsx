@@ -1,4 +1,4 @@
-import { IInput } from "../interfaces/input.interface";
+import { IInput } from "../interfaces/Style/input.interface";
 import { StyledDivInput, StyledInput, StyledLabel } from "../styles/input";
 
 export const Input = ({
