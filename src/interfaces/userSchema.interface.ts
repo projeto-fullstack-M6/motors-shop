@@ -1,10 +1,15 @@
 import { z } from "zod";
-import { loginSchema } from "../serializers";
-import { registerSchema } from "../serializers";
-import { updateProfileSchema } from "../serializers";
+import {
+  loginSchema,
+  updateUserSchema,
+  userResponseSchema,
+  createUserSchema,
+} from "../serializers";
 
-type LoginValues = z.infer<typeof loginSchema>;
+export type IUserLogin = z.infer<typeof loginSchema>;
 
-type RegisterValues = z.infer<typeof registerSchema>;
+export type IUserRegister = z.infer<typeof createUserSchema>;
 
-type UpdateProfileValues = z.infer<typeof updateProfileSchema>;
+export type IUserUpdate = z.infer<typeof updateUserSchema>;
+
+export type IUserResponse = z.infer<typeof userResponseSchema>;

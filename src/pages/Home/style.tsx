@@ -1,29 +1,6 @@
 import styled from "styled-components";
 import MainCard from "../../assets/MainCard.png";
 
-export const StyledHeader = styled.header`
-  display: flex;
-  width: 100vw;
-  height: 10vh;
-  background-color: var(--grey-10);
-  border-bottom: 2px solid var(--grey-6);
-
-  > div {
-    display: flex;
-    align-items: center;
-    width: 70%;
-    margin-left: 3rem;
-    box-shadow: 2px 0px 0px 0px var(--grey-6);
-  }
-
-  > nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 30%;
-  }
-`;
-
 export const StyledImg = styled.div`
   width: 100vw;
   height: 60vh;

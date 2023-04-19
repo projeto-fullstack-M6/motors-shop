@@ -1,17 +1,23 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background-color: var(--white);
   width: 100%;
   height: 80px;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
+
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey-6);
 
   img {
     object-fit: cover;
     padding-left: 60px;
+
+    @media (max-width: 415px) {
+      width: 150px;
+      padding-left: 20px;
+    }
   }
 
   nav {
@@ -20,9 +26,9 @@ export const StyledHeader = styled.header`
     align-items: center;
 
     height: 100%;
-    width: 25%;
+    width: 20%;
     border-left: 1px solid var(--grey-6);
-    gap: var(--gap-20);
+    gap: var(--gap-30);
   }
 
   div {

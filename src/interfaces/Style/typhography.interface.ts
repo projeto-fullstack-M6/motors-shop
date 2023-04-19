@@ -7,4 +7,5 @@ export interface ITypography {
 export interface IText {
   fontSize: string;
   color?: string;
+  align?: string;
 }

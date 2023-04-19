@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { IButton } from "../interfaces/button.interface";
+import { IButton } from "../interfaces/Style/button.interface";
 
 export const StyledButton = styled.button<IButton>`
   gap: var(--gap-10);
@@ -12,8 +12,13 @@ export const StyledButton = styled.button<IButton>`
       case "one":
         return css`
           width: 315px;
-          @media (max-width: 375) {
+
+          @media (max-width: 415px) {
             width: 286px;
+          }
+
+          @media (max-width: 280px) {
+            width: 207px;
           }
         `;
       case "two":
@@ -23,7 +28,7 @@ export const StyledButton = styled.button<IButton>`
       case "three":
         return css`
           width: 262px;
-          @media (max-width: 375) {
+          @media (max-width: 415px) {
             width: 159px;
           }
         `;
@@ -34,13 +39,21 @@ export const StyledButton = styled.button<IButton>`
       case "five":
         return css`
           width: 193px;
-          @media (max-width: 375) {
+          @media (max-width: 415px) {
             width: 174px;
           }
         `;
       case "six":
         return css`
-          width: 160px;
+          width: 155px;
+
+          @media (max-width: 415px) {
+            width: 138px;
+          }
+
+          @media (max-width: 280px) {
+            width: 100px;
+          }
         `;
       case "seven":
         return css`
