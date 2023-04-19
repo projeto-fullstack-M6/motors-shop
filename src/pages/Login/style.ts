@@ -3,14 +3,14 @@ import styled from "styled-components";
 export const StyledLogin = styled.div`
   background-color: var(--grey-9);
   width: 100vw;
-  height: 75.4vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .section-login {
     width: 412px;
-    height: 542px;
+    height: fit-content;
     padding: 44px 48px;
 
     display: flex;
