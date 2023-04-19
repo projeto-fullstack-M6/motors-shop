@@ -19,5 +19,16 @@ export const StyledLogin = styled.div`
 
     background-color: var(--grey-10);
     border-radius: var(--border-radius-4);
+
+    @media (max-width: 415px) {
+      width: 343px;
+      padding: 44px 28px;
+    }
+
+    @media (max-width: 280px) {
+      width: 243px;
+      height: 442px;
+      padding: 24px 18px;
+    }
   }
 `;

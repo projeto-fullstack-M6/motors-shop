@@ -25,4 +25,14 @@ export const StyledFooter = styled.footer`
     border-radius: var(--border-radius-4);
     font-size: var(--size-h7);
   }
+
+  @media (max-width: 415px) {
+    flex-direction: column;
+    height: 250px;
+  }
+
+  @media (max-width: 280px) {
+    text-align: justify;
+    padding: 0 20px;
+  }
 `;

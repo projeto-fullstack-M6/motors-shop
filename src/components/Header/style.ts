@@ -13,6 +13,11 @@ export const StyledHeader = styled.header`
   img {
     object-fit: cover;
     padding-left: 60px;
+
+    @media (max-width: 415px) {
+      width: 150px;
+      padding-left: 20px;
+    }
   }
 
   nav {

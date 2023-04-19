@@ -16,7 +16,7 @@ export const createAddressSchema = z.object({
 
 export const addressResponseSchema = createAddressSchema.extend({
   id: z.string().uuid(),
-  user: userResponseSchema,
+  // user: userResponseSchema,
 });
 
 export const updateAddressSchema = createAddressSchema.partial();

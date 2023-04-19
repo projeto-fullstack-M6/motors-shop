@@ -38,5 +38,13 @@ export const StyledLinkRegister = styled(Link)`
 
   &.width-register {
     width: 315px;
+
+    @media (max-width: 415px) {
+      width: 286px;
+    }
+
+    @media (max-width: 280px) {
+      width: 207px;
+    }
   }
 `;

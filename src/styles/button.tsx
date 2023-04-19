@@ -12,8 +12,13 @@ export const StyledButton = styled.button<IButton>`
       case "one":
         return css`
           width: 315px;
-          @media (max-width: 375) {
+
+          @media (max-width: 415px) {
             width: 286px;
+          }
+
+          @media (max-width: 280px) {
+            width: 207px;
           }
         `;
       case "two":
@@ -23,7 +28,7 @@ export const StyledButton = styled.button<IButton>`
       case "three":
         return css`
           width: 262px;
-          @media (max-width: 375) {
+          @media (max-width: 375px) {
             width: 159px;
           }
         `;
@@ -34,7 +39,7 @@ export const StyledButton = styled.button<IButton>`
       case "five":
         return css`
           width: 193px;
-          @media (max-width: 375) {
+          @media (max-width: 375px) {
             width: 174px;
           }
         `;
