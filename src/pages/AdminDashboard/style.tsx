@@ -19,7 +19,7 @@ export const StyledAdminHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 14%;
+    max-width: 14%;
     padding: 2rem;
 
     > span {
@@ -39,6 +39,7 @@ export const StyledAdminHeader = styled.header`
       font-size: 16px;
       font-weight: 400;
       color: var(--grey-2);
+      padding: 1rem;
     }
   }
 `;
@@ -81,7 +82,7 @@ export const StyledAdminCardInfo = styled.section`
   > div {
     display: flex;
     height: 15%;
-    width: 22%;
+    max-width: 22%;
     align-items: center;
     justify-content: space-between;
 
@@ -89,6 +90,7 @@ export const StyledAdminCardInfo = styled.section`
       font-weight: 600;
       font-size: 20px;
       color: var(--grey-1);
+      padding: 1rem;
     }
 
     > span {

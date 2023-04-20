@@ -86,3 +86,20 @@ export const updateUserSchema = z.object({
     .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
   address: createAddressSchema.nullable(),
 });
+
+export const userLoginInfo = z.object({
+  id: z.string().trim(),
+  name: z.string().min(1).trim(),
+  email: z
+    .string()
+    .nonempty("Email é um campo obrigatório")
+    .email("Email inválido")
+    .trim(),
+  cpf: z.string().min(11).max(11).nonempty("CPF é um campo obrigatório").trim(),
+  cellPhone: z.string().min(11).trim(),
+  birthdate: z.string().min(8).trim(),
+  description: z.string().trim(),
+  isBuyer: z.boolean(),
+  isAdm: z.boolean(),
+  address: createAddressSchema.nullable(),
+});

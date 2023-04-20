@@ -6,6 +6,8 @@ export const StyledButton = styled.button<IButton>`
   border-radius: var(--border-radius-4);
   font-size: var(--size-h7);
   font-weight: var(--weight-600);
+  overflow: hidden;
+  text-align: center;
 
   ${({ width }) => {
     switch (width) {

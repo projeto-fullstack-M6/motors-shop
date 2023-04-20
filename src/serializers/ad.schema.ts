@@ -12,6 +12,10 @@ export const adCreateSchema = z.object({
   price: z.string().min(2).trim(),
   description: z.string().trim().nullable().optional(),
   isGoodToSale: z.boolean(),
+  id: z.string().trim(),
+  isActive: z.boolean(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
 });
 
 export const adResponseSchema = adCreateSchema.extend({
@@ -19,7 +23,6 @@ export const adResponseSchema = adCreateSchema.extend({
   isActive: z.boolean(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  user: userResponseSchema,
 });
 
 export const adUpdateSchema = adCreateSchema.partial();

@@ -9,11 +9,11 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route index element={<HomePage />} />
-      <Route path="/adverts" element={<Adverts />} />
       <Route path="/adminDashboard" element={<AdminDashboard />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/adverts" element={<Adverts />} />
+      <Route path="/dashboard" element={<p>Dash de user normal</p>} />
     </Routes>
   );
 };
