@@ -1,14 +1,14 @@
 import { Footer } from "../../components/Footer/Footer";
-import { Div } from "./style";
+import { Div, Main } from "./style";
 import { car } from "../../../mock";
 import { StyledButton } from "../../styles/button";
 import { HeaderIn } from "../../components/Header/HeaderIn";
-
 import { StyledTitle } from "../../styles/typography";
 
 const Adverts = () => {
   return (
-    <>
+    
+    <Main>
       <HeaderIn />
 
       <Div>
@@ -18,22 +18,20 @@ const Adverts = () => {
           </div>
 
           <div className="card2">
-            <h3>{car.brand}</h3>
+            <StyledTitle tag="h1" fontSize="heading-6-500">{car.brand} </StyledTitle>
             <div>
               <div className="km">
-                <p>{car.year}</p>
-                <p>{car.km} KM</p>
+              <StyledTitle tag="p" fontSize="heading-6-500">{car.year}</StyledTitle>
+              <StyledTitle tag="p" fontSize="heading-6-500">{car.km} KM</StyledTitle>
               </div>
-              <p> R$ {car.price}</p>
+              <StyledTitle tag="p" fontSize="heading-7-600">R$ {car.price}</StyledTitle>
             </div>
 
-            <StyledButton width="eight" height="two" buttonStyled="blue">
-              Comprar
-            </StyledButton>
+            <StyledButton width="eight" height="two" buttonStyled="blue">Comprar</StyledButton>
           </div>
 
           <div className="card3">
-            <h3>Descrição</h3>
+          <StyledTitle tag="h1" fontSize="heading-6-500">Descrição</StyledTitle>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -121,8 +119,10 @@ const Adverts = () => {
           </div>
         </section>
       </Div>
+      
       <Footer />
-    </>
+    </Main>
+
   );
 };
 

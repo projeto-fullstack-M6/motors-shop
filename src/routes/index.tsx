@@ -1,15 +1,22 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Adverts from "../pages/Adverts";
+import { HomePage } from "../pages/Home";
+import ProtectedRoutes from "../components/ProtectedRoute";
 
 const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route index element={<HomePage />} />
+      <Route path="*" element={<Navigate to={"/"} />}  />
 
-    return(
+      <Route element={<ProtectedRoutes/>}>
 
-        <Routes>
-            <Route path="adverts" element={<Adverts/>} />
-        </Routes>  
-    )
-  
+        <Route path="/adverts" element={<Adverts />} />
+      </Route>
+
+      
+    </Routes>
+  );
 };
 
 export default AppRoutes;
