@@ -11,8 +11,8 @@ const AppRoutes = () => {
 
       <Route element={<ProtectedRoutes/>}>
 
-        <Route path="/adverts" element={<Adverts />} />
       </Route>
+        <Route path="/adverts" element={<Adverts />} />
 
       
     </Routes>
