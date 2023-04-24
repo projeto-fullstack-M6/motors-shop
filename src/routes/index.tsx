@@ -4,19 +4,19 @@ import { HomePage } from "../pages/Home";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import { LoginPage } from "../pages/Login/Login";
 import { RegisterPage } from "../pages/Register/Register";
-import ModalAds from "../components/ModalAd";
+import ModalAds from "../components/Modals/ModalAd";
 
 const AppRoutes = () => {
-	return (
-		<Routes>
-			<Route index element={<HomePage />} />
-			<Route path="/adminDashboard" element={<AdminDashboard />} />
-			<Route path="/login" element={<LoginPage />} />
-			<Route path="/register" element={<RegisterPage />} />
-			<Route path="/adverts" element={<Adverts />} />
-			<Route path="/dashboard" element={<p>Dash de user normal</p>} />
-		</Routes>
-	);
+  return (
+    <Routes>
+      <Route index element={<HomePage />} />
+      <Route path="/adminDashboard" element={<AdminDashboard />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/adverts" element={<Adverts />} />
+      <Route path="/dashboard" element={<p>Dash de user normal</p>} />
+    </Routes>
+  );
 };
 
 export default AppRoutes;

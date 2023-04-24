@@ -1,5 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import AppRoutes from "./routes";
+import { ModalEditProfile } from "./components/Modals/ModalEditProfile/ModalEditProfile";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
           duration: 2000,
         }}
       />
-      <AppRoutes />
+      {/* <AppRoutes /> */}
+      <ModalEditProfile />
     </>
   );
 }
