@@ -1,13 +1,17 @@
 import { FieldError, useForm } from "react-hook-form";
-import { Input } from "../../Input";
-import { StyledButton } from "../../../styles/button";
-import { StyledForm } from "../../../styles/form";
-import { StyledSectionModal } from "../../../styles/section";
-import { AiOutlineClose } from "react-icons/ai";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { adCreateSchema } from "../../../serializers";
+
+import { Input } from "../../Input";
+
 import { IAdRegister } from "../../../interfaces/adSchema.interface";
+import { adCreateSchema } from "../../../serializers";
+
 import * as S from "../../../styles/divs";
+import { AiOutlineClose } from "react-icons/ai";
+import { StyledSectionModal } from "../../../styles/section";
+import { StyledForm } from "../../../styles/form";
+import { StyledButton } from "../../../styles/button";
+import { StyledTitle } from "../../../styles/typography";
 
 const ModalAds = () => {
   const {
@@ -26,13 +30,29 @@ const ModalAds = () => {
     <StyledSectionModal>
       <div className="div-modal">
         <div className="div-modal-header">
-          <h1>Criar anúncio</h1>
+          <StyledTitle
+            tag="h2"
+            fontSize="heading-7-500"
+            color="grey-1"
+            align="align-self-start"
+          >
+            Criar anúncio
+          </StyledTitle>
           <button type="button">
             <AiOutlineClose />
           </button>
         </div>
+
         <div className="div-modal-form">
-          <h2>Informações do veículo</h2>
+          <StyledTitle
+            tag="h3"
+            fontSize="body-2-500"
+            color="black"
+            align="align-self-start"
+          >
+            Informações do veículo
+          </StyledTitle>
+
           <StyledForm onSubmit={handleSubmit(onSubmitFunc)}>
             <Input
               label="Marca"
@@ -42,6 +62,7 @@ const ModalAds = () => {
               placeholder="Mercedes Benz"
               error={errors.brand as FieldError}
             />
+
             <Input
               label="Modelo"
               type="text"
@@ -50,6 +71,7 @@ const ModalAds = () => {
               placeholder="A200 CGI ADVANCE SEDAN"
               error={errors.model as FieldError}
             />
+
             <S.RowDiv>
               <Input
                 label="Ano"
@@ -68,6 +90,7 @@ const ModalAds = () => {
                 error={errors.fuel as FieldError}
               />
             </S.RowDiv>
+
             <S.RowDiv>
               <Input
                 label="Quilometragem"
@@ -86,6 +109,7 @@ const ModalAds = () => {
                 error={errors.color as FieldError}
               />
             </S.RowDiv>
+
             <S.RowDiv>
               <Input
                 label="Preço Tabela Fipe"
@@ -104,6 +128,7 @@ const ModalAds = () => {
                 error={errors.price as FieldError}
               />
             </S.RowDiv>
+
             <Input
               label="Descrição"
               type="text"
@@ -113,6 +138,7 @@ const ModalAds = () => {
               error={errors.description as FieldError}
             />
           </StyledForm>
+
           <Input
             label="Imagem da Capa"
             type="text"
@@ -132,6 +158,7 @@ const ModalAds = () => {
             placeholder="https://imagem.com.br"
           />
           <input type="file" />
+
           <div className="div-modal-button">
             <StyledButton width="seven" height="one" buttonStyled="grey-black">
               Cancelar
