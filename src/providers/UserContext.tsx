@@ -25,6 +25,8 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const [showEditUser, setShowEditUser] = useState(false);
 
+  const [showEditAddress, setShowEditAddress] = useState(false);
+
   const [userLoginAdminInfo, setUserLoginAdminInfo] =
     useState<IUserLoginInfo | null>(null);
 
@@ -83,6 +85,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
       toast.success("Perfil editado com sucesso.");
       setShowEditUser(false);
+      setShowEditAddress(false);
     } catch (error) {
       console.log(error);
       toast.error("Perfil não pôde ser editado");
@@ -100,6 +103,8 @@ export const UserProvider = ({ children }: IChildren) => {
         updateUser,
         showEditUser,
         setShowEditUser,
+        showEditAddress,
+        setShowEditAddress,
         userLoginAdminInfo,
         setUserLoginAdminInfo,
         announcements,

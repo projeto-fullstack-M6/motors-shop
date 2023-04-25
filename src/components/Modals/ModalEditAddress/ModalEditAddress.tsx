@@ -1,6 +1,8 @@
 import { FieldError, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
 
+import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input";
 
 import { IUserUpdate } from "../../../interfaces/userSchema.interface";
@@ -13,6 +15,8 @@ import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";
 
 export const ModalEditAddress = () => {
+  const { updateUser, setShowEditAddress, user } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -24,8 +28,15 @@ export const ModalEditAddress = () => {
     <StyledSectionModal>
       <div className="div-modal">
         <div className="div-modal-header">
-          <h1>Editar Perfil</h1>
-          <button type="button">
+          <StyledTitle
+            tag="h2"
+            fontSize="heading-7-500"
+            color="grey-1"
+            align="align-self-start"
+          >
+            Editar Endereço
+          </StyledTitle>
+          <button type="button" onClick={() => setShowEditAddress(false)}>
             <AiOutlineClose />
           </button>
         </div>
@@ -40,12 +51,12 @@ export const ModalEditAddress = () => {
             Informações de Endereço
           </StyledTitle>
 
-          <StyledForm>
+          <StyledForm onSubmit={handleSubmit((data) => updateUser(data))}>
             <Input
               label="CEP"
               type="text"
               register={register("address.zipcode")}
-              defaultValue=""
+              defaultValue={user?.address.zipcode}
               placeholder="00000-000"
               error={errors.address?.zipcode as FieldError}
             />
@@ -55,7 +66,7 @@ export const ModalEditAddress = () => {
                 label="Estado"
                 type="text"
                 register={register("address.state")}
-                defaultValue=""
+                defaultValue={user?.address.state}
                 placeholder="Digitar Estado"
                 error={errors.address?.state as FieldError}
               />
@@ -64,7 +75,7 @@ export const ModalEditAddress = () => {
                 label="Cidade"
                 type="text"
                 register={register("address.city")}
-                defaultValue=""
+                defaultValue={user?.address.city}
                 placeholder="Digitar Cidade"
                 error={errors.address?.city as FieldError}
               />
@@ -74,7 +85,7 @@ export const ModalEditAddress = () => {
               label="Rua"
               type="text"
               register={register("address.street")}
-              defaultValue=""
+              defaultValue={user?.address.street}
               placeholder="Digitar Rua"
               error={errors.address?.street as FieldError}
             />
@@ -84,7 +95,7 @@ export const ModalEditAddress = () => {
                 label="Número"
                 type="text"
                 register={register("address.number")}
-                defaultValue=""
+                defaultValue={user?.address.number}
                 placeholder="Digitar Número"
                 error={errors.address?.number as FieldError}
               />
@@ -93,7 +104,7 @@ export const ModalEditAddress = () => {
                 label="Complemento"
                 type="text"
                 register={register("address.complement")}
-                defaultValue=""
+                defaultValue={user?.address.complement}
                 placeholder="Ex: apart 307"
                 error={errors.address?.complement as FieldError}
               />

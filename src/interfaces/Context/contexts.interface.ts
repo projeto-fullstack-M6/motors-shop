@@ -21,6 +21,8 @@ export interface IUserContext {
   updateUser: (data: IUserUpdate) => Promise<void>;
   showEditUser: boolean;
   setShowEditUser: React.Dispatch<React.SetStateAction<boolean>>;
+  showEditAddress: boolean;
+  setShowEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
   userLoginAdminInfo: IUserLoginInfo | null;
   setUserLoginAdminInfo: React.Dispatch<
     React.SetStateAction<IUserLoginInfo | null>

@@ -56,7 +56,7 @@ export const ModalEditProfile = () => {
               label="Nome"
               type="text"
               register={register("name")}
-              defaultValue=""
+              defaultValue={user?.name}
               placeholder="Ex: Antonio Magalhães"
               error={errors.name as FieldError}
             />
@@ -65,7 +65,7 @@ export const ModalEditProfile = () => {
               label="Email"
               type="email"
               register={register("email")}
-              defaultValue=""
+              defaultValue={user?.email}
               placeholder="Ex: antonio.magalhaes@gmail.com"
               error={errors.email as FieldError}
             />
@@ -74,7 +74,7 @@ export const ModalEditProfile = () => {
               label="CPF"
               type="text"
               register={register("cpf")}
-              defaultValue=""
+              defaultValue={user?.cpf}
               placeholder="000.000.000-00"
               error={errors.cpf as FieldError}
             />
@@ -83,7 +83,7 @@ export const ModalEditProfile = () => {
               label="Celular"
               type="text"
               register={register("cellPhone")}
-              defaultValue=""
+              defaultValue={user?.cellPhone}
               placeholder="(DD) 90000-0000"
               error={errors.cellPhone as FieldError}
             />
@@ -92,7 +92,7 @@ export const ModalEditProfile = () => {
               label="Data de nascimento"
               type="text"
               register={register("birthdate")}
-              defaultValue=""
+              defaultValue={user?.birthdate}
               placeholder="00/00/0000"
               error={errors.birthdate as FieldError}
             />
@@ -101,7 +101,7 @@ export const ModalEditProfile = () => {
               label="Descrição"
               type="text"
               register={register("description")}
-              defaultValue=""
+              defaultValue={user?.description!}
               placeholder="Digitar descrição"
               error={errors.description as FieldError}
             />
