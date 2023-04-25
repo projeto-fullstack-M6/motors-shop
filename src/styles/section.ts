@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// Estilização dos modais
+
 export const StyledSectionModal = styled.section`
 	position: absolute;
 	top: 0;

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createAddressSchema } from "./address.schema";
+import { addressResponseSchema, createAddressSchema } from "./address.schema";
 
 export const createUserSchema = z
   .object({
@@ -62,6 +62,7 @@ export const userResponseSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().nullable(),
+  address: addressResponseSchema,
 });
 
 export const updateUserSchema = z.object({
