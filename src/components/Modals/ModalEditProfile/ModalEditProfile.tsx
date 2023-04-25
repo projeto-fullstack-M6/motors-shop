@@ -3,6 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "../../Input";
 
+import { IUserUpdate } from "../../../interfaces/userSchema.interface";
+import { updateUserSchema } from "../../../serializers";
+
 import { AiOutlineClose } from "react-icons/ai";
 import { StyledSectionModal } from "../../../styles/section";
 import { StyledForm } from "../../../styles/form";
@@ -15,7 +18,7 @@ export const ModalEditProfile = () => {
     handleSubmit,
     unregister,
     formState: { errors },
-  } = useForm({ resolver: zodResolver() });
+  } = useForm<IUserUpdate>({ resolver: zodResolver(updateUserSchema) });
 
   return (
     <StyledSectionModal>
@@ -97,8 +100,12 @@ export const ModalEditProfile = () => {
             <StyledButton width="six" height="one" buttonStyled="grey-black">
               Cancelar
             </StyledButton>
-            
-            <StyledButton width="six" height="one" buttonStyled="feedback-alert">
+
+            <StyledButton
+              width="six"
+              height="one"
+              buttonStyled="feedback-alert"
+            >
               Excluir Perfil
             </StyledButton>
 
@@ -106,7 +113,6 @@ export const ModalEditProfile = () => {
               Salvar Alterações
             </StyledButton>
           </div>
-
         </div>
       </div>
     </StyledSectionModal>

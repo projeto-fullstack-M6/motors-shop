@@ -3,6 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "../../Input";
 
+import { IUserUpdate } from "../../../interfaces/userSchema.interface";
+import { updateUserSchema } from "../../../serializers";
+
 import { AiOutlineClose } from "react-icons/ai";
 import { StyledSectionModal } from "../../../styles/section";
 import { StyledForm } from "../../../styles/form";
@@ -15,7 +18,7 @@ export const ModalEditAddress = () => {
     handleSubmit,
     unregister,
     formState: { errors },
-  } = useForm({ resolver: zodResolver() });
+  } = useForm<IUserUpdate>({ resolver: zodResolver(updateUserSchema) });
 
   return (
     <StyledSectionModal>
@@ -44,7 +47,7 @@ export const ModalEditAddress = () => {
               register={register("address.zipcode")}
               defaultValue=""
               placeholder="00000-000"
-              error={errors.zipcode as FieldError}
+              error={errors.address?.zipcode as FieldError}
             />
 
             <div className="div-register">
@@ -54,7 +57,7 @@ export const ModalEditAddress = () => {
                 register={register("address.state")}
                 defaultValue=""
                 placeholder="Digitar Estado"
-                error={errors.state as FieldError}
+                error={errors.address?.state as FieldError}
               />
 
               <Input
@@ -63,7 +66,7 @@ export const ModalEditAddress = () => {
                 register={register("address.city")}
                 defaultValue=""
                 placeholder="Digitar Cidade"
-                error={errors.city as FieldError}
+                error={errors.address?.city as FieldError}
               />
             </div>
 
@@ -73,7 +76,7 @@ export const ModalEditAddress = () => {
               register={register("address.street")}
               defaultValue=""
               placeholder="Digitar Rua"
-              error={errors.street as FieldError}
+              error={errors.address?.street as FieldError}
             />
 
             <div className="div-register">
@@ -83,7 +86,7 @@ export const ModalEditAddress = () => {
                 register={register("address.number")}
                 defaultValue=""
                 placeholder="Digitar Número"
-                error={errors.number as FieldError}
+                error={errors.address?.number as FieldError}
               />
 
               <Input
@@ -92,7 +95,7 @@ export const ModalEditAddress = () => {
                 register={register("address.complement")}
                 defaultValue=""
                 placeholder="Ex: apart 307"
-                error={errors.complement as FieldError}
+                error={errors.address?.complement as FieldError}
               />
             </div>
           </StyledForm>
