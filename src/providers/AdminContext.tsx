@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ApiRequests } from "../services";
 import { UserContext } from "./UserContext";
-import { IUserLoginInfo } from "../interfaces/userSchema.interface";
 import { toast } from "react-hot-toast";
 import {
   IAdminContext,
@@ -38,7 +37,6 @@ export const AdminProvider = ({ children }: IChildren) => {
 
   const previousPage = async () => {
     try {
-      // actualPage <= 1 ? 1 :
       const announcements: any = await ApiRequests.get(
         `/announcements/user/specif/?page=${actualPage - 1}`
       );

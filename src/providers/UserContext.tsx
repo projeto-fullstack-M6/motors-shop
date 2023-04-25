@@ -14,6 +14,7 @@ import {
   IUserLoginInfo,
   IUserRegister,
   IUserResponse,
+  IUserUpdate,
 } from "../interfaces/userSchema.interface";
 import { IAdResponse } from "../interfaces/adSchema.interface";
 
@@ -21,12 +22,18 @@ export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUserResponse | null>(null);
+
+  const [showEditUser, setShowEditUser] = useState(false);
+
   const [userLoginAdminInfo, setUserLoginAdminInfo] =
     useState<IUserLoginInfo | null>(null);
+
   const [announcements, setAnnouncements] = useState<IAdResponse[] | null>(
     null
   );
+
   const [actualPage, setActualPage] = useState(1);
+
   const navigate = useNavigate();
 
   const userRegister = async (data: IUserRegister) => {
@@ -66,6 +73,22 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
+  const updateUser = async (data: IUserUpdate) => {
+    try {
+      const token = localStorage.getItem("@motors:token");
+      const response = await ApiRequests.patch(`/users/${user?.id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(response.data);
+
+      toast.success("Perfil editado com sucesso.");
+      setShowEditUser(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Perfil não pôde ser editado");
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -74,6 +97,9 @@ export const UserProvider = ({ children }: IChildren) => {
         navigate,
         userLogin,
         userRegister,
+        updateUser,
+        showEditUser,
+        setShowEditUser,
         userLoginAdminInfo,
         setUserLoginAdminInfo,
         announcements,

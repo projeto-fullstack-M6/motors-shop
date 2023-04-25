@@ -1,6 +1,8 @@
 import { FieldError, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
 
+import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input";
 
 import { IUserUpdate } from "../../../interfaces/userSchema.interface";
@@ -13,6 +15,8 @@ import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";
 
 export const ModalEditProfile = () => {
+  const { updateUser, setShowEditUser, user } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -24,8 +28,15 @@ export const ModalEditProfile = () => {
     <StyledSectionModal>
       <div className="div-modal">
         <div className="div-modal-header">
-          <h1>Editar Perfil</h1>
-          <button type="button">
+          <StyledTitle
+            tag="h2"
+            fontSize="heading-7-500"
+            color="grey-1"
+            align="align-self-start"
+          >
+            Editar Perfil
+          </StyledTitle>
+          <button type="button" onClick={() => setShowEditUser(false)}>
             <AiOutlineClose />
           </button>
         </div>
@@ -40,7 +51,7 @@ export const ModalEditProfile = () => {
             Informações Pessoais
           </StyledTitle>
 
-          <StyledForm>
+          <StyledForm onSubmit={handleSubmit((data) => updateUser(data))}>
             <Input
               label="Nome"
               type="text"
