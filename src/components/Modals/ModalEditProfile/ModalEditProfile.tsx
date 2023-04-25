@@ -15,7 +15,8 @@ import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";
 
 export const ModalEditProfile = () => {
-  const { updateUser, setShowEditUser, user } = useContext(UserContext);
+  const { updateUser, deleteUser, setShowEditUser, user } =
+    useContext(UserContext);
 
   const {
     register,
@@ -116,6 +117,7 @@ export const ModalEditProfile = () => {
               width="six"
               height="one"
               buttonStyled="feedback-alert"
+              onSubmit={() => deleteUser()}
             >
               Excluir Perfil
             </StyledButton>

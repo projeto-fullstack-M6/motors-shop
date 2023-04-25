@@ -92,6 +92,22 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
+  const deleteUser = async () => {
+    try {
+      const token = localStorage.getItem("@motors:token");
+      const response = await ApiRequests.delete(`/users/${user?.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(response.data);
+
+      navigate("/");
+      toast.success("Perfil excluído com sucesso.");
+    } catch (error) {
+      console.log(error);
+      toast.error("Perfil não pôde ser excluído");
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -101,6 +117,7 @@ export const UserProvider = ({ children }: IChildren) => {
         userLogin,
         userRegister,
         updateUser,
+        deleteUser,
         showEditUser,
         setShowEditUser,
         showEditAddress,
