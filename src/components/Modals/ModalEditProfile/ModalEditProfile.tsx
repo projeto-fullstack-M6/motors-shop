@@ -15,13 +15,12 @@ import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";
 
 export const ModalEditProfile = () => {
-  const { updateUser, deleteUser, setShowEditUser, user } =
+  const { updateUser, deleteUser, setShowEditUser, userLoginAdminInfo } =
     useContext(UserContext);
 
   const {
     register,
     handleSubmit,
-    unregister,
     formState: { errors },
   } = useForm<IUserUpdate>({ resolver: zodResolver(updateUserSchema) });
 
@@ -57,7 +56,7 @@ export const ModalEditProfile = () => {
               label="Nome"
               type="text"
               register={register("name")}
-              defaultValue={user?.name}
+              defaultValue={userLoginAdminInfo?.name}
               placeholder="Ex: Antonio Magalhães"
               error={errors.name as FieldError}
             />
@@ -66,7 +65,7 @@ export const ModalEditProfile = () => {
               label="Email"
               type="email"
               register={register("email")}
-              defaultValue={user?.email}
+              defaultValue={userLoginAdminInfo?.email}
               placeholder="Ex: antonio.magalhaes@gmail.com"
               error={errors.email as FieldError}
             />
@@ -75,7 +74,7 @@ export const ModalEditProfile = () => {
               label="CPF"
               type="text"
               register={register("cpf")}
-              defaultValue={user?.cpf}
+              defaultValue={userLoginAdminInfo?.cpf}
               placeholder="000.000.000-00"
               error={errors.cpf as FieldError}
             />
@@ -84,7 +83,7 @@ export const ModalEditProfile = () => {
               label="Celular"
               type="text"
               register={register("cellPhone")}
-              defaultValue={user?.cellPhone}
+              defaultValue={userLoginAdminInfo?.cellPhone}
               placeholder="(DD) 90000-0000"
               error={errors.cellPhone as FieldError}
             />
@@ -93,7 +92,7 @@ export const ModalEditProfile = () => {
               label="Data de nascimento"
               type="text"
               register={register("birthdate")}
-              defaultValue={user?.birthdate}
+              defaultValue={userLoginAdminInfo?.birthdate}
               placeholder="00/00/0000"
               error={errors.birthdate as FieldError}
             />
@@ -102,14 +101,20 @@ export const ModalEditProfile = () => {
               label="Descrição"
               type="text"
               register={register("description")}
-              defaultValue={user?.description!}
+              defaultValue={userLoginAdminInfo?.description!}
               placeholder="Digitar descrição"
               error={errors.description as FieldError}
             />
           </StyledForm>
 
           <div className="div-modal-button">
-            <StyledButton width="six" height="one" buttonStyled="grey-black">
+            <StyledButton
+              width="six"
+              height="one"
+              buttonStyled="grey-black"
+              font="two"
+              onClick={() => setShowEditUser(false)}
+            >
               Cancelar
             </StyledButton>
 
@@ -117,12 +122,18 @@ export const ModalEditProfile = () => {
               width="six"
               height="one"
               buttonStyled="feedback-alert"
-              onSubmit={() => deleteUser()}
+              font="two"
+              onClick={() => deleteUser()}
             >
               Excluir Perfil
             </StyledButton>
 
-            <StyledButton width="five" height="one" buttonStyled="blue">
+            <StyledButton
+              width="five"
+              height="one"
+              buttonStyled="blue"
+              font="two"
+            >
               Salvar Alterações
             </StyledButton>
           </div>

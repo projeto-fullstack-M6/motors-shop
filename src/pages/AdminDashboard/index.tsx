@@ -1,18 +1,21 @@
+import { useContext } from "react";
+
+import { UserContext } from "../../providers/UserContext";
+import { AdminContext } from "../../providers/AdminContext";
+
+import { IAdRegister } from "../../interfaces/adSchema.interface";
+
+import { Header } from "../../components/Header/Header";
+import { Card } from "../../components/Card/Card";
+import { Footer } from "../../components/Footer/Footer";
+
 import {
   StyledAdminCardInfo,
-  StyledAdminHeader,
   StyledAdminPageSection,
   StyledMainContentAdmin,
   StyledSectionAdmin,
 } from "./style";
-import MotorsShop from "../../assets/MotorsShop.svg";
 import { StyledButton } from "../../styles/button";
-import { Card } from "../../components/Card/Card";
-import { Footer } from "../../components/Footer/Footer";
-import { useContext } from "react";
-import { AdminContext } from "../../providers/AdminContext";
-import { UserContext } from "../../providers/UserContext";
-import { HeaderIn } from "../../components/Header/HeaderIn";
 
 export const AdminDashboard = () => {
   const { exit, handleNewAnnouncement, nextPage, previousPage } =
@@ -21,24 +24,12 @@ export const AdminDashboard = () => {
     useContext(UserContext);
   return (
     <>
+      <Header />
+
       {userLoginAdminInfo ? (
         <>
-          <HeaderIn />
-          {/* <StyledAdminHeader>
-            <div>
-              <img src={MotorsShop} alt="Logo MotorsShop"></img>
-            </div>
-            <nav>
-              <span>
-                {userLoginAdminInfo?.name
-                  .split(" ")
-                  .map((name) => name.charAt(0))
-                  .join("")}
-              </span>
-              <p>{userLoginAdminInfo.name}</p>
-            </nav>
-          </StyledAdminHeader> */}
           <StyledSectionAdmin />
+
           <StyledAdminCardInfo>
             <span>
               {userLoginAdminInfo?.name
@@ -55,6 +46,7 @@ export const AdminDashboard = () => {
               Criar anuncio
             </StyledButton>
           </StyledAdminCardInfo>
+
           <StyledMainContentAdmin>
             <div>
               {announcements?.length === 0 ? (
@@ -71,7 +63,7 @@ export const AdminDashboard = () => {
                     price,
                     description,
                     isGoodToSale,
-                  }: any) => (
+                  }: IAdRegister) => (
                     <Card
                       key={id}
                       brand={brand}
@@ -88,6 +80,7 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledMainContentAdmin>
+
           <StyledAdminPageSection>
             <div>
               <div>
@@ -104,11 +97,12 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledAdminPageSection>
-          <Footer />
         </>
       ) : (
         <p>nada</p>
       )}
+
+      <Footer />
     </>
   );
 };

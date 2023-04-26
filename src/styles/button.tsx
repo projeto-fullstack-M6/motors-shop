@@ -205,6 +205,12 @@ ${({ font }) => {
           font-family: var(--font-family-inter);
           font-weight: var(--weight-400);
         `;
+      case "two":
+        return css`
+          font-size: var(--size-body-2);
+          font-family: var(--font-family-inter);
+          font-weight: var(--weight-500);
+        `;
     }
   }}
 `;

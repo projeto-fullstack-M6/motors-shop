@@ -67,12 +67,8 @@ export const userResponseSchema = z.object({
 
 export const updateUserSchema = z.object({
   name: z.string().min(1).trim(),
-  email: z
-    .string()
-    .nonempty("Email é um campo obrigatório")
-    .email("Email inválido")
-    .trim(),
-  cpf: z.string().min(11).max(11).nonempty("CPF é um campo obrigatório").trim(),
+  email: z.string().email("Email inválido").trim(),
+  cpf: z.string().min(11).max(11).trim(),
   cellPhone: z.string().min(11).trim(),
   birthdate: z.string().min(8).trim(),
   description: z.string().trim(),

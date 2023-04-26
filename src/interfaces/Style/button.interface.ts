@@ -1,5 +1,3 @@
-import { UseFormRegisterReturn } from "react-hook-form";
-
 export interface IButton {
   width:
     | "one"
@@ -28,5 +26,5 @@ export interface IButton {
     | "feedback-alert"
     | "feedback-sucess"
     | "disable";
-  font?: "one";
+  font?: "one" | "two";
 }

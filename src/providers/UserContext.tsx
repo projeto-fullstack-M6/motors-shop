@@ -59,7 +59,7 @@ export const UserProvider = ({ children }: IChildren) => {
       );
       localStorage.setItem("@motors:id", userLoginInformation.id);
       setUserLoginAdminInfo(userLoginInformation.data);
-      if (userLoginInformation.data.isAdm) {
+      if (userLoginInformation.data.isBuyer === false) {
         const userAnnouncements: any = await ApiRequests.get(
           `/announcements/user/specif/?page=${actualPage}`
         );
@@ -78,7 +78,7 @@ export const UserProvider = ({ children }: IChildren) => {
   const updateUser = async (data: IUserUpdate) => {
     try {
       const token = localStorage.getItem("@motors:token");
-      const response = await ApiRequests.patch(`/users/${user?.id}`, data, {
+      const response = await ApiRequests.patch(`/users/${userLoginAdminInfo?.id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);
