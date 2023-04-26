@@ -12,6 +12,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { useContext } from "react";
 import { AdminContext } from "../../providers/AdminContext";
 import { UserContext } from "../../providers/UserContext";
+import { HeaderIn } from "../../components/Header/HeaderIn";
 
 export const AdminDashboard = () => {
   const { exit, handleNewAnnouncement, nextPage, previousPage } =
@@ -22,7 +23,8 @@ export const AdminDashboard = () => {
     <>
       {userLoginAdminInfo ? (
         <>
-          <StyledAdminHeader>
+          <HeaderIn />
+          {/* <StyledAdminHeader>
             <div>
               <img src={MotorsShop} alt="Logo MotorsShop"></img>
             </div>
@@ -35,7 +37,7 @@ export const AdminDashboard = () => {
               </span>
               <p>{userLoginAdminInfo.name}</p>
             </nav>
-          </StyledAdminHeader>
+          </StyledAdminHeader> */}
           <StyledSectionAdmin />
           <StyledAdminCardInfo>
             <span>

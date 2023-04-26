@@ -48,3 +48,11 @@ export const StyledLinkRegister = styled(Link)`
     }
   }
 `;
+
+export const StyledLinkDropdown = styled(Link)`
+  color: var(--grey-2);
+  font-weight: var(--weight-400);
+  font-size: var(--size-h7);
+  font-family: var(--font-family-inter);
+  cursor: pointer;
+`;
