@@ -6,15 +6,16 @@ export const StyledSectionModal = styled.section`
 	position: absolute;
 	top: 0;
 	left: 0;
+	z-index: 20;
 	width: 100vw;
 	height: 100vh;
-	background-color: var(--grey-8);
+	background-color: var(--modal);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	.div-modal {
-		width: 40%;
+		width: 29%;
 		height: fit-content;
 		background-color: var(--white);
 		display: flex;

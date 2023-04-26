@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledDropdown = styled.div`
   position: absolute;
   top: 60px;
-  right: 10px;
+  right: 15px;
   z-index: 10;
 
   display: flex;

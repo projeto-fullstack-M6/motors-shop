@@ -41,6 +41,7 @@ export const StyledHeader = styled.header`
     border-left: 1px solid var(--grey-6);
     gap: var(--gap-10);
     padding-left: 30px;
+    cursor: pointer;
 
     .acronym {
       display: flex;

@@ -1,22 +1,33 @@
 import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
+
+import { ModalEditProfile } from "../ModalEditProfile/ModalEditProfile";
+import { ModalEditAddress } from "../ModalEditAddress/ModalEditAddress";
+
 import { StyledButton } from "../../../styles/button";
-import { StyledLinkDropdown } from "../../../styles/link";
 import { StyledDropdown } from "./styled";
+import { StyledLinkDropdown } from "../../../styles/link";
 
 export const Dropdown = () => {
-  const { user } = useContext(UserContext);
+  const {
+    user,
+    showEditUser,
+    setShowEditUser,
+    showEditAddress,
+    setShowEditAddress,
+  } = useContext(UserContext);
 
   return (
     <>
       {user?.isBuyer ? (
-        <StyledDropdown className="caralho">
+        <StyledDropdown>
           <div>
             <StyledButton
               width="twelve"
               height="three"
               buttonStyled="white"
               font="one"
+              onClick={() => setShowEditUser(true)}
             >
               Editar Perfil
             </StyledButton>
@@ -26,6 +37,7 @@ export const Dropdown = () => {
               height="three"
               buttonStyled="white"
               font="one"
+              onClick={() => setShowEditAddress(true)}
             >
               Editar Endereço
             </StyledButton>
@@ -48,6 +60,7 @@ export const Dropdown = () => {
               height="three"
               buttonStyled="white"
               font="one"
+              onClick={() => setShowEditUser(true)}
             >
               Editar Perfil
             </StyledButton>
@@ -57,6 +70,7 @@ export const Dropdown = () => {
               height="three"
               buttonStyled="white"
               font="one"
+              onClick={() => setShowEditAddress(true)}
             >
               Editar Endereço
             </StyledButton>
@@ -76,6 +90,9 @@ export const Dropdown = () => {
           </div>
         </StyledDropdown>
       )}
+
+      {showEditUser && <ModalEditProfile />}
+      {showEditAddress && <ModalEditAddress />}
     </>
   );
 };
