@@ -50,5 +50,6 @@ export const StyledSectionModal = styled.section`
     display: flex;
     justify-content: end;
     gap: var(--gap-10);
+    width: 100%;
   }
 `;

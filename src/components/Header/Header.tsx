@@ -8,6 +8,7 @@ import { StyledTitle } from "../../styles/typography";
 import { StyledHeader } from "./style";
 import { Dropdown } from "../Modals/Dropdown/Dropdown";
 import { StyledLinkLogin, StyledLinkRegister } from "../../styles/link";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const { userLoginAdminInfo } = useContext(UserContext);
@@ -17,7 +18,9 @@ export const Header = () => {
   return (
     <>
       <StyledHeader id="header">
-        <img src={MotorsShop} alt="logo" />
+        <Link to="/">
+          <img src={MotorsShop} alt="logo" />
+        </Link>
 
         {token ? (
           <div onClick={() => setShowDropdown(!showDropdown)}>

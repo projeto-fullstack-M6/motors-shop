@@ -1,4 +1,4 @@
-import { FieldError, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 
@@ -58,7 +58,6 @@ export const ModalEditProfile = () => {
               register={register("name")}
               defaultValue={userLoginAdminInfo?.name}
               placeholder="Ex: Antonio Magalhães"
-              error={errors.name as FieldError}
             />
 
             <Input
@@ -67,7 +66,6 @@ export const ModalEditProfile = () => {
               register={register("email")}
               defaultValue={userLoginAdminInfo?.email}
               placeholder="Ex: antonio.magalhaes@gmail.com"
-              error={errors.email as FieldError}
             />
 
             <Input
@@ -76,7 +74,6 @@ export const ModalEditProfile = () => {
               register={register("cpf")}
               defaultValue={userLoginAdminInfo?.cpf}
               placeholder="000.000.000-00"
-              error={errors.cpf as FieldError}
             />
 
             <Input
@@ -85,7 +82,6 @@ export const ModalEditProfile = () => {
               register={register("cellPhone")}
               defaultValue={userLoginAdminInfo?.cellPhone}
               placeholder="(DD) 90000-0000"
-              error={errors.cellPhone as FieldError}
             />
 
             <Input
@@ -94,7 +90,6 @@ export const ModalEditProfile = () => {
               register={register("birthdate")}
               defaultValue={userLoginAdminInfo?.birthdate}
               placeholder="00/00/0000"
-              error={errors.birthdate as FieldError}
             />
 
             <Input
@@ -103,40 +98,41 @@ export const ModalEditProfile = () => {
               register={register("description")}
               defaultValue={userLoginAdminInfo?.description!}
               placeholder="Digitar descrição"
-              error={errors.description as FieldError}
             />
+
+            <div className="div-modal-button">
+              <StyledButton
+                width="six"
+                height="one"
+                buttonStyled="grey-black"
+                font="two"
+                type="button"
+                onClick={() => setShowEditUser(false)}
+              >
+                Cancelar
+              </StyledButton>
+
+              <StyledButton
+                width="six"
+                height="one"
+                buttonStyled="feedback-alert"
+                font="two"
+                type="button"
+                onClick={() => deleteUser()}
+              >
+                Excluir Perfil
+              </StyledButton>
+
+              <StyledButton
+                width="five"
+                height="one"
+                buttonStyled="blue"
+                font="two"
+              >
+                Salvar Alterações
+              </StyledButton>
+            </div>
           </StyledForm>
-
-          <div className="div-modal-button">
-            <StyledButton
-              width="six"
-              height="one"
-              buttonStyled="grey-black"
-              font="two"
-              onClick={() => setShowEditUser(false)}
-            >
-              Cancelar
-            </StyledButton>
-
-            <StyledButton
-              width="six"
-              height="one"
-              buttonStyled="feedback-alert"
-              font="two"
-              onClick={() => deleteUser()}
-            >
-              Excluir Perfil
-            </StyledButton>
-
-            <StyledButton
-              width="five"
-              height="one"
-              buttonStyled="blue"
-              font="two"
-            >
-              Salvar Alterações
-            </StyledButton>
-          </div>
         </div>
       </div>
     </StyledSectionModal>

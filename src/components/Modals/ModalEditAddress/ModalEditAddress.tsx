@@ -58,7 +58,6 @@ export const ModalEditAddress = () => {
               register={register("address.zipcode")}
               defaultValue={userLoginAdminInfo?.address?.zipcode}
               placeholder="00000-000"
-              error={errors.address?.zipcode as FieldError}
             />
 
             <div className="div-register">
@@ -68,7 +67,6 @@ export const ModalEditAddress = () => {
                 register={register("address.state")}
                 defaultValue={userLoginAdminInfo?.address?.state}
                 placeholder="Digitar Estado"
-                error={errors.address?.state as FieldError}
               />
 
               <Input
@@ -77,7 +75,6 @@ export const ModalEditAddress = () => {
                 register={register("address.city")}
                 defaultValue={userLoginAdminInfo?.address?.city}
                 placeholder="Digitar Cidade"
-                error={errors.address?.city as FieldError}
               />
             </div>
 
@@ -87,7 +84,6 @@ export const ModalEditAddress = () => {
               register={register("address.street")}
               defaultValue={userLoginAdminInfo?.address?.street}
               placeholder="Digitar Rua"
-              error={errors.address?.street as FieldError}
             />
 
             <div className="div-register">
@@ -97,7 +93,6 @@ export const ModalEditAddress = () => {
                 register={register("address.number")}
                 defaultValue={userLoginAdminInfo?.address?.number}
                 placeholder="Digitar Número"
-                error={errors.address?.number as FieldError}
               />
 
               <Input
@@ -106,7 +101,6 @@ export const ModalEditAddress = () => {
                 register={register("address.complement")}
                 defaultValue={userLoginAdminInfo?.address?.complement}
                 placeholder="Ex: apart 307"
-                error={errors.address?.complement as FieldError}
               />
             </div>
 
@@ -116,6 +110,7 @@ export const ModalEditAddress = () => {
                 height="one"
                 buttonStyled="grey-black"
                 font="two"
+                type="button"
                 onClick={() => setShowEditAddress(false)}
               >
                 Cancelar

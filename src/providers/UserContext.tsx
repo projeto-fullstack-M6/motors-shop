@@ -54,11 +54,13 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       const user = await ApiRequests.post("/sessions", data);
       localStorage.setItem("@motors:token", user.data.token);
+
       const userLoginInformation: any = await ApiRequests.get(
         `/users/own/profile`
       );
-      localStorage.setItem("@motors:id", userLoginInformation.id);
+      localStorage.setItem("@motors:id", userLoginInformation.data.id);
       setUserLoginAdminInfo(userLoginInformation.data);
+
       if (userLoginInformation.data.isBuyer === false) {
         const userAnnouncements: any = await ApiRequests.get(
           `/announcements/user/specif/?page=${actualPage}`
@@ -68,6 +70,7 @@ export const UserProvider = ({ children }: IChildren) => {
       } else {
         navigate("/dashboard");
       }
+
       toast.success("Login realizado com sucesso.");
     } catch (error) {
       console.log(error);
@@ -79,28 +82,39 @@ export const UserProvider = ({ children }: IChildren) => {
     console.log(data);
     try {
       const token = localStorage.getItem("@motors:token");
-      const response = await ApiRequests.patch(`/users/${user?.id}`, data, {
+      const id = localStorage.getItem("@motors:id");
+
+      const response = await ApiRequests.patch(`/users/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);
 
-      toast.success("Perfil editado com sucesso.");
+      if (data.address) {
+        toast.success("Endereço editado com sucesso.");
+      } else {
+        toast.success("Perfil editado com sucesso.");
+      }
       setShowEditUser(false);
       setShowEditAddress(false);
     } catch (error) {
       console.log(error);
-      toast.error("Perfil não pôde ser editado");
+      if (data.address) {
+        toast.error("Endereço não pôde ser editado");
+      } else {
+        toast.error("Perfil não pôde ser editado");
+      }
     }
   };
 
   const deleteUser = async () => {
     try {
       const token = localStorage.getItem("@motors:token");
-      const response = await ApiRequests.delete(`/users/${user?.id}`, {
+      const id = localStorage.getItem("@motors:id");
+
+      const response = await ApiRequests.delete(`/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);
-
       navigate("/");
       toast.success("Perfil excluído com sucesso.");
     } catch (error) {
