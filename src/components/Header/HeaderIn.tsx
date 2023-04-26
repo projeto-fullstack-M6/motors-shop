@@ -16,28 +16,29 @@ export const HeaderIn = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <StyledHeader id="header">
-      <img src={MotorsShop} alt="logo" />
+    <>
+      <StyledHeader id="header">
+        <img src={MotorsShop} alt="logo" />
 
-      <div onClick={() => setShowDropdown(!showDropdown)}>
-        <StyledTitle
-          tag="p"
-          fontSize="body-2-700"
-          color="white"
-          className="acronym"
-        >
-          {userLoginAdminInfo?.name
-            .split(" ")
-            .map((name) => name.charAt(0))
-            .join("")}
-        </StyledTitle>
+        <div onClick={() => setShowDropdown(!showDropdown)}>
+          <StyledTitle
+            tag="p"
+            fontSize="body-2-700"
+            color="white"
+            className="acronym"
+          >
+            {userLoginAdminInfo?.name
+              .split(" ")
+              .map((name) => name.charAt(0))
+              .join("")}
+          </StyledTitle>
 
-        <StyledTitle tag="p" fontSize="body-1-400" color="grey-2">
-          {userLoginAdminInfo?.name}
-        </StyledTitle>
-
-        {showDropdown && <Dropdown />}
-      </div>
-    </StyledHeader>
+          <StyledTitle tag="p" fontSize="body-1-400" color="grey-2">
+            {userLoginAdminInfo?.name}
+          </StyledTitle>
+        </div>
+      </StyledHeader>
+      {showDropdown && <Dropdown />}
+    </>
   );
 };

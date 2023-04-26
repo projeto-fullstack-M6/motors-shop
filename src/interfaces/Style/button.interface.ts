@@ -12,7 +12,8 @@ export interface IButton {
     | "eight"
     | "nine"
     | "ten"
-    | "eleven";
+    | "eleven"
+    | "twelve";
   height: "one" | "two" | "three";
   buttonStyled:
     | "black"
@@ -27,4 +28,5 @@ export interface IButton {
     | "feedback-alert"
     | "feedback-sucess"
     | "disable";
+  font?: "one";
 }

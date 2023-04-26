@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
 import { StyledButton } from "../../../styles/button";
 import { StyledLinkDropdown } from "../../../styles/link";
+import { StyledDropdown } from "./styled";
 
 export const Dropdown = () => {
   const { user } = useContext(UserContext);
@@ -9,37 +10,71 @@ export const Dropdown = () => {
   return (
     <>
       {user?.isBuyer ? (
-        <div>
-          <StyledButton width="ten" height="three" buttonStyled="white">
-            Editar Perfil
-          </StyledButton>
+        <StyledDropdown className="caralho">
+          <div>
+            <StyledButton
+              width="twelve"
+              height="three"
+              buttonStyled="white"
+              font="one"
+            >
+              Editar Perfil
+            </StyledButton>
 
-          <StyledButton width="ten" height="three" buttonStyled="white">
-            Editar Endereço
-          </StyledButton>
+            <StyledButton
+              width="twelve"
+              height="three"
+              buttonStyled="white"
+              font="one"
+            >
+              Editar Endereço
+            </StyledButton>
 
-          <StyledButton width="ten" height="three" buttonStyled="white">
-            Sair
-          </StyledButton>
-        </div>
+            <StyledButton
+              width="twelve"
+              height="three"
+              buttonStyled="white"
+              font="one"
+            >
+              Sair
+            </StyledButton>
+          </div>
+        </StyledDropdown>
       ) : (
-        <div>
-          <StyledButton width="ten" height="three" buttonStyled="white">
-            Editar Perfil
-          </StyledButton>
+        <StyledDropdown>
+          <div>
+            <StyledButton
+              width="twelve"
+              height="three"
+              buttonStyled="white"
+              font="one"
+            >
+              Editar Perfil
+            </StyledButton>
 
-          <StyledButton width="ten" height="three" buttonStyled="white">
-            Editar Endereço
-          </StyledButton>
+            <StyledButton
+              width="twelve"
+              height="three"
+              buttonStyled="white"
+              font="one"
+            >
+              Editar Endereço
+            </StyledButton>
 
-          <StyledLinkDropdown to="/adminDashboard">
-            Meus Anúncios
-          </StyledLinkDropdown>
+            <StyledLinkDropdown to="/adminDashboard">
+              Meus Anúncios
+            </StyledLinkDropdown>
 
-          <StyledButton width="ten" height="three" buttonStyled="white">
-            Sair
-          </StyledButton>
-        </div>
+            <StyledButton
+              width="twelve"
+              height="three"
+              buttonStyled="white"
+              font="one"
+            >
+              Sair
+            </StyledButton>
+          </div>
+        </StyledDropdown>
       )}
     </>
   );
