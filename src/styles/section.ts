@@ -16,6 +16,7 @@ export const StyledSectionModal = styled.section`
 
   .div-modal {
     width: 29%;
+    min-width: 400px;
     height: fit-content;
     background-color: var(--white);
     display: flex;

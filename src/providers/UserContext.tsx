@@ -76,9 +76,10 @@ export const UserProvider = ({ children }: IChildren) => {
   };
 
   const updateUser = async (data: IUserUpdate) => {
+    console.log(data);
     try {
       const token = localStorage.getItem("@motors:token");
-      const response = await ApiRequests.patch(`/users/${userLoginAdminInfo?.id}`, data, {
+      const response = await ApiRequests.patch(`/users/${user?.id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);
@@ -108,6 +109,14 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
+  const userLogout = () => {
+    setUser(null);
+    localStorage.removeItem("@motors:token");
+    localStorage.removeItem("@motors:id");
+    toast("Desconectado com sucesso!");
+    navigate("/");
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -118,6 +127,7 @@ export const UserProvider = ({ children }: IChildren) => {
         userRegister,
         updateUser,
         deleteUser,
+        userLogout,
         showEditUser,
         setShowEditUser,
         showEditAddress,

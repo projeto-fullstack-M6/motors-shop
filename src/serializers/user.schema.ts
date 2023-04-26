@@ -17,7 +17,7 @@ export const createUserSchema = z
       .trim(),
     cellPhone: z.string().min(11, "Deve conter 11 caracteres").trim(),
     birthdate: z.string().min(8, "Deve conter 8 caracteres").trim(),
-    description: z.string().trim().nullable(),
+    description: z.string().trim(),
     isBuyer: z.boolean(),
     password: z
       .string()
@@ -55,7 +55,7 @@ export const userResponseSchema = z.object({
     .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
     .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters"),
   confirmPassword: z.string().min(8).trim(),
-  description: z.string().trim().nullable(),
+  description: z.string().trim(),
   isAdm: z.boolean(),
   isActive: z.boolean(),
   isBuyer: z.boolean(),

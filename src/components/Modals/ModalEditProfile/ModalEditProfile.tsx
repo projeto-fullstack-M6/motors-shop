@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input";
 
-import { IUserUpdate } from "../../../interfaces/userSchema.interface";
+import { IUserResponse } from "../../../interfaces/userSchema.interface";
 import { updateUserSchema } from "../../../serializers";
 
 import { AiOutlineClose } from "react-icons/ai";
@@ -22,7 +22,7 @@ export const ModalEditProfile = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IUserUpdate>({ resolver: zodResolver(updateUserSchema) });
+  } = useForm<IUserResponse>({ resolver: zodResolver(updateUserSchema) });
 
   return (
     <StyledSectionModal>

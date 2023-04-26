@@ -11,6 +11,7 @@ import { StyledLinkDropdown } from "../../../styles/link";
 export const Dropdown = () => {
   const {
     user,
+    userLogout,
     showEditUser,
     setShowEditUser,
     showEditAddress,
@@ -47,6 +48,7 @@ export const Dropdown = () => {
               height="three"
               buttonStyled="white"
               font="one"
+              onClick={() => userLogout()}
             >
               Sair
             </StyledButton>
@@ -84,6 +86,7 @@ export const Dropdown = () => {
               height="three"
               buttonStyled="white"
               font="one"
+              onClick={() => userLogout()}
             >
               Sair
             </StyledButton>
