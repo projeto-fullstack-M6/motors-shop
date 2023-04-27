@@ -19,6 +19,8 @@ export const Card = ({
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
 
+  const token = localStorage.getItem("@motors:token");
+
   return (
     <>
       <StyledDivCard>
@@ -33,7 +35,7 @@ export const Card = ({
             {description}
           </StyledTitle>
 
-          {userLoginAdminInfo?.isBuyer ? (
+          {userLoginAdminInfo?.isBuyer || !token ? (
             <div className="div-name">
               <div className="div-acronym">
                 <StyledTitle tag="p" fontSize="body-2-500" color="white">
@@ -76,7 +78,7 @@ export const Card = ({
           </div>
         </Link>
 
-        {!userLoginAdminInfo?.isBuyer ? (
+        {!userLoginAdminInfo?.isBuyer && token ? (
           <div className="div-button">
             <StyledButton width="ten" height="two" buttonStyled="border-black">
               Editar
