@@ -33,7 +33,8 @@ export const Header = () => {
               {userLoginAdminInfo?.name
                 .split(" ")
                 .map((name) => name.charAt(0))
-                .join("")}
+                .join("")
+                .toUpperCase()}
             </StyledTitle>
 
             <StyledTitle tag="p" fontSize="body-1-400" color="grey-2">

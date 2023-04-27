@@ -66,11 +66,9 @@ export const UserProvider = ({ children }: IChildren) => {
           `/announcements/user/specif/?page=${actualPage}`
         );
         setAnnouncements(userAnnouncements.data.data);
-        navigate("/adminDashboard");
-      } else {
-        navigate("/dashboard");
+        // navigate("/dashboard");
       }
-
+      navigate("/dashboard");
       toast.success("Login realizado com sucesso.");
     } catch (error) {
       console.log(error);
@@ -82,9 +80,8 @@ export const UserProvider = ({ children }: IChildren) => {
     console.log(data);
     try {
       const token = localStorage.getItem("@motors:token");
-      const id = localStorage.getItem("@motors:id");
 
-      const response = await ApiRequests.patch(`/users/${id}`, data, {
+      const response = await ApiRequests.patch(`/users/${userLoginAdminInfo?.id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);
@@ -109,9 +106,8 @@ export const UserProvider = ({ children }: IChildren) => {
   const deleteUser = async () => {
     try {
       const token = localStorage.getItem("@motors:token");
-      const id = localStorage.getItem("@motors:id");
 
-      const response = await ApiRequests.delete(`/users/${id}`, {
+      const response = await ApiRequests.delete(`/users/${userLoginAdminInfo?.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);

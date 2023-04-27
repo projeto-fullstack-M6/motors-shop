@@ -4,12 +4,12 @@ import { HomePage } from "../pages/Home";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import { LoginPage } from "../pages/Login/Login";
 import { RegisterPage } from "../pages/Register/Register";
-import ModalAds from "../components/Modals/ModalAd";
+import { NotFound } from "../components/NotFound";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
@@ -17,7 +17,9 @@ const AppRoutes = () => {
       <Route path="/adverts" element={<Adverts />} />
 
       <Route path="/dashboard" element={<AdminDashboard />} />
-      <Route path="/adminDashboard" element={<AdminDashboard />} />
+      {/* <Route path="/adminDashboard" element={<AdminDashboard />} /> */}
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

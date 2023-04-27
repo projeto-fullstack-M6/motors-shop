@@ -37,7 +37,8 @@ export const AdminDashboard = () => {
               {userLoginAdminInfo?.name
                 .split(" ")
                 .map((name) => name.charAt(0))
-                .join("")}
+                .join("")
+                .toUpperCase()}
             </span>
 
             <div>
@@ -105,7 +106,7 @@ export const AdminDashboard = () => {
                 <p>{actualPage}</p>
                 <span>de 2</span>
               </div>
-              
+
               {actualPage === 1 ? (
                 <button onClick={() => nextPage()}>Seguinte &gt;</button>
               ) : (

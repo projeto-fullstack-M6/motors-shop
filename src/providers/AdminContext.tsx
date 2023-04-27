@@ -55,7 +55,7 @@ export const AdminProvider = ({ children }: IChildren) => {
     setAnnouncements(null);
     setActualPage(1);
     localStorage.removeItem("@motors:token");
-    navigate("/login");
+    navigate("/");
     toast.success("Logout realizado com sucesso");
   };
 
@@ -93,7 +93,7 @@ export const AdminProvider = ({ children }: IChildren) => {
           console.log(error);
         }
       } else {
-        navigate("/login");
+        navigate("/");
       }
     }
     loadAdminUser();

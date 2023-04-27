@@ -43,7 +43,7 @@ export const Dropdown = () => {
           </StyledButton>
 
           {userLoginAdminInfo?.isBuyer === false ? (
-            <StyledLinkDropdown to="/adminDashboard">
+            <StyledLinkDropdown to="/dashboard">
               Meus Anúncios
             </StyledLinkDropdown>
           ) : (
