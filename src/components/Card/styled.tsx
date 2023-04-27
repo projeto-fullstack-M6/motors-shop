@@ -6,6 +6,13 @@ export const StyledDivCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-15);
+  padding: 10px 0;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-10);
+  }
 
   .div-img {
     background-color: var(--grey-7);
@@ -39,10 +46,10 @@ export const StyledDivCard = styled.div`
   .div-data {
     display: flex;
     justify-content: space-between;
+  }
 
-    .div-button {
-        display: flex;
-        gap: var(--gap-10);
-    }
+  .div-button {
+    display: flex;
+    gap: var(--gap-10);
   }
 `;

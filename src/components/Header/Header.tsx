@@ -11,8 +11,8 @@ import { StyledLinkLogin, StyledLinkRegister } from "../../styles/link";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const { userLoginAdminInfo } = useContext(UserContext);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const { userLoginAdminInfo, showDropdown, setShowDropdown } = useContext(UserContext);
+  
 
   const token = localStorage.getItem("@motors:token");
   return (
@@ -33,7 +33,8 @@ export const Header = () => {
               {userLoginAdminInfo?.name
                 .split(" ")
                 .map((name) => name.charAt(0))
-                .join("")}
+                .join("")
+                .toUpperCase()}
             </StyledTitle>
 
             <StyledTitle tag="p" fontSize="body-1-400" color="grey-2">

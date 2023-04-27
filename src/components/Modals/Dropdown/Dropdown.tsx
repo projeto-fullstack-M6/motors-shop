@@ -10,7 +10,7 @@ import { StyledLinkDropdown } from "../../../styles/link";
 
 export const Dropdown = () => {
   const {
-    user,
+    userLoginAdminInfo,
     userLogout,
     showEditUser,
     setShowEditUser,
@@ -20,79 +20,47 @@ export const Dropdown = () => {
 
   return (
     <>
-      {user?.isBuyer ? (
-        <StyledDropdown>
-          <div>
-            <StyledButton
-              width="twelve"
-              height="three"
-              buttonStyled="white"
-              font="one"
-              onClick={() => setShowEditUser(true)}
-            >
-              Editar Perfil
-            </StyledButton>
+      <StyledDropdown>
+        <div>
+          <StyledButton
+            width="twelve"
+            height="three"
+            buttonStyled="white"
+            font="one"
+            onClick={() => setShowEditUser(true)}
+          >
+            Editar Perfil
+          </StyledButton>
 
-            <StyledButton
-              width="twelve"
-              height="three"
-              buttonStyled="white"
-              font="one"
-              onClick={() => setShowEditAddress(true)}
-            >
-              Editar Endereço
-            </StyledButton>
+          <StyledButton
+            width="twelve"
+            height="three"
+            buttonStyled="white"
+            font="one"
+            onClick={() => setShowEditAddress(true)}
+          >
+            Editar Endereço
+          </StyledButton>
 
-            <StyledButton
-              width="twelve"
-              height="three"
-              buttonStyled="white"
-              font="one"
-              onClick={() => userLogout()}
-            >
-              Sair
-            </StyledButton>
-          </div>
-        </StyledDropdown>
-      ) : (
-        <StyledDropdown>
-          <div>
-            <StyledButton
-              width="twelve"
-              height="three"
-              buttonStyled="white"
-              font="one"
-              onClick={() => setShowEditUser(true)}
-            >
-              Editar Perfil
-            </StyledButton>
-
-            <StyledButton
-              width="twelve"
-              height="three"
-              buttonStyled="white"
-              font="one"
-              onClick={() => setShowEditAddress(true)}
-            >
-              Editar Endereço
-            </StyledButton>
-
-            <StyledLinkDropdown to="/adminDashboard">
+          {userLoginAdminInfo?.isBuyer === false ? (
+            <StyledLinkDropdown to="/dashboard">
               Meus Anúncios
             </StyledLinkDropdown>
+          ) : (
+            ""
+          )}
 
-            <StyledButton
-              width="twelve"
-              height="three"
-              buttonStyled="white"
-              font="one"
-              onClick={() => userLogout()}
-            >
-              Sair
-            </StyledButton>
-          </div>
-        </StyledDropdown>
-      )}
+          <StyledButton
+            width="twelve"
+            height="three"
+            buttonStyled="white"
+            font="one"
+            onClick={() => userLogout()}
+          >
+            Sair
+          </StyledButton>
+        </div>
+      </StyledDropdown>
 
       {showEditUser && <ModalEditProfile />}
       {showEditAddress && <ModalEditAddress />}

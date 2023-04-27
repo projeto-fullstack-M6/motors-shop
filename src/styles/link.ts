@@ -56,3 +56,21 @@ export const StyledLinkDropdown = styled(Link)`
   font-family: var(--font-family-inter);
   cursor: pointer;
 `;
+
+export const StyledLinkDetails = styled(Link)`
+  width: 132px;
+  height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--grey-0);
+  border: 1px solid var(--grey-0);
+  border-radius: var(--border-radius-4);
+  &:hover {
+    background-color: var(--grey-1);
+    color: var(--grey-10);
+  }
+  cursor: pointer;
+`;

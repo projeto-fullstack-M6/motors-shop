@@ -1,49 +1,5 @@
 import styled from "styled-components";
 
-export const StyledAdminHeader = styled.header`
-  display: flex;
-  width: 100vw;
-  height: 10vh;
-  background-color: var(--grey-10);
-  border-bottom: 2px solid var(--grey-6);
-
-  > div {
-    display: flex;
-    align-items: center;
-    width: 70%;
-    margin-left: 3rem;
-    box-shadow: 2px 0px 0px 0px var(--grey-6);
-  }
-
-  > nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 14%;
-    padding: 2rem;
-
-    > span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      background-color: var(--brand-1);
-      border-radius: 50%;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    > p {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--grey-2);
-      padding: 1rem;
-    }
-  }
-`;
-
 export const StyledSectionAdmin = styled.section`
   width: 100vw;
   height: 35vh;
@@ -52,63 +8,57 @@ export const StyledSectionAdmin = styled.section`
 `;
 
 export const StyledAdminCardInfo = styled.section`
-  height: 50vh;
+  height: 42vh;
   width: 80vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
   background-color: var(--grey-10);
-  border-radius: 4px;
+  border-radius: var(--border-radius-4);
   padding: 1.85rem;
   position: absolute;
   z-index: 2;
   top: 20vh;
   left: 9vw;
 
-  > span {
+  @media (max-width: 440px) {
+    padding: 1rem;
+  }
+
+  .acronym-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--brand-1);
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
-    height: 30%;
-    width: 8%;
-    font-size: 36px;
-    font-weight: 500;
-    color: var(--grey-10);
+    color: var(--white);
+    background-color: var(--brand-1);
+    font-size: var(--size-h2);
+    font-weight: var(--weight-500);
+
+    @media (max-width: 440px) {
+      height: 80px;
+      width: 80px;
+    }
   }
 
   > div {
     display: flex;
     height: 15%;
-    max-width: 22%;
+    width: 22%;
+    min-width: 300px;
     align-items: center;
     justify-content: space-between;
 
-    > h2 {
-      font-weight: 600;
-      font-size: 20px;
-      color: var(--grey-1);
-      padding: 1rem;
+    @media (max-width: 440px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--gap-10);
+      height: 20%;
+      min-width: 200px;
     }
-
-    > span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4px 8px;
-      background: var(--brand-4);
-      border-radius: 4px;
-      color: var(--brand-1);
-    }
-  }
-
-  > p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--grey-2);
   }
 `;
 
