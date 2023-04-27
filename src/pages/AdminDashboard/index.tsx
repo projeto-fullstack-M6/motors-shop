@@ -16,32 +16,48 @@ import {
   StyledSectionAdmin,
 } from "./style";
 import { StyledButton } from "../../styles/button";
+import { HomePage } from "../Home";
+import { StyledTitle } from "../../styles/typography";
 
 export const AdminDashboard = () => {
-  const { exit, handleNewAnnouncement, nextPage, previousPage } =
+  const { handleNewAnnouncement, nextPage, previousPage } =
     useContext(AdminContext);
   const { userLoginAdminInfo, announcements, actualPage, setActualPage } =
     useContext(UserContext);
   return (
     <>
-      <Header />
-
-      {userLoginAdminInfo ? (
+      {userLoginAdminInfo?.isBuyer === false ? (
         <>
+          <Header />
+
           <StyledSectionAdmin />
 
           <StyledAdminCardInfo>
-            <span>
+            <span className="acronym-info">
               {userLoginAdminInfo?.name
                 .split(" ")
                 .map((name) => name.charAt(0))
                 .join("")}
             </span>
+
             <div>
-              <h2>{userLoginAdminInfo.name}</h2>
-              <span>Anunciante</span>
+              <StyledTitle tag="h2" fontSize="heading-6-600">
+                {userLoginAdminInfo.name}
+              </StyledTitle>
+
+              <StyledButton
+                width="nine"
+                height="three"
+                buttonStyled="light-blue"
+              >
+                Anunciante
+              </StyledButton>
             </div>
-            <p>{userLoginAdminInfo.description}</p>
+
+            <StyledTitle tag="p" fontSize="body-1-400">
+              {userLoginAdminInfo.description}
+            </StyledTitle>
+
             <StyledButton width="seven" height="two" buttonStyled="border-blue">
               Criar anuncio
             </StyledButton>
@@ -50,7 +66,9 @@ export const AdminDashboard = () => {
           <StyledMainContentAdmin>
             <div>
               {announcements?.length === 0 ? (
-                <p> nenhum cliente pra chamar de seu :/</p>
+                <StyledTitle tag="span" fontSize="body-1-400">
+                  Ainda não possui nenhum anúncio
+                </StyledTitle>
               ) : (
                 announcements?.map(
                   ({
@@ -87,6 +105,7 @@ export const AdminDashboard = () => {
                 <p>{actualPage}</p>
                 <span>de 2</span>
               </div>
+              
               {actualPage === 1 ? (
                 <button onClick={() => nextPage()}>Seguinte &gt;</button>
               ) : (
@@ -97,12 +116,12 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledAdminPageSection>
+
+          <Footer />
         </>
       ) : (
-        <p>nada</p>
+        <HomePage />
       )}
-
-      <Footer />
     </>
   );
 };
