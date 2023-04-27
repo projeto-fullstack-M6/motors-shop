@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input";
 
-import { IUserUpdate } from "../../../interfaces/userSchema.interface";
+import { IUserResponse } from "../../../interfaces/userSchema.interface";
 import { updateUserSchema } from "../../../serializers";
 
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,14 +15,14 @@ import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";
 
 export const ModalEditAddress = () => {
-  const { updateUser, setShowEditAddress, user } = useContext(UserContext);
+  const { updateUser, setShowEditAddress, userLoginAdminInfo } =
+    useContext(UserContext);
 
   const {
     register,
     handleSubmit,
-    unregister,
     formState: { errors },
-  } = useForm<IUserUpdate>({ resolver: zodResolver(updateUserSchema) });
+  } = useForm<IUserResponse>({ resolver: zodResolver(updateUserSchema) });
 
   return (
     <StyledSectionModal>
@@ -56,9 +56,8 @@ export const ModalEditAddress = () => {
               label="CEP"
               type="text"
               register={register("address.zipcode")}
-              defaultValue={user?.address.zipcode}
+              defaultValue={userLoginAdminInfo?.address?.zipcode}
               placeholder="00000-000"
-              error={errors.address?.zipcode as FieldError}
             />
 
             <div className="div-register">
@@ -66,18 +65,16 @@ export const ModalEditAddress = () => {
                 label="Estado"
                 type="text"
                 register={register("address.state")}
-                defaultValue={user?.address.state}
+                defaultValue={userLoginAdminInfo?.address?.state}
                 placeholder="Digitar Estado"
-                error={errors.address?.state as FieldError}
               />
 
               <Input
                 label="Cidade"
                 type="text"
                 register={register("address.city")}
-                defaultValue={user?.address.city}
+                defaultValue={userLoginAdminInfo?.address?.city}
                 placeholder="Digitar Cidade"
-                error={errors.address?.city as FieldError}
               />
             </div>
 
@@ -85,9 +82,8 @@ export const ModalEditAddress = () => {
               label="Rua"
               type="text"
               register={register("address.street")}
-              defaultValue={user?.address.street}
+              defaultValue={userLoginAdminInfo?.address?.street}
               placeholder="Digitar Rua"
-              error={errors.address?.street as FieldError}
             />
 
             <div className="div-register">
@@ -95,31 +91,41 @@ export const ModalEditAddress = () => {
                 label="Número"
                 type="text"
                 register={register("address.number")}
-                defaultValue={user?.address.number}
+                defaultValue={userLoginAdminInfo?.address?.number}
                 placeholder="Digitar Número"
-                error={errors.address?.number as FieldError}
               />
 
               <Input
                 label="Complemento"
                 type="text"
                 register={register("address.complement")}
-                defaultValue={user?.address.complement}
+                defaultValue={userLoginAdminInfo?.address?.complement}
                 placeholder="Ex: apart 307"
-                error={errors.address?.complement as FieldError}
               />
             </div>
+
+            <div className="div-modal-button">
+              <StyledButton
+                width="six"
+                height="one"
+                buttonStyled="grey-black"
+                font="two"
+                type="button"
+                onClick={() => setShowEditAddress(false)}
+              >
+                Cancelar
+              </StyledButton>
+
+              <StyledButton
+                width="five"
+                height="one"
+                buttonStyled="blue"
+                font="two"
+              >
+                Salvar Alterações
+              </StyledButton>
+            </div>
           </StyledForm>
-
-          <div className="div-modal-button">
-            <StyledButton width="six" height="one" buttonStyled="grey-black">
-              Cancelar
-            </StyledButton>
-
-            <StyledButton width="five" height="one" buttonStyled="blue">
-              Salvar Alterações
-            </StyledButton>
-          </div>
         </div>
       </div>
     </StyledSectionModal>

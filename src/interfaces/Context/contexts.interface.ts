@@ -20,6 +20,7 @@ export interface IUserContext {
   userRegister: (data: IUserRegister) => Promise<void>;
   updateUser: (data: IUserUpdate) => Promise<void>;
   deleteUser: () => Promise<void>;
+  userLogout: () => void;
   showEditUser: boolean;
   setShowEditUser: React.Dispatch<React.SetStateAction<boolean>>;
   showEditAddress: boolean;
