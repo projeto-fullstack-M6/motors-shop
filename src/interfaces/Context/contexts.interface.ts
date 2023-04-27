@@ -25,6 +25,8 @@ export interface IUserContext {
   setShowEditUser: React.Dispatch<React.SetStateAction<boolean>>;
   showEditAddress: boolean;
   setShowEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
+  showDropdown: boolean;
+  setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   userLoginAdminInfo: IUserLoginInfo | null;
   setUserLoginAdminInfo: React.Dispatch<
     React.SetStateAction<IUserLoginInfo | null>

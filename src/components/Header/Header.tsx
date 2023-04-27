@@ -11,8 +11,8 @@ import { StyledLinkLogin, StyledLinkRegister } from "../../styles/link";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const { userLoginAdminInfo } = useContext(UserContext);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const { userLoginAdminInfo, showDropdown, setShowDropdown } = useContext(UserContext);
+  
 
   const token = localStorage.getItem("@motors:token");
   return (

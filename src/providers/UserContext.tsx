@@ -27,6 +27,8 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const [showEditAddress, setShowEditAddress] = useState(false);
 
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const [userLoginAdminInfo, setUserLoginAdminInfo] =
     useState<IUserLoginInfo | null>(null);
 
@@ -121,6 +123,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const userLogout = () => {
     setUser(null);
+    setShowDropdown(false);
     localStorage.removeItem("@motors:token");
     localStorage.removeItem("@motors:id");
     toast("Desconectado com sucesso!");
@@ -142,6 +145,8 @@ export const UserProvider = ({ children }: IChildren) => {
         setShowEditUser,
         showEditAddress,
         setShowEditAddress,
+        showDropdown, 
+        setShowDropdown,
         userLoginAdminInfo,
         setUserLoginAdminInfo,
         announcements,
