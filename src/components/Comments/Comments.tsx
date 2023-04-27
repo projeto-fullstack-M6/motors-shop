@@ -17,7 +17,12 @@ export const Comments = () => {
           há 3 dias
         </StyledTitle>
       </div>
-      <StyledTitle tag="p" fontSize="body-2-400" color="grey-2" className="comment-text">
+      <StyledTitle
+        tag="p"
+        fontSize="body-2-400"
+        color="grey-2"
+        className="comment-text"
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
         aliquam, quas sint voluptas nobis laborum facere! Soluta illum
         temporibus voluptatem quae possimus aut accusamus quo. Consequatur
