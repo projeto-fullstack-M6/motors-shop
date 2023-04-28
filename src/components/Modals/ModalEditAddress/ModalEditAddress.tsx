@@ -3,13 +3,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 
 import { UserContext } from "../../../providers/UserContext";
-import { Input } from "../../Input";
+import { Input } from "../../Input/Input";
 
 import { IUserResponse } from "../../../interfaces/userSchema.interface";
 import { updateUserSchema } from "../../../serializers";
 
 import { AiOutlineClose } from "react-icons/ai";
-import { StyledSectionModal } from "../../../styles/section";
+import { StyledSectionModal } from "../style";
 import { StyledForm } from "../../../styles/form";
 import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";

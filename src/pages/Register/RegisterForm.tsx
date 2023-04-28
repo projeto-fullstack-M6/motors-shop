@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 import { UserContext } from "../../providers/UserContext";
 
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Input/Input";
 
 import { createUserSchema } from "../../serializers";
 import { IUserRegister } from "../../interfaces/userSchema.interface";

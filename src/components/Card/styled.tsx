@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const StyledDivCard = styled.div`
   width: 312px;
-  height: 350px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-15);
+  gap: var(--gap-20);
   padding: 10px 0;
 
   a {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-10);
+    gap: var(--gap-20);
   }
 
   .div-img {
@@ -24,6 +24,21 @@ export const StyledDivCard = styled.div`
       width: 262px;
       height: 150px;
       object-fit: cover;
+    }
+  }
+
+  section {
+    position: relative;
+
+    .next-previous {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 10%;
+      width: 100%;
+      color: var(--brand-1);
+      position: absolute;
+      inset: 0;
     }
   }
 
@@ -56,6 +71,6 @@ export const StyledDivCard = styled.div`
 
   .div-button {
     display: flex;
-    gap: var(--gap-10);
+    gap: var(--gap-15);
   }
 `;

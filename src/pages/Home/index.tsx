@@ -1,7 +1,13 @@
-import MotorsShop from "../../assets/MotorsShop.svg";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
+
+import { Header } from "../../components/Header/Header";
+import { Card } from "../../components/Card/Card";
 import { Footer } from "../../components/Footer/Footer";
-import { StyledImg, StyledPageSection, StyledSection } from "./style";
+
 import { StyledButton } from "../../styles/button";
+import { StyledImg, StyledPageSection, StyledSection } from "./style";
+
 import { Card } from "../../components/Card/Card";
 import { Header } from "../../components/Header/Header";
 import { cars } from "../../../mock";
@@ -60,6 +66,11 @@ export const HomePage = () => {
     });
   };
 
+
+
+export const HomePage = () => {
+
+  const { announcements } = useContext(UserContext);
   return (
     <>
       <Header />
@@ -199,6 +210,7 @@ export const HomePage = () => {
           </div>
         </aside>
         <main>
+
           {filteredCars.map((car, index) => (
             <Card
               key={index}
@@ -212,6 +224,8 @@ export const HomePage = () => {
               user={car.user}
             />
           ))}
+
+       
         </main>
       </StyledSection>
 

@@ -3,30 +3,39 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { AdminContext } from "../../providers/AdminContext";
 
-import { IAdRegister } from "../../interfaces/adSchema.interface";
-
 import { Header } from "../../components/Header/Header";
 import { Card } from "../../components/Card/Card";
 import { Footer } from "../../components/Footer/Footer";
+import { HomePage } from "../Home";
+import ModalAds from "../../components/Modals/ModalAd";
 
+import { StyledButton } from "../../styles/button";
+import { StyledTitle } from "../../styles/typography";
 import {
   StyledAdminCardInfo,
   StyledAdminPageSection,
   StyledMainContentAdmin,
   StyledSectionAdmin,
 } from "./style";
-import { StyledButton } from "../../styles/button";
-import { HomePage } from "../Home";
-import { StyledTitle } from "../../styles/typography";
 
 export const AdminDashboard = () => {
-  const { handleNewAnnouncement, nextPage, previousPage } =
-    useContext(AdminContext);
+  const {
+    nextPage,
+    previousPage,
+    isAnnouncementModalActive,
+    setIsAnnouncementModalActive,
+    getAllBrandsForAnnouncements,
+  } = useContext(AdminContext);
   const { userLoginAdminInfo, announcements, actualPage, setActualPage } =
     useContext(UserContext);
+
+  const onOpenModal = () => {
+    getAllBrandsForAnnouncements();
+    setIsAnnouncementModalActive(true);
+  };
   return (
     <>
-      {userLoginAdminInfo?.isBuyer === false ? (
+      {!userLoginAdminInfo?.isBuyer ? (
         <>
           <Header />
 
@@ -43,7 +52,7 @@ export const AdminDashboard = () => {
 
             <div>
               <StyledTitle tag="h2" fontSize="heading-6-600">
-                {userLoginAdminInfo.name}
+                {userLoginAdminInfo?.name}
               </StyledTitle>
 
               <StyledButton
@@ -54,18 +63,24 @@ export const AdminDashboard = () => {
                 Anunciante
               </StyledButton>
             </div>
+            <p>{userLoginAdminInfo?.description}</p>
 
-            <StyledTitle tag="p" fontSize="body-1-400">
-              {userLoginAdminInfo.description}
-            </StyledTitle>
-
-            <StyledButton width="seven" height="two" buttonStyled="border-blue">
-              Criar anuncio
-            </StyledButton>
+            {!userLoginAdminInfo?.isBuyer ? (
+              <StyledButton
+                width="seven"
+                height="two"
+                buttonStyled="border-blue"
+                font="two"
+                onClick={() => onOpenModal()}
+              >
+                Criar anuncio
+              </StyledButton>
+            ) : null}
           </StyledAdminCardInfo>
 
           <StyledMainContentAdmin>
             <div>
+              {isAnnouncementModalActive && <ModalAds />}
               {announcements?.length === 0 ? (
                 <StyledTitle tag="span" fontSize="body-1-400">
                   Ainda não possui nenhum anúncio
@@ -82,7 +97,8 @@ export const AdminDashboard = () => {
                     price,
                     description,
                     isGoodToSale,
-                  }: IAdRegister) => (
+                    images,
+                  }: any) => (
                     <Card
                       key={id}
                       brand={brand}
@@ -93,6 +109,7 @@ export const AdminDashboard = () => {
                       price={price}
                       description={description}
                       isGoodToSale={isGoodToSale}
+                      images={images}
                     />
                   )
                 )
@@ -104,11 +121,19 @@ export const AdminDashboard = () => {
             <div>
               <div>
                 <p>{actualPage}</p>
-                <span>de 2</span>
+                <p> de</p>
+                <span>
+                  {announcements?.length! < 16 ? 1 : announcements?.length! < 16}
+                </span>
               </div>
 
               {actualPage === 1 ? (
-                <button onClick={() => nextPage()}>Seguinte &gt;</button>
+                <button
+                  onClick={() => nextPage()}
+                  disabled={announcements?.length! < 16 ? true : false}
+                >
+                  Seguinte &gt;
+                </button>
               ) : (
                 <div>
                   <button onClick={() => previousPage()}>Anterior &lt;</button>
