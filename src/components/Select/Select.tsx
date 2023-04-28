@@ -1,10 +1,10 @@
-import { ISelect } from "../interfaces/Style/select.interface";
+import { ISelect } from "../../interfaces/Style/select.interface";
 import {
   StyledDivSelect,
   StyledSelect,
   StyledSelectLabel,
-} from "../styles/select";
-import { StyledTitle } from "../styles/typography";
+} from "../Select/style";
+import { StyledTitle } from "../../styles/typography";
 
 export const Select = ({
   label,

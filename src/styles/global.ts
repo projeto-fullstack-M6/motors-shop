@@ -1,13 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
+#root {
+    position: relative;
+    z-index: -5;
+}
+
     :root {
-        
-        #root{
-            width: 100vw;
-            /* background: linear-gradient(to bottom, rgba(69, 41, 230, 1) 50% , rgb(222, 226, 230) 50%); */
-            padding: 0;
-        }
         /* --- Colors --- */
         /* Brand */
         --brand-1: #4529e6;
@@ -72,6 +71,7 @@ export const Global = createGlobalStyle`
         /* Body */
         --size-body-1: 1rem;
         --size-body-2: 0.875rem;
+        --size-body-3: 0.75rem;
 
         /* --- Weight --- */
         --weight-400: 400;
@@ -118,6 +118,7 @@ export const Global = createGlobalStyle`
         height: 100vh;
         overflow-x: hidden;
         position: relative;
+        z-index: -6;
     }
 
     ul,li {

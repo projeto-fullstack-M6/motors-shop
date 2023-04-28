@@ -1,11 +1,16 @@
-import MotorsShop from "../../assets/MotorsShop.svg";
-import { Footer } from "../../components/Footer/Footer";
-import { StyledImg, StyledPageSection, StyledSection } from "./style";
-import { StyledButton } from "../../styles/button";
-import { Card } from "../../components/Card/Card";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
+
 import { Header } from "../../components/Header/Header";
+import { Card } from "../../components/Card/Card";
+import { Footer } from "../../components/Footer/Footer";
+
+import { StyledButton } from "../../styles/button";
+import { StyledImg, StyledPageSection, StyledSection } from "./style";
 
 export const HomePage = () => {
+  const { announcements } = useContext(UserContext);
+
   return (
     <>
       <Header />
@@ -106,18 +111,33 @@ export const HomePage = () => {
           </div>
         </aside>
         <main>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {announcements?.map(
+            ({
+              id,
+              brand,
+              model,
+              year,
+              km,
+              fipePrice,
+              price,
+              description,
+              isGoodToSale,
+              images,
+            }: any) => (
+              <Card
+                key={id}
+                brand={brand}
+                model={model}
+                year={year}
+                km={km}
+                fipePrice={fipePrice}
+                price={price}
+                description={description}
+                isGoodToSale={isGoodToSale}
+                images={images}
+              />
+            )
+          )}
         </main>
       </StyledSection>
 
@@ -130,7 +150,7 @@ export const HomePage = () => {
           <button>Seguinte &gt;</button>
         </div>
       </StyledPageSection>
-      
+
       <Footer />
     </>
   );

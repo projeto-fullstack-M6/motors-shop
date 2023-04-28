@@ -1,19 +1,30 @@
 import { FieldError, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import { Input } from "../../Input";
-
-import { IAdRegister } from "../../../interfaces/adSchema.interface";
-import { adCreateSchema } from "../../../serializers";
-
-import * as S from "../../../styles/divs";
-import { AiOutlineClose } from "react-icons/ai";
-import { StyledSectionModal } from "../../../styles/section";
-import { StyledForm } from "../../../styles/form";
+import { Input } from "../../Input/Input";
 import { StyledButton } from "../../../styles/button";
-import { StyledTitle } from "../../../styles/typography";
+import { StyledForm } from "../../../styles/form";
+import { StyledSectionModal } from "../style";
+import { AiOutlineClose } from "react-icons/ai";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { adCreateSchema } from "../../../serializers";
+import { IAdRegister } from "../../../interfaces/adSchema.interface";
+import * as S from "../../../styles/divs";
+import { useContext } from "react";
+import { AdminContext } from "../../../providers/AdminContext";
+import { Select } from "../../Select/Select";
+import { UploadWidget } from "../../Upload/UploadWidget";
 
 const ModalAds = () => {
+  const {
+    setIsAnnouncementModalActive,
+    handleNewAnnouncement,
+    getAllCarsForAnnouncements,
+    getCarInfoClosedOption,
+    brandOptions,
+    carsOptions,
+    carYearClosedOption,
+    carFuelClosedOption,
+    carFipePriceClosedOption,
+  } = useContext(AdminContext);
   const {
     register,
     handleSubmit,
@@ -22,75 +33,74 @@ const ModalAds = () => {
     resolver: zodResolver(adCreateSchema),
   });
 
-  const onSubmitFunc = (data: any) => {
-    console.log(data);
-  };
-
   return (
     <StyledSectionModal>
       <div className="div-modal">
         <div className="div-modal-header">
-          <StyledTitle
-            tag="h2"
-            fontSize="heading-7-500"
-            color="grey-1"
-            align="align-self-start"
+          <h1>Criar anúncio</h1>
+          <button
+            type="button"
+            onClick={() => setIsAnnouncementModalActive(false)}
           >
-            Criar anúncio
-          </StyledTitle>
-          <button type="button">
             <AiOutlineClose />
           </button>
         </div>
-
         <div className="div-modal-form">
-          <StyledTitle
-            tag="h3"
-            fontSize="body-2-500"
-            color="black"
-            align="align-self-start"
-          >
-            Informações do veículo
-          </StyledTitle>
-
-          <StyledForm onSubmit={handleSubmit(onSubmitFunc)}>
-            <Input
-              label="Marca"
-              type="text"
+          <h2>Informações do veículo</h2>
+          <StyledForm onSubmit={handleSubmit(handleNewAnnouncement)}>
+            <Select
               register={register("brand")}
+              label="Marcas"
               defaultValue=""
-              placeholder="Mercedes Benz"
+              onChange={(e) => getAllCarsForAnnouncements(e.target.value)}
+              placeholder="Mercedes"
               error={errors.brand as FieldError}
-            />
-
-            <Input
-              label="Modelo"
-              type="text"
+              disabled={brandOptions?.length === 0 ? true : false}
+            >
+              {brandOptions?.length === 0
+                ? "Nenhuma marca registrada para cadastro"
+                : brandOptions?.map((brand: any) => (
+                    <option key={brand}>{brand}</option>
+                  ))}
+            </Select>
+            <Select
               register={register("model")}
+              label="Modelo"
               defaultValue=""
+              disabled={carsOptions?.length === 0 ? true : false}
               placeholder="A200 CGI ADVANCE SEDAN"
               error={errors.model as FieldError}
-            />
-
+              onChange={(e) => getCarInfoClosedOption(e.target.value)}
+            >
+              <>
+                <option>--</option>
+                {carsOptions?.map(({ id, name }: any) => (
+                  <option key={id}>{name}</option>
+                ))}
+              </>
+            </Select>
             <S.RowDiv>
-              <Input
-                label="Ano"
-                type="text"
+              <Select
                 register={register("year")}
+                label="Ano"
                 defaultValue=""
-                placeholder="2020"
+                placeholder="2018"
                 error={errors.year as FieldError}
-              />
-              <Input
-                label="Combustível"
-                type="text"
+                disabled={carYearClosedOption?.length === 0 ? true : false}
+              >
+                <option>{carYearClosedOption}</option>
+              </Select>
+              <Select
                 register={register("fuel")}
+                label="Combustível"
                 defaultValue=""
                 placeholder="Gasolina"
                 error={errors.fuel as FieldError}
-              />
+                disabled={carFuelClosedOption?.length === 0 ? true : false}
+              >
+                <option>{carFuelClosedOption}</option>
+              </Select>
             </S.RowDiv>
-
             <S.RowDiv>
               <Input
                 label="Quilometragem"
@@ -109,16 +119,17 @@ const ModalAds = () => {
                 error={errors.color as FieldError}
               />
             </S.RowDiv>
-
             <S.RowDiv>
-              <Input
-                label="Preço Tabela Fipe"
-                type="text"
+              <Select
                 register={register("fipePrice")}
+                label="Preço Tabela Fipe"
                 defaultValue=""
                 placeholder="R$ 48.000,00"
                 error={errors.fipePrice as FieldError}
-              />
+                disabled={carFipePriceClosedOption?.length === 0 ? true : false}
+              >
+                <option>{carFipePriceClosedOption}</option>
+              </Select>
               <Input
                 label="Preço"
                 type="text"
@@ -128,7 +139,6 @@ const ModalAds = () => {
                 error={errors.price as FieldError}
               />
             </S.RowDiv>
-
             <Input
               label="Descrição"
               type="text"
@@ -137,36 +147,26 @@ const ModalAds = () => {
               placeholder="Veículo ótimo com apenas 30.000 km rodados."
               error={errors.description as FieldError}
             />
+            <UploadWidget />
+            <div className="div-modal-button">
+              <StyledButton
+                width="seven"
+                height="one"
+                buttonStyled="grey-black"
+                onClick={() => setIsAnnouncementModalActive(false)}
+              >
+                Cancelar
+              </StyledButton>
+              <StyledButton
+                width="five"
+                height="one"
+                buttonStyled="blue"
+                type="submit"
+              >
+                Criar Anuncio
+              </StyledButton>
+            </div>
           </StyledForm>
-
-          <Input
-            label="Imagem da Capa"
-            type="text"
-            defaultValue=""
-            placeholder="https://imagem.com.br"
-          />
-          <Input
-            label="Imagem 1"
-            type="text"
-            defaultValue=""
-            placeholder="https://imagem.com.br"
-          />
-          <Input
-            label="Imagem 2"
-            type="text"
-            defaultValue=""
-            placeholder="https://imagem.com.br"
-          />
-          <input type="file" />
-
-          <div className="div-modal-button">
-            <StyledButton width="seven" height="one" buttonStyled="grey-black">
-              Cancelar
-            </StyledButton>
-            <StyledButton width="five" height="one" buttonStyled="blue">
-              Criar Anuncio
-            </StyledButton>
-          </div>
         </div>
       </div>
     </StyledSectionModal>

@@ -4,7 +4,7 @@ import { FieldError, useForm } from "react-hook-form";
 
 import { UserContext } from "../../providers/UserContext";
 
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Input/Input";
 
 import { IUserLogin } from "../../interfaces/userSchema.interface";
 import { loginSchema } from "../../serializers";

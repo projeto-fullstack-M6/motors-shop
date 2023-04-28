@@ -42,7 +42,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const userRegister = async (data: IUserRegister) => {
     try {
-      const response = await ApiRequests.post("/users", data);
+      await ApiRequests.post("/users", data);
       navigate("/login");
       toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
