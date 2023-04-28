@@ -43,7 +43,6 @@ export const UserProvider = ({ children }: IChildren) => {
   const userRegister = async (data: IUserRegister) => {
     try {
       const response = await ApiRequests.post("/users", data);
-      setUser(response.data);
       navigate("/login");
       toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
@@ -56,11 +55,10 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       const user = await ApiRequests.post("/sessions", data);
       localStorage.setItem("@motors:token", user.data.token);
-
+      ApiRequests.defaults.headers.authorization = `Bearer ${user.data.token}`;
       const userLoginInformation: any = await ApiRequests.get(
         `/users/own/profile`
       );
-      localStorage.setItem("@motors:id", userLoginInformation.data.id);
       setUserLoginAdminInfo(userLoginInformation.data);
 
       if (userLoginInformation.data.isBuyer === false) {
@@ -83,9 +81,13 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       const token = localStorage.getItem("@motors:token");
 
-      const response = await ApiRequests.patch(`/users/${userLoginAdminInfo?.id}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await ApiRequests.patch(
+        `/users/${userLoginAdminInfo?.id}`,
+        data,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setUser(response.data);
 
       if (data.address) {
@@ -109,9 +111,12 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       const token = localStorage.getItem("@motors:token");
 
-      const response = await ApiRequests.delete(`/users/${userLoginAdminInfo?.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await ApiRequests.delete(
+        `/users/${userLoginAdminInfo?.id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setUser(response.data);
       navigate("/");
       toast.success("Perfil excluído com sucesso.");
@@ -145,7 +150,7 @@ export const UserProvider = ({ children }: IChildren) => {
         setShowEditUser,
         showEditAddress,
         setShowEditAddress,
-        showDropdown, 
+        showDropdown,
         setShowDropdown,
         userLoginAdminInfo,
         setUserLoginAdminInfo,

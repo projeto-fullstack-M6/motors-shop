@@ -17,7 +17,7 @@ export const StyledForm = styled.form`
     gap: var(--gap-20);
   }
 
-  .div-register{
+  .div-register {
     display: flex;
     gap: var(--gap-10);
   }
