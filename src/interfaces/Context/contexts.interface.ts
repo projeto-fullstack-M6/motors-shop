@@ -22,6 +22,8 @@ export interface IUserContext {
   updateUser: (data: IUserUpdate) => Promise<void>;
   deleteUser: () => Promise<void>;
   userLogout: () => void;
+  forgotPassword: boolean;
+  setForgotPassword: React.Dispatch<React.SetStateAction<boolean>>;
   showEditUser: boolean;
   setShowEditUser: React.Dispatch<React.SetStateAction<boolean>>;
   showEditAddress: boolean;

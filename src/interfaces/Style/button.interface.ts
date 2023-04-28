@@ -25,6 +25,7 @@ export interface IButton {
     | "border-blue"
     | "feedback-alert"
     | "feedback-sucess"
-    | "disable";
+    | "disable"
+    | "transparent";
   font?: "one" | "two";
 }

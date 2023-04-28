@@ -23,6 +23,8 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUserResponse | null>(null);
 
+  const [forgotPassword, setForgotPassword] = useState(false);
+
   const [showEditUser, setShowEditUser] = useState(false);
 
   const [showEditAddress, setShowEditAddress] = useState(false);
@@ -146,6 +148,8 @@ export const UserProvider = ({ children }: IChildren) => {
         updateUser,
         deleteUser,
         userLogout,
+        forgotPassword,
+        setForgotPassword,
         showEditUser,
         setShowEditUser,
         showEditAddress,
