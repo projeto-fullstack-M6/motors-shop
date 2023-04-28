@@ -32,7 +32,6 @@ export const UserProvider = ({ children }: IChildren) => {
   const userRegister = async (data: IUserRegister) => {
     try {
       const response = await ApiRequests.post("/users", data);
-      setUser(response.data);
       navigate("/login");
       toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
@@ -45,10 +44,10 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       const user = await ApiRequests.post("/sessions", data);
       localStorage.setItem("@motors:token", user.data.token);
+      ApiRequests.defaults.headers.authorization = `Bearer ${user.data.token}`;
       const userLoginInformation: any = await ApiRequests.get(
         `/users/own/profile`
       );
-      localStorage.setItem("@motors:id", userLoginInformation.id);
       setUserLoginAdminInfo(userLoginInformation.data);
       if (userLoginInformation.data.isAdm) {
         const userAnnouncements: any = await ApiRequests.get(

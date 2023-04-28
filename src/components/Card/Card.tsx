@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { car } from "../../../mock";
 import { UserContext } from "../../providers/UserContext";
 import { StyledButton } from "../../styles/button";
 import { StyledTitle } from "../../styles/typography";
@@ -14,12 +13,13 @@ export const Card = ({
   price,
   description,
   isGoodToSale,
+  images,
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
   return (
     <StyledDivCard>
       <div className="div-img">
-        <img src={car.img} alt="imagem de carro" />
+        <img src={images![0]} alt="imagem de carro" />
       </div>
       <StyledTitle tag="h2" fontSize="heading-7-600">
         {brand} - {model}

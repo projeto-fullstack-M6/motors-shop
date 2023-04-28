@@ -6,6 +6,7 @@ import {
   IUserRegister,
   IUserResponse,
 } from "../userSchema.interface";
+import { IImage } from "../widgetInterfaces";
 
 export interface IChildren {
   children: React.ReactNode;
@@ -34,4 +35,23 @@ export interface IAdminContext {
   previousPage: () => Promise<void>;
   exit: () => void;
   handleNewAnnouncement: (data: any) => Promise<void>;
+  isAnnouncementModalActive: boolean;
+  setIsAnnouncementModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+  getAllBrandsForAnnouncements: () => Promise<void>;
+  carsOptions: any | null;
+  setCarsOptions: React.Dispatch<any>;
+  brandOptions: any | null;
+  setBrandOptions: React.Dispatch<any>;
+  allAnnouncementsImages: string[] | null;
+  setAllAnnouncementsImages: React.Dispatch<
+    React.SetStateAction<string[] | null>
+  >;
+  carYearClosedOption: string;
+  carFuelClosedOption: string;
+  carFipePriceClosedOption: string;
+  setCarFipePriceClosedOption: React.Dispatch<React.SetStateAction<string>>;
+  setCarFuelClosedOption: React.Dispatch<React.SetStateAction<string>>;
+  setCarYearClosedOption: React.Dispatch<React.SetStateAction<string>>;
+  getAllCarsForAnnouncements: (selectedBrand: string) => Promise<void>;
+  getCarInfoClosedOption: (carId: string) => void;
 }

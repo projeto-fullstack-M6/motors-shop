@@ -12,12 +12,24 @@ import { Footer } from "../../components/Footer/Footer";
 import { useContext } from "react";
 import { AdminContext } from "../../providers/AdminContext";
 import { UserContext } from "../../providers/UserContext";
+import ModalAds from "../../components/ModalAd";
 
 export const AdminDashboard = () => {
-  const { exit, handleNewAnnouncement, nextPage, previousPage } =
-    useContext(AdminContext);
-  const { userLoginAdminInfo, announcements, actualPage, setActualPage } =
+  const {
+    exit,
+    nextPage,
+    previousPage,
+    isAnnouncementModalActive,
+    setIsAnnouncementModalActive,
+    getAllBrandsForAnnouncements,
+  } = useContext(AdminContext);
+  const { userLoginAdminInfo, announcements, actualPage } =
     useContext(UserContext);
+
+  const onOpenModal = () => {
+    getAllBrandsForAnnouncements();
+    setIsAnnouncementModalActive(true);
+  };
   return (
     <>
       {userLoginAdminInfo ? (
@@ -49,14 +61,20 @@ export const AdminDashboard = () => {
               <span>Anunciante</span>
             </div>
             <p>{userLoginAdminInfo.description}</p>
-            <StyledButton width="seven" height="two" buttonStyled="border-blue">
+            <StyledButton
+              width="seven"
+              height="two"
+              buttonStyled="border-blue"
+              onClick={() => onOpenModal()}
+            >
               Criar anuncio
             </StyledButton>
           </StyledAdminCardInfo>
           <StyledMainContentAdmin>
             <div>
+              {isAnnouncementModalActive && <ModalAds />}
               {announcements?.length === 0 ? (
-                <p> nenhum cliente pra chamar de seu :/</p>
+                <p> nenhum anuncio pra chamar de seu :/</p>
               ) : (
                 announcements?.map(
                   ({
@@ -69,6 +87,7 @@ export const AdminDashboard = () => {
                     price,
                     description,
                     isGoodToSale,
+                    images,
                   }: any) => (
                     <Card
                       key={id}
@@ -80,6 +99,7 @@ export const AdminDashboard = () => {
                       price={price}
                       description={description}
                       isGoodToSale={isGoodToSale}
+                      images={images}
                     />
                   )
                 )
@@ -90,10 +110,18 @@ export const AdminDashboard = () => {
             <div>
               <div>
                 <p>{actualPage}</p>
-                <span>de 2</span>
+                <span>
+                  de
+                  {announcements!.length < 16 ? 1 : announcements!.length < 16}
+                </span>
               </div>
               {actualPage === 1 ? (
-                <button onClick={() => nextPage()}>Seguinte &gt;</button>
+                <button
+                  onClick={() => nextPage()}
+                  disabled={announcements!.length < 16 ? true : false}
+                >
+                  Seguinte &gt;
+                </button>
               ) : (
                 <div>
                   <button onClick={() => previousPage()}>Anterior &lt;</button>
