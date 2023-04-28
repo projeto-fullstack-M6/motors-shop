@@ -7,7 +7,7 @@ import { Header } from "../../components/Header/Header";
 import { Card } from "../../components/Card/Card";
 import { Footer } from "../../components/Footer/Footer";
 import { HomePage } from "../Home";
-import ModalAds from "../../components/ModalAd";
+import ModalAds from "../../components/Modals/ModalAd";
 
 import { StyledButton } from "../../styles/button";
 import { StyledTitle } from "../../styles/typography";
@@ -35,7 +35,7 @@ export const AdminDashboard = () => {
   };
   return (
     <>
-      {userLoginAdminInfo?.isBuyer === true ? (
+      {!userLoginAdminInfo?.isBuyer ? (
         <>
           <Header />
 
@@ -52,7 +52,7 @@ export const AdminDashboard = () => {
 
             <div>
               <StyledTitle tag="h2" fontSize="heading-6-600">
-                {userLoginAdminInfo.name}
+                {userLoginAdminInfo?.name}
               </StyledTitle>
 
               <StyledButton
@@ -63,15 +63,19 @@ export const AdminDashboard = () => {
                 Anunciante
               </StyledButton>
             </div>
-            <p>{userLoginAdminInfo.description}</p>
-            <StyledButton
-              width="seven"
-              height="two"
-              buttonStyled="border-blue"
-              onClick={() => onOpenModal()}
-            >
-              Criar anuncio
-            </StyledButton>
+            <p>{userLoginAdminInfo?.description}</p>
+
+            {!userLoginAdminInfo?.isBuyer ? (
+              <StyledButton
+                width="seven"
+                height="two"
+                buttonStyled="border-blue"
+                font="two"
+                onClick={() => onOpenModal()}
+              >
+                Criar anuncio
+              </StyledButton>
+            ) : null}
           </StyledAdminCardInfo>
 
           <StyledMainContentAdmin>
@@ -119,14 +123,14 @@ export const AdminDashboard = () => {
                 <p>{actualPage}</p>
                 <p> de</p>
                 <span>
-                  {announcements!.length < 16 ? 1 : announcements!.length < 16}
+                  {announcements?.length! < 16 ? 1 : announcements?.length! < 16}
                 </span>
               </div>
 
               {actualPage === 1 ? (
                 <button
                   onClick={() => nextPage()}
-                  disabled={announcements!.length < 16 ? true : false}
+                  disabled={announcements?.length! < 16 ? true : false}
                 >
                   Seguinte &gt;
                 </button>
@@ -138,6 +142,7 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledAdminPageSection>
+
           <Footer />
         </>
       ) : (

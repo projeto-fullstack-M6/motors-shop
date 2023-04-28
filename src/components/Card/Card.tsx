@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../../providers/UserContext";
-import { StyledButton } from "../../styles/button";
-import { StyledTitle } from "../../styles/typography";
-import { StyledDivCard } from "./styled";
 import { Link } from "react-router-dom";
+
+import { UserContext } from "../../providers/UserContext";
+import NoImg from "../../assets/NoImg.png";
+
+import { StyledDivCard } from "./styled";
+import { StyledTitle } from "../../styles/typography";
+import { StyledButton } from "../../styles/button";
 import { StyledLinkDetails } from "../../styles/link";
-import { car } from "../../../mock";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 
@@ -28,7 +30,6 @@ export const Card = ({
 
   const nextImageNumber = () => {
     if (imageNumber < images?.length - 1) {
-      console.log(imageNumber);
       setImageNumber(imageNumber + 1);
     }
   };
@@ -37,13 +38,12 @@ export const Card = ({
     if (imageNumber > 0) {
       setImageNumber(imageNumber - 1);
     }
-    console.log(imageNumber);
   };
 
   return (
     <StyledDivCard>
-      {userLoginAdminInfo?.isBuyer ? (
-        <>
+      {images && images.length >= 1 ? (
+        <section>
           <div className="div-img">
             <img src={images![imageNumber]} alt="imagem de carro" />
           </div>
@@ -63,18 +63,18 @@ export const Card = ({
               />
             ) : null}
           </div>
-        </>
+        </section>
       ) : (
         <div className="div-img">
-          <img src={car.img} alt="imagem de carro" />
+          <img src={NoImg} alt="sem imagem" title="sem imagem" />
         </div>
       )}
 
       <Link to="/adverts">
-        <StyledTitle tag="h2" fontSize="heading-7-600">
+        <StyledTitle tag="h2" fontSize="heading-7-600" color="grey-1">
           {brand} - {model}
         </StyledTitle>
-        <StyledTitle tag="p" fontSize="body-2-400">
+        <StyledTitle tag="p" fontSize="body-2-400" color="grey-2">
           {description}
         </StyledTitle>
 
@@ -102,7 +102,10 @@ export const Card = ({
               height="three"
               buttonStyled="light-blue"
             >
-              {km} KM
+              {parseFloat(km).toLocaleString("pt-BR", {
+                minimumFractionDigits: 0,
+              })}{" "}
+              KM
             </StyledButton>
             <StyledButton
               width="eleven"
@@ -113,7 +116,7 @@ export const Card = ({
             </StyledButton>
           </div>
           <StyledTitle tag="span" fontSize="heading-7-500" color="grey-1">
-            R$
+            R${" "}
             {parseFloat(price).toLocaleString("pt-BR", {
               minimumFractionDigits: 2,
             })}

@@ -17,7 +17,6 @@ const AppRoutes = () => {
       <Route path="/adverts" element={<Adverts />} />
 
       <Route path="/dashboard" element={<AdminDashboard />} />
-      {/* <Route path="/adminDashboard" element={<AdminDashboard />} /> */}
 
       <Route path="*" element={<NotFound />} />
     </Routes>
