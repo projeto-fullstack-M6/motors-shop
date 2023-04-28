@@ -1,30 +1,55 @@
 import { Footer } from "../../components/Footer/Footer";
+
+import { Div } from "./style";
+import { StyledButton } from "../../styles/button";
+
+import { useContext } from "react";
+import { AdminContext } from "../../providers/AdminContext";
+
 import { Header } from "../../components/Header/Header";
 import { Comments } from "../../components/Comments/Comments";
 
 import { StyledAdvertDetailing } from "./style";
-import { StyledButton } from "../../styles/button";
+
 import { StyledTitle } from "../../styles/typography";
-import { car } from "../../../mock";
+
+
 
 const Adverts = () => {
+  const { carDetails } = useContext(AdminContext);
   return (
     <>
       <Header />
 
-      <StyledAdvertDetailing>
-        <div className="advert">
-          <div className="background-blue"></div>
+      <Div>
+        <section className="secRight">
+          <div className="card1">
+            <img src={carDetails.img} alt="" />
+          </div>
 
-          <section className="secRight">
-            <div className="card1">
-              <img src={car.img} alt="" />
+          <div className="card2">
+            <h3>{carDetails.brand}</h3>
+            <div>
+              <div className="km">
+                <p>{carDetails.year}</p>
+                <p>{carDetails.km} KM</p>
+              </div>
+              <p> R$ {carDetails.price}</p>
             </div>
+            <StyledButton width="eight" height="two" buttonStyled="blue">
+              Comprar
+            </StyledButton>
+          </div>
 
-            <div className="card2">
-              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
-                {car.brand} {car.model}
-              </StyledTitle>
+          <div className="card3">
+            <h3>Descrição</h3>
+            <p>{carDetails.description}</p>
+          </div>
+
+          <div className="card4">
+            <h3>Comentários</h3>
+
+            <div className="comment">
 
               <div>
                 <div className="km">
@@ -196,9 +221,47 @@ const Adverts = () => {
                 Ver todos anuncios
               </StyledButton>
             </div>
-          </section>
-        </div>
-      </StyledAdvertDetailing>
+
+            <div>
+              <span>Gostei Muito!</span>
+              <span> Incrivel!</span>
+              <span>Recomendarei para amigos!</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="secLeft">
+          <div className="card6">
+            <h3>Fotos</h3>
+            <div className="minCar">
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+            </div>
+          </div>
+
+          <div className="card7">
+            <p className="acronym2">PL</p>
+            <p className="name2">{carDetails.user}</p>
+            <p className="text1">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's
+            </p>
+            <StyledButton width="three" height="one" buttonStyled="black">
+              {" "}
+              Ver todos anuncios{" "}
+            </StyledButton>
+          </div>
+        </section>
+      </Div>
+       </StyledAdvertDetailing>
+
+       
+     
+
       <Footer />
     </>
   );

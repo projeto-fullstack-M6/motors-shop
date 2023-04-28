@@ -52,6 +52,9 @@ export interface IAdminContext {
   previousPage: () => Promise<void>;
   exit: () => void;
   handleNewAnnouncement: (data: any) => Promise<void>;
+
+  carDetails: any;
+  setCarDetails: React.Dispatch<React.SetStateAction<any>>;
   isAnnouncementModalActive: boolean;
   setIsAnnouncementModalActive: React.Dispatch<React.SetStateAction<boolean>>;
   getAllBrandsForAnnouncements: () => Promise<void>;
@@ -71,4 +74,5 @@ export interface IAdminContext {
   setCarYearClosedOption: React.Dispatch<React.SetStateAction<string>>;
   getAllCarsForAnnouncements: (selectedBrand: string) => Promise<void>;
   getCarInfoClosedOption: (carId: string) => void;
+
 }
