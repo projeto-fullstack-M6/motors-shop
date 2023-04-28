@@ -77,6 +77,10 @@ export const StyledButton = styled.button<IButton>`
         return css`
           width: 50px;
         `;
+      case "twelve":
+        return css`
+          width: fit-content;
+        `;
     }
   }}
 
@@ -138,7 +142,7 @@ ${({ buttonStyled }) => {
         `;
       case "white":
         return css`
-          background-color: var(--grey-10);
+          background-color: var(--grey-9);
           color: var(--grey-1);
         `;
       case "border-black":
@@ -188,6 +192,24 @@ ${({ buttonStyled }) => {
           background-color: var(--brand-3);
           color: var(--brand-4);
           cursor: not-allowed;
+        `;
+    }
+  }}
+
+${({ font }) => {
+    switch (font) {
+      case "one":
+        return css`
+          font-size: var(--size-h7);
+          color: var(--grey-2);
+          font-family: var(--font-family-inter);
+          font-weight: var(--weight-400);
+        `;
+      case "two":
+        return css`
+          font-size: var(--size-body-2);
+          font-family: var(--font-family-inter);
+          font-weight: var(--weight-500);
         `;
     }
   }}

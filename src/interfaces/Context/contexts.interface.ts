@@ -5,6 +5,7 @@ import {
   IUserLoginInfo,
   IUserRegister,
   IUserResponse,
+  IUserUpdate,
 } from "../userSchema.interface";
 import { IImage } from "../widgetInterfaces";
 
@@ -18,6 +19,15 @@ export interface IUserContext {
   navigate: NavigateFunction;
   userLogin: (data: IUserLogin) => Promise<void>;
   userRegister: (data: IUserRegister) => Promise<void>;
+  updateUser: (data: IUserUpdate) => Promise<void>;
+  deleteUser: () => Promise<void>;
+  userLogout: () => void;
+  showEditUser: boolean;
+  setShowEditUser: React.Dispatch<React.SetStateAction<boolean>>;
+  showEditAddress: boolean;
+  setShowEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
+  showDropdown: boolean;
+  setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   userLoginAdminInfo: IUserLoginInfo | null;
   setUserLoginAdminInfo: React.Dispatch<
     React.SetStateAction<IUserLoginInfo | null>

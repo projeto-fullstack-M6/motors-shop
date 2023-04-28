@@ -1,18 +1,20 @@
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
+import { AdminContext } from "../../providers/AdminContext";
+import { IAdRegister } from "../../interfaces/adSchema.interface";
+import { Header } from "../../components/Header/Header";
+import { Card } from "../../components/Card/Card";
+import { Footer } from "../../components/Footer/Footer";
+import { StyledButton } from "../../styles/button";
+import ModalAds from "../../components/ModalAd";
+import { HomePage } from "../Home";
+import { StyledTitle } from "../../styles/typography";
 import {
   StyledAdminCardInfo,
-  StyledAdminHeader,
   StyledAdminPageSection,
   StyledMainContentAdmin,
   StyledSectionAdmin,
 } from "./style";
-import MotorsShop from "../../assets/MotorsShop.svg";
-import { StyledButton } from "../../styles/button";
-import { Card } from "../../components/Card/Card";
-import { Footer } from "../../components/Footer/Footer";
-import { useContext } from "react";
-import { AdminContext } from "../../providers/AdminContext";
-import { UserContext } from "../../providers/UserContext";
-import ModalAds from "../../components/ModalAd";
 
 export const AdminDashboard = () => {
   const {
@@ -23,7 +25,7 @@ export const AdminDashboard = () => {
     setIsAnnouncementModalActive,
     getAllBrandsForAnnouncements,
   } = useContext(AdminContext);
-  const { userLoginAdminInfo, announcements, actualPage } =
+  const { userLoginAdminInfo, announcements, actualPage, setActualPage } =
     useContext(UserContext);
 
   const onOpenModal = () => {
@@ -32,33 +34,33 @@ export const AdminDashboard = () => {
   };
   return (
     <>
-      {userLoginAdminInfo ? (
+      {userLoginAdminInfo?.isBuyer === false ? (
         <>
-          <StyledAdminHeader>
-            <div>
-              <img src={MotorsShop} alt="Logo MotorsShop"></img>
-            </div>
-            <nav>
-              <span>
-                {userLoginAdminInfo?.name
-                  .split(" ")
-                  .map((name) => name.charAt(0))
-                  .join("")}
-              </span>
-              <p>{userLoginAdminInfo.name}</p>
-            </nav>
-          </StyledAdminHeader>
+          <Header />
+
           <StyledSectionAdmin />
+
           <StyledAdminCardInfo>
-            <span>
+            <span className="acronym-info">
               {userLoginAdminInfo?.name
                 .split(" ")
                 .map((name) => name.charAt(0))
-                .join("")}
+                .join("")
+                .toUpperCase()}
             </span>
+
             <div>
-              <h2>{userLoginAdminInfo.name}</h2>
-              <span>Anunciante</span>
+              <StyledTitle tag="h2" fontSize="heading-6-600">
+                {userLoginAdminInfo.name}
+              </StyledTitle>
+
+              <StyledButton
+                width="nine"
+                height="three"
+                buttonStyled="light-blue"
+              >
+                Anunciante
+              </StyledButton>
             </div>
             <p>{userLoginAdminInfo.description}</p>
             <StyledButton
@@ -70,11 +72,14 @@ export const AdminDashboard = () => {
               Criar anuncio
             </StyledButton>
           </StyledAdminCardInfo>
+
           <StyledMainContentAdmin>
             <div>
               {isAnnouncementModalActive && <ModalAds />}
               {announcements?.length === 0 ? (
-                <p> nenhum anuncio pra chamar de seu :/</p>
+                <StyledTitle tag="span" fontSize="body-1-400">
+                  Ainda não possui nenhum anúncio
+                </StyledTitle>
               ) : (
                 announcements?.map(
                   ({
@@ -106,6 +111,7 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledMainContentAdmin>
+
           <StyledAdminPageSection>
             <div>
               <div>
@@ -115,6 +121,7 @@ export const AdminDashboard = () => {
                   {announcements!.length < 16 ? 1 : announcements!.length < 16}
                 </span>
               </div>
+
               {actualPage === 1 ? (
                 <button
                   onClick={() => nextPage()}
@@ -130,10 +137,11 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledAdminPageSection>
+
           <Footer />
         </>
       ) : (
-        <p>nada</p>
+        <HomePage />
       )}
     </>
   );

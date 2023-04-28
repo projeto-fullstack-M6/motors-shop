@@ -27,6 +27,7 @@ export const Global = createGlobalStyle`
         --grey-8: #f1f3f5;
         --grey-9: #f8f9fa;
         --grey-10: #fdfdfd;
+        --modal: rgba(0, 0, 0, 0.5);
 
         /* White & Black */
         --white: #fff;
