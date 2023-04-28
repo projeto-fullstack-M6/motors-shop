@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
 
@@ -141,7 +141,6 @@ export const UserProvider = ({ children }: IChildren) => {
   };
 
   const userSendEmail = async (data: IUserForgotPassword) => {
-    console.log(data);
     try {
       await ApiRequests.post("/users/reset-password", data);
       setLoading(true);
@@ -153,6 +152,16 @@ export const UserProvider = ({ children }: IChildren) => {
       setLoading(false);
       setForgotPassword(false);
       navigate("/login");
+    }
+  };
+
+  const userChangePassword = async (data: IUserUpdate) => {
+    try {
+      await ApiRequests.post(`/users/reset-password/${user?.resetToken}`, data);
+      toast.success("Senha foi alterada com sucesso.");
+    } catch (error) {
+      console.log(error);
+      toast.error("Senha não pôde ser alterada");
     }
   };
 
@@ -168,6 +177,7 @@ export const UserProvider = ({ children }: IChildren) => {
         deleteUser,
         userLogout,
         userSendEmail,
+        userChangePassword,
         forgotPassword,
         setForgotPassword,
         showEditUser,

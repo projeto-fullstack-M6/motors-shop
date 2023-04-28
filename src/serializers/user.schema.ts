@@ -70,6 +70,7 @@ export const userResponseSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().nullable(),
+  resetToken: z.string().nullable(),
   address: addressResponseSchema,
 });
 
