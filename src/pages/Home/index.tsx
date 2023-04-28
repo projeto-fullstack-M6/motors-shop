@@ -8,9 +8,69 @@ import { Footer } from "../../components/Footer/Footer";
 import { StyledButton } from "../../styles/button";
 import { StyledImg, StyledPageSection, StyledSection } from "./style";
 
-export const HomePage = () => {
-  const { announcements } = useContext(UserContext);
+import { Card } from "../../components/Card/Card";
+import { Header } from "../../components/Header/Header";
+import { cars } from "../../../mock";
+import { useState } from "react";
 
+export const HomePage = () => {
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
+  const [selectedYear, setSelectedYear] = useState(0);
+  const [selectedFuel, setSelectedFuel] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedKm, setSelectedKm] = useState({
+    min: 0,
+    max: 0,
+  });
+  const [selectedPrice, setSelectedPrice] = useState({
+    min: "",
+    max: "",
+  });
+
+  const filteredCars = cars.filter((car) => {
+    return (
+      (!selectedBrand || car.brand === selectedBrand) &&
+      (!selectedModel || car.model === selectedModel) &&
+      (!selectedYear || car.year === selectedYear) &&
+      (!selectedFuel || car.fuel === selectedFuel) &&
+      (!selectedColor || car.color === selectedColor) &&
+      (!selectedKm.min || car.km >= selectedKm.min) &&
+      (!selectedKm.max || car.km <= selectedKm.max) &&
+      (!selectedPrice.min ||
+        parseFloat(car.price) >= parseFloat(selectedPrice.min)) &&
+      (!selectedPrice.max ||
+        parseFloat(car.price) <= parseFloat(selectedPrice.max))
+    );
+  });
+
+  const uniqueBrands = [...new Set(filteredCars.map((car) => car.brand))];
+  const uniqueModels = [...new Set(filteredCars.map((car) => car.model))];
+  const uniqueYears = [...new Set(filteredCars.map((car) => car.year))];
+  const uniqueFuel = [...new Set(filteredCars.map((car) => car.fuel))];
+  const uniqueColors = [...new Set(filteredCars.map((car) => car.color))];
+
+  const handleClearFilters = () => {
+    setSelectedBrand("");
+    setSelectedModel("");
+    setSelectedYear(0);
+    setSelectedFuel("");
+    setSelectedColor("");
+    setSelectedKm({
+      min: 0,
+      max: 0,
+    });
+    setSelectedPrice({
+      min: "",
+      max: "",
+    });
+  };
+
+
+
+export const HomePage = () => {
+
+  const { announcements } = useContext(UserContext);
   return (
     <>
       <Header />
@@ -27,117 +87,145 @@ export const HomePage = () => {
           <div>
             <h2>Marca</h2>
             <div>
-              <p>General Motors</p>
-              <p>Fiat</p>
-              <p>Ford</p>
-              <p>Honda</p>
-              <p>Porsche</p>
-              <p>Volkswagen</p>
+              {uniqueBrands.map((brand, index) => (
+                <button key={index} onClick={() => setSelectedBrand(brand)}>
+                  {brand}
+                </button>
+              ))}
             </div>
           </div>
           <div>
             <h2>Modelo</h2>
             <div>
-              <p>Civic</p>
-              <p>Corolla</p>
-              <p>Cruze</p>
-              <p>Fit</p>
-              <p>Gol</p>
-              <p>Ka</p>
-              <p>Onix</p>
-              <p>Porsche 718</p>
+              {uniqueModels.map((model, index) => (
+                <button key={index} onClick={() => setSelectedModel(model)}>
+                  {model}
+                </button>
+              ))}
             </div>
           </div>
           <div>
             <h2>Cor</h2>
             <div>
-              <p>Azul</p>
-              <p>Branca</p>
-              <p>Cinza</p>
-              <p>Prata</p>
-              <p>Preta</p>
-              <p>Verde</p>
+              {uniqueColors.map((color, index) => (
+                <button key={index} onClick={() => setSelectedColor(color)}>
+                  {color}
+                </button>
+              ))}
             </div>
           </div>
           <div>
             <h2>Ano</h2>
             <div>
-              <p>2022</p>
-              <p>2021</p>
-              <p>2018</p>
-              <p>2015</p>
-              <p>2013</p>
-              <p>2012</p>
-              <p>2010</p>
+              {uniqueYears.map((year, index) => (
+                <button key={index} onClick={() => setSelectedYear(year)}>
+                  {year}
+                </button>
+              ))}
             </div>
           </div>
           <div>
             <h2>Combustível</h2>
             <div>
-              <p>Diesel</p>
-              <p>Etanol</p>
-              <p>Gasolina</p>
-              <p>Flex</p>
+              {uniqueFuel.map((fuel, index) => (
+                <button key={index} onClick={() => setSelectedFuel(fuel)}>
+                  {fuel}
+                </button>
+              ))}
             </div>
           </div>
           <div>
             <h2>Km</h2>
-            <nav>
-              <StyledButton width="nine" height="two" buttonStyled="grey-black">
-                Mínima
-              </StyledButton>
-              <StyledButton width="nine" height="two" buttonStyled="grey-black">
-                Máxima
-              </StyledButton>
-            </nav>
+            <div>
+              <input
+                type="number"
+                name=""
+                id=""
+                placeholder="Mínima"
+                value={selectedKm.min || ""}
+                onChange={(e) => {
+                  setSelectedKm({
+                    min: e.target.value ? parseInt(e.target.value) : 0,
+                    max: selectedKm.max,
+                  });
+                }}
+              />
+              <input
+                type="number"
+                name=""
+                id=""
+                placeholder="Máxima"
+                value={selectedKm.max || ""}
+                onChange={(e) => {
+                  setSelectedKm({
+                    min: selectedKm.min,
+                    max: e.target.value ? parseInt(e.target.value) : 0,
+                  });
+                }}
+              />
+            </div>
           </div>
           <div>
             <h2>Preço</h2>
-            <nav>
-              <StyledButton width="nine" height="two" buttonStyled="grey-black">
-                Mínima
-              </StyledButton>
-              <StyledButton width="nine" height="two" buttonStyled="grey-black">
-                Máxima
-              </StyledButton>
-            </nav>
+            <div>
+              <input
+                type="number"
+                name=""
+                id=""
+                placeholder="Mínima"
+                value={selectedPrice.min}
+                onChange={(e) => {
+                  setSelectedPrice({
+                    min: e.target.value ? e.target.value : "",
+                    max: selectedPrice.max,
+                  });
+                }}
+              />
+              <input
+                type="number"
+                name=""
+                id=""
+                placeholder="Máxima"
+                value={selectedPrice.max}
+                onChange={(e) => {
+                  setSelectedPrice({
+                    min: selectedPrice.min,
+                    max: e.target.value ? e.target.value : "",
+                  });
+                }}
+              />
+            </div>
           </div>
           <div>
             <nav>
-              <StyledButton width="five" height="two" buttonStyled="blue">
+              <StyledButton
+                width="five"
+                height="two"
+                buttonStyled="blue"
+                onClick={handleClearFilters}
+              >
                 Limpar filtros
               </StyledButton>
             </nav>
           </div>
         </aside>
         <main>
-          {announcements?.map(
-            ({
-              id,
-              brand,
-              model,
-              year,
-              km,
-              fipePrice,
-              price,
-              description,
-              isGoodToSale,
-              images,
-            }: any) => (
-              <Card
-                key={id}
-                brand={brand}
-                model={model}
-                year={year}
-                km={km}
-                fipePrice={fipePrice}
-                price={price}
-                description={description}
-                isGoodToSale={isGoodToSale}
-                images={images}
-              />
-            )
-          )}
+
+          {filteredCars.map((car, index) => (
+            <Card
+              key={index}
+              img={car.img}
+              brand={car.brand}
+              model={car.model}
+              year={car.year}
+              km={car.km}
+              price={car.price}
+              description={car.description}
+              user={car.user}
+            />
+          ))}
+
+       
         </main>
       </StyledSection>
 

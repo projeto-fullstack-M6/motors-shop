@@ -193,6 +193,13 @@ ${({ buttonStyled }) => {
           color: var(--brand-4);
           cursor: not-allowed;
         `;
+      case "transparent":
+        return css`
+          background-color: transparent;
+          color: var(--grey-2);
+          display: flex;
+          justify-content: end;
+        `;
     }
   }}
 

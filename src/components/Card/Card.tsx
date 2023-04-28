@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { UserContext } from "../../providers/UserContext";
 import NoImg from "../../assets/NoImg.png";
 
@@ -8,10 +7,14 @@ import { StyledDivCard } from "./styled";
 import { StyledTitle } from "../../styles/typography";
 import { StyledButton } from "../../styles/button";
 import { StyledLinkDetails } from "../../styles/link";
+import { AdminContext } from "../../providers/AdminContext";
+
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 
+
 export const Card = ({
+  img,
   brand,
   model,
   year,
@@ -20,9 +23,26 @@ export const Card = ({
   price,
   description,
   isGoodToSale,
-  images,
+  user,
+
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
+  const { setCarDetails } = useContext(AdminContext);
+
+  const handleSetCarDetails = () => {
+    setCarDetails({
+      img,
+      brand,
+      model,
+      year,
+      km,
+      fipePrice,
+      price,
+      description,
+      isGoodToSale,
+      user,
+    });
+  };
 
   const token = localStorage.getItem("@motors:token");
 
@@ -41,6 +61,10 @@ export const Card = ({
   };
 
   return (
+
+    <>
+    
+
     <StyledDivCard>
       {images && images.length >= 1 ? (
         <section>
@@ -70,13 +94,17 @@ export const Card = ({
         </div>
       )}
 
-      <Link to="/adverts">
-        <StyledTitle tag="h2" fontSize="heading-7-600" color="grey-1">
-          {brand} - {model}
-        </StyledTitle>
-        <StyledTitle tag="p" fontSize="body-2-400" color="grey-2">
-          {description}
-        </StyledTitle>
+
+      <Link to="/adverts" onClick={handleSetCarDetails}>
+          <div className="div-img">
+            <img src={img} alt="imagem de carro" />
+          </div>
+          <StyledTitle tag="h2" fontSize="heading-7-600">
+            {brand} - {model}
+          </StyledTitle>
+          <StyledTitle tag="p" fontSize="body-2-400" className="ellipsis">
+            {description}
+          </StyledTitle>
 
         {userLoginAdminInfo?.isBuyer || !token ? (
           <div className="div-name">
@@ -114,6 +142,11 @@ export const Card = ({
             >
               {year}
             </StyledButton>
+
+            <StyledLinkDetails to="/adverts" onClick={handleSetCarDetails}>
+              Ver detalhes
+            </StyledLinkDetails>
+
           </div>
           <StyledTitle tag="span" fontSize="heading-7-500" color="grey-1">
             R${" "}

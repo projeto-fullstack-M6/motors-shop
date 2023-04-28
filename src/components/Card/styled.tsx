@@ -58,6 +58,12 @@ export const StyledDivCard = styled.div`
     }
   }
 
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .div-data {
     display: flex;
     justify-content: space-between;

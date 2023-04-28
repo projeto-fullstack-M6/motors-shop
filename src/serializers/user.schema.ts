@@ -70,6 +70,7 @@ export const userResponseSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().nullable(),
+  resetToken: z.string().nullable(),
   address: addressResponseSchema,
 });
 
@@ -109,4 +110,12 @@ export const userLoginInfo = z.object({
   isBuyer: z.boolean(),
   isAdm: z.boolean(),
   address: createAddressSchema.nullable(),
+});
+
+export const userForgotPasswordSchema = z.object({
+  email: z
+    .string()
+    .nonempty("Email é um campo obrigatório")
+    .email("Email inválido")
+    .trim(),
 });

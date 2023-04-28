@@ -1,6 +1,7 @@
 import { NavigateFunction } from "react-router";
 import { IAdResponse } from "../adSchema.interface";
 import {
+  IUserForgotPassword,
   IUserLogin,
   IUserLoginInfo,
   IUserRegister,
@@ -22,12 +23,18 @@ export interface IUserContext {
   updateUser: (data: IUserUpdate) => Promise<void>;
   deleteUser: () => Promise<void>;
   userLogout: () => void;
+  userSendEmail: (data: IUserForgotPassword) => Promise<void>;
+  userChangePassword: (data: IUserUpdate) => Promise<void>;
+  forgotPassword: boolean;
+  setForgotPassword: React.Dispatch<React.SetStateAction<boolean>>;
   showEditUser: boolean;
   setShowEditUser: React.Dispatch<React.SetStateAction<boolean>>;
   showEditAddress: boolean;
   setShowEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
   showDropdown: boolean;
   setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   userLoginAdminInfo: IUserLoginInfo | null;
   setUserLoginAdminInfo: React.Dispatch<
     React.SetStateAction<IUserLoginInfo | null>
@@ -45,6 +52,9 @@ export interface IAdminContext {
   previousPage: () => Promise<void>;
   exit: () => void;
   handleNewAnnouncement: (data: any) => Promise<void>;
+
+  carDetails: any;
+  setCarDetails: React.Dispatch<React.SetStateAction<any>>;
   isAnnouncementModalActive: boolean;
   setIsAnnouncementModalActive: React.Dispatch<React.SetStateAction<boolean>>;
   getAllBrandsForAnnouncements: () => Promise<void>;
@@ -64,4 +74,5 @@ export interface IAdminContext {
   setCarYearClosedOption: React.Dispatch<React.SetStateAction<string>>;
   getAllCarsForAnnouncements: (selectedBrand: string) => Promise<void>;
   getCarInfoClosedOption: (carId: string) => void;
+
 }
