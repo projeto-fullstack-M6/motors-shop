@@ -17,17 +17,6 @@ export const StyledImg = styled.div`
     width: 100%;
     height: 100%;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
-
-    > h2 {
-      color: var(--grey-10);
-      font-size: 40px;
-      font-weight: 700;
-    }
-
-    > p {
-      color: var(--grey-10);
-      font-size: 30px;
-    }
   }
 `;
 
@@ -43,18 +32,15 @@ export const StyledSection = styled.section`
     div {
       margin-bottom: 2rem;
 
-      h2 {
-        font-size: 24px;
-        font-weight: 600;
-      }
-
       > div {
         margin-top: 1rem;
 
-        button {
-          color: var(--grey-1) !important;
-          font-size: 16px;
+        .button-filter {
+          color: var(--grey-3);
+          font-size: var(--size-h7);
+          font-family: var(--font-family-lexend);
           font-weight: 500;
+          line-height: 25px;
           width: 100%;
           display: block;
           text-align: left;
@@ -66,17 +52,16 @@ export const StyledSection = styled.section`
           margin: 0;
         }
         input[type="number"] {
-          background-color: var(--grey-6);
+          background-color: var(--grey-5);
           -moz-appearance: textfield;
           width: 6rem;
           height: 2.2rem;
           margin-right: 1rem;
-          border-radius: 4px;
           text-align: center;
 
           &::placeholder {
             font-weight: 600;
-            color: var(--grey-1);
+            color: var(--grey-3);
           }
         }
       }
@@ -113,7 +98,7 @@ export const StyledPageSection = styled.section`
       }
 
       span {
-        color: #868e968a;
+        color: rgba(134, 142, 150, 0.5);
       }
     }
     button {

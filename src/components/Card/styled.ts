@@ -6,7 +6,7 @@ export const StyledDivCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-20);
-  padding: 10px 0;
+  padding: 20px 0;
 
   a {
     display: flex;
@@ -19,7 +19,6 @@ export const StyledDivCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     img {
       width: 262px;
       height: 150px;
@@ -46,7 +45,6 @@ export const StyledDivCard = styled.div`
     display: flex;
     align-items: center;
     gap: var(--gap-10);
-
     .div-acronym {
       display: flex;
       align-items: center;
@@ -67,6 +65,7 @@ export const StyledDivCard = styled.div`
   .div-data {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .div-button {
