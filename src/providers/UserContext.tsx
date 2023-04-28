@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
 
@@ -10,6 +10,7 @@ import {
   IUserContext,
 } from "../interfaces/Context/contexts.interface";
 import {
+  IUserForgotPassword,
   IUserLogin,
   IUserLoginInfo,
   IUserRegister,
@@ -23,11 +24,15 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUserResponse | null>(null);
 
+  const [forgotPassword, setForgotPassword] = useState(false);
+
   const [showEditUser, setShowEditUser] = useState(false);
 
   const [showEditAddress, setShowEditAddress] = useState(false);
 
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const [userLoginAdminInfo, setUserLoginAdminInfo] =
     useState<IUserLoginInfo | null>(null);
@@ -135,6 +140,31 @@ export const UserProvider = ({ children }: IChildren) => {
     navigate("/");
   };
 
+  const userSendEmail = async (data: IUserForgotPassword) => {
+    try {
+      await ApiRequests.post("/users/reset-password", data);
+      setLoading(true);
+      toast.success("Email enviado com sucesso.");
+    } catch (error) {
+      console.log(error);
+      toast.error("E-mail não pôde ser enviado");
+    } finally {
+      setLoading(false);
+      setForgotPassword(false);
+      navigate("/login");
+    }
+  };
+
+  const userChangePassword = async (data: IUserUpdate) => {
+    try {
+      await ApiRequests.post(`/users/reset-password/${user?.resetToken}`, data);
+      toast.success("Senha foi alterada com sucesso.");
+    } catch (error) {
+      console.log(error);
+      toast.error("Senha não pôde ser alterada");
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -146,12 +176,18 @@ export const UserProvider = ({ children }: IChildren) => {
         updateUser,
         deleteUser,
         userLogout,
+        userSendEmail,
+        userChangePassword,
+        forgotPassword,
+        setForgotPassword,
         showEditUser,
         setShowEditUser,
         showEditAddress,
         setShowEditAddress,
         showDropdown,
         setShowDropdown,
+        loading,
+        setLoading,
         userLoginAdminInfo,
         setUserLoginAdminInfo,
         announcements,

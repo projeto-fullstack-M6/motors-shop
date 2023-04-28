@@ -13,9 +13,11 @@ import { StyledForm } from "../../styles/form";
 import { StyledButton } from "../../styles/button";
 import { StyledLinkRegister } from "../../styles/link";
 import { StyledTitle } from "../../styles/typography";
+import { ForgotPassword } from "../../components/Modals/ForgotPassword/ForgotPassword";
 
 export const LoginForm = () => {
-  const { userLogin } = useContext(UserContext);
+  const { forgotPassword, setForgotPassword, userLogin } =
+    useContext(UserContext);
 
   const {
     register,
@@ -24,52 +26,58 @@ export const LoginForm = () => {
   } = useForm<IUserLogin>({ resolver: zodResolver(loginSchema) });
 
   return (
-    <StyledForm onSubmit={handleSubmit(userLogin)}>
-      <Input
-        label="Usuário"
-        type="email"
-        register={register("email")}
-        defaultValue=""
-        placeholder="Seu e-mail"
-        error={errors.email as FieldError}
-      />
+    <>
+      <StyledForm onSubmit={handleSubmit(userLogin)}>
+        <Input
+          label="Usuário"
+          type="email"
+          register={register("email")}
+          defaultValue=""
+          placeholder="Seu e-mail"
+          error={errors.email as FieldError}
+        />
 
-      <Input
-        label="Password"
-        type="password"
-        register={register("password")}
-        defaultValue=""
-        placeholder="Sua senha"
-        error={errors.password as FieldError}
-      />
+        <Input
+          label="Password"
+          type="password"
+          register={register("password")}
+          defaultValue=""
+          placeholder="Sua senha"
+          error={errors.password as FieldError}
+        />
 
-      <div className="form-login">
-        <StyledTitle
-          tag="span"
-          fontSize="body-2-500"
-          color="grey-2"
-          align="align-self-end"
-        >
-          Esqueci minha senha
-        </StyledTitle>
+        <div className="form-login">
+          <StyledButton
+            width="one"
+            height="one"
+            buttonStyled="transparent"
+            font="two"
+            type="button"
+            onClick={() => setForgotPassword(true)}
+          >
+            Esqueci minha senha
+          </StyledButton>
 
-        <StyledButton width="one" height="one" buttonStyled="blue">
-          Login
-        </StyledButton>
+          <StyledButton width="one" height="one" buttonStyled="blue">
+            Login
+          </StyledButton>
 
-        <StyledTitle
-          tag="span"
-          fontSize="body-2-400"
-          color="grey-2"
-          align="align-self-center"
-        >
-          Ainda não possui uma conta?
-        </StyledTitle>
+          <StyledTitle
+            tag="span"
+            fontSize="body-2-400"
+            color="grey-2"
+            align="align-self-center"
+          >
+            Ainda não possui uma conta?
+          </StyledTitle>
 
-        <StyledLinkRegister to={"/register"} className="width-register">
-          Cadastrar
-        </StyledLinkRegister>
-      </div>
-    </StyledForm>
+          <StyledLinkRegister to={"/register"} className="width-register">
+            Cadastrar
+          </StyledLinkRegister>
+        </div>
+      </StyledForm>
+
+      {forgotPassword && <ForgotPassword />}
+    </>
   );
 };
