@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserContext";
-
 import { Header } from "../../components/Header/Header";
 import { Card } from "../../components/Card/Card";
 import { Footer } from "../../components/Footer/Footer";
@@ -8,10 +5,9 @@ import { Footer } from "../../components/Footer/Footer";
 import { StyledButton } from "../../styles/button";
 import { StyledImg, StyledPageSection, StyledSection } from "./style";
 
-import { Card } from "../../components/Card/Card";
-import { Header } from "../../components/Header/Header";
 import { cars } from "../../../mock";
 import { useState } from "react";
+import { StyledTitle } from "../../styles/typography";
 
 export const HomePage = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
@@ -66,81 +62,116 @@ export const HomePage = () => {
     });
   };
 
-
-
-export const HomePage = () => {
-
-  const { announcements } = useContext(UserContext);
   return (
     <>
       <Header />
 
       <StyledImg>
         <div>
-          <h2>Motors Shop</h2>
-          <p>A melhor plataforma de anúncios de carros do país</p>
+          <StyledTitle tag="h2" fontSize="heading-1-700" color="white">
+            Motors Shop
+          </StyledTitle>
+          <StyledTitle tag="p" fontSize="heading-2-600" color="white">
+            A melhor plataforma de anúncios de carros do país
+          </StyledTitle>
         </div>
       </StyledImg>
 
       <StyledSection>
         <aside>
           <div>
-            <h2>Marca</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Marca
+            </StyledTitle>
+
             <div>
               {uniqueBrands.map((brand, index) => (
-                <button key={index} onClick={() => setSelectedBrand(brand)}>
+                <button
+                  className="button-filter"
+                  key={index}
+                  onClick={() => setSelectedBrand(brand)}
+                >
                   {brand}
                 </button>
               ))}
             </div>
           </div>
+
           <div>
-            <h2>Modelo</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Modelo
+            </StyledTitle>
             <div>
               {uniqueModels.map((model, index) => (
-                <button key={index} onClick={() => setSelectedModel(model)}>
+                <button
+                  className="button-filter"
+                  key={index}
+                  onClick={() => setSelectedModel(model)}
+                >
                   {model}
                 </button>
               ))}
             </div>
           </div>
+
           <div>
-            <h2>Cor</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Cor
+            </StyledTitle>
             <div>
               {uniqueColors.map((color, index) => (
-                <button key={index} onClick={() => setSelectedColor(color)}>
+                <button
+                  className="button-filter"
+                  key={index}
+                  onClick={() => setSelectedColor(color)}
+                >
                   {color}
                 </button>
               ))}
             </div>
           </div>
+
           <div>
-            <h2>Ano</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Ano
+            </StyledTitle>
             <div>
               {uniqueYears.map((year, index) => (
-                <button key={index} onClick={() => setSelectedYear(year)}>
+                <button
+                  className="button-filter"
+                  key={index}
+                  onClick={() => setSelectedYear(year)}
+                >
                   {year}
                 </button>
               ))}
             </div>
           </div>
+
           <div>
-            <h2>Combustível</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Combustível
+            </StyledTitle>
             <div>
               {uniqueFuel.map((fuel, index) => (
-                <button key={index} onClick={() => setSelectedFuel(fuel)}>
+                <button
+                  className="button-filter"
+                  key={index}
+                  onClick={() => setSelectedFuel(fuel)}
+                >
                   {fuel}
                 </button>
               ))}
             </div>
           </div>
+
           <div>
-            <h2>Km</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Km
+            </StyledTitle>
             <div>
               <input
                 type="number"
-                name=""
-                id=""
                 placeholder="Mínima"
                 value={selectedKm.min || ""}
                 onChange={(e) => {
@@ -152,8 +183,6 @@ export const HomePage = () => {
               />
               <input
                 type="number"
-                name=""
-                id=""
                 placeholder="Máxima"
                 value={selectedKm.max || ""}
                 onChange={(e) => {
@@ -165,13 +194,14 @@ export const HomePage = () => {
               />
             </div>
           </div>
+
           <div>
-            <h2>Preço</h2>
+            <StyledTitle tag="h2" fontSize="heading-4-600" color="black">
+              Preço
+            </StyledTitle>
             <div>
               <input
                 type="number"
-                name=""
-                id=""
                 placeholder="Mínima"
                 value={selectedPrice.min}
                 onChange={(e) => {
@@ -183,8 +213,6 @@ export const HomePage = () => {
               />
               <input
                 type="number"
-                name=""
-                id=""
                 placeholder="Máxima"
                 value={selectedPrice.max}
                 onChange={(e) => {
@@ -196,12 +224,14 @@ export const HomePage = () => {
               />
             </div>
           </div>
+
           <div>
             <nav>
               <StyledButton
                 width="five"
                 height="two"
                 buttonStyled="blue"
+                font="two"
                 onClick={handleClearFilters}
               >
                 Limpar filtros
@@ -209,8 +239,8 @@ export const HomePage = () => {
             </nav>
           </div>
         </aside>
-        <main>
 
+        <main>
           {filteredCars.map((car, index) => (
             <Card
               key={index}
@@ -224,8 +254,6 @@ export const HomePage = () => {
               user={car.user}
             />
           ))}
-
-       
         </main>
       </StyledSection>
 

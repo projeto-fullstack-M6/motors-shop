@@ -54,4 +54,10 @@ export const StyledHeader = styled.header`
       border-radius: var(--border-radius-150);
     }
   }
+
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;

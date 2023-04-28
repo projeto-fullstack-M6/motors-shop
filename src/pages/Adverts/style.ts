@@ -52,17 +52,20 @@ export const StyledAdvertDetailing = styled.div`
         height: fit-content;
         display: flex;
         flex-direction: column;
+        justify-content: end;
         gap: var(--gap-20);
         border-radius: var(--border-radius-4);
         background-color: var(--grey-10);
-
+        
         div {
+          padding-top: 15px;
           display: flex;
           justify-content: space-between;
-          padding-top: 15px;
+          align-items: center;
 
           .km {
             display: flex;
+            justify-content: center;
             gap: var(--gap-15);
           }
         }

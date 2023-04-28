@@ -1,17 +1,16 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../providers/UserContext";
-import NoImg from "../../assets/NoImg.png";
 
+import { UserContext } from "../../providers/UserContext";
+import { AdminContext } from "../../providers/AdminContext";
+
+import NoImg from "../../assets/NoImg.png";
 import { StyledDivCard } from "./styled";
 import { StyledTitle } from "../../styles/typography";
 import { StyledButton } from "../../styles/button";
 import { StyledLinkDetails } from "../../styles/link";
-import { AdminContext } from "../../providers/AdminContext";
-
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
-
 
 export const Card = ({
   img,
@@ -24,10 +23,14 @@ export const Card = ({
   description,
   isGoodToSale,
   user,
-
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
+
+  const token = localStorage.getItem("@motors:token");
+
   const { setCarDetails } = useContext(AdminContext);
+
+  const [imageNumber, setImageNumber] = useState(0);
 
   const handleSetCarDetails = () => {
     setCarDetails({
@@ -44,12 +47,8 @@ export const Card = ({
     });
   };
 
-  const token = localStorage.getItem("@motors:token");
-
-  const [imageNumber, setImageNumber] = useState(0);
-
   const nextImageNumber = () => {
-    if (imageNumber < images?.length - 1) {
+    if (imageNumber < img?.length - 1) {
       setImageNumber(imageNumber + 1);
     }
   };
@@ -61,25 +60,21 @@ export const Card = ({
   };
 
   return (
-
-    <>
-    
-
     <StyledDivCard>
-      {images && images.length >= 1 ? (
+      {img && img.length >= 1 ? (
         <section>
           <div className="div-img">
-            <img src={images![imageNumber]} alt="imagem de carro" />
+            <img src={img![imageNumber]} alt="imagem de carro" />
           </div>
           <div className="next-previous">
-            {images?.length > 1 ? (
+            {img?.length > 1 ? (
               <GrPrevious
                 onClick={() => previousImageNumber()}
                 enableBackground="#4529e6"
                 cursor={"pointer"}
               />
             ) : null}
-            {images?.length > 1 ? (
+            {img?.length > 1 ? (
               <GrNext
                 onClick={() => nextImageNumber()}
                 color="#4529e6"
@@ -94,17 +89,23 @@ export const Card = ({
         </div>
       )}
 
-
       <Link to="/adverts" onClick={handleSetCarDetails}>
-          <div className="div-img">
-            <img src={img} alt="imagem de carro" />
-          </div>
-          <StyledTitle tag="h2" fontSize="heading-7-600">
-            {brand} - {model}
-          </StyledTitle>
-          <StyledTitle tag="p" fontSize="body-2-400" className="ellipsis">
-            {description}
-          </StyledTitle>
+        <StyledTitle
+          tag="h2"
+          fontSize="heading-7-600"
+          color="grey-1"
+          className="ellipsis"
+        >
+          {brand} - {model}
+        </StyledTitle>
+        <StyledTitle
+          tag="p"
+          fontSize="body-2-400"
+          color="grey-2"
+          className="ellipsis"
+        >
+          {description}
+        </StyledTitle>
 
         {userLoginAdminInfo?.isBuyer || !token ? (
           <div className="div-name">
@@ -135,6 +136,7 @@ export const Card = ({
               })}{" "}
               KM
             </StyledButton>
+
             <StyledButton
               width="eleven"
               height="three"
@@ -142,12 +144,8 @@ export const Card = ({
             >
               {year}
             </StyledButton>
-
-            <StyledLinkDetails to="/adverts" onClick={handleSetCarDetails}>
-              Ver detalhes
-            </StyledLinkDetails>
-
           </div>
+
           <StyledTitle tag="span" fontSize="heading-7-500" color="grey-1">
             R${" "}
             {parseFloat(price).toLocaleString("pt-BR", {
@@ -163,7 +161,9 @@ export const Card = ({
             Editar
           </StyledButton>
 
-          <StyledLinkDetails to="/adverts">Ver detalhes</StyledLinkDetails>
+          <StyledLinkDetails to="/adverts" onClick={handleSetCarDetails}>
+            Ver detalhes
+          </StyledLinkDetails>
         </div>
       ) : null}
     </StyledDivCard>
