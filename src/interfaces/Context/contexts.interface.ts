@@ -44,4 +44,6 @@ export interface IAdminContext {
   previousPage: () => Promise<void>;
   exit: () => void;
   handleNewAnnouncement: (data: any) => Promise<void>;
+  carDetails: any;
+  setCarDetails: React.Dispatch<React.SetStateAction<any>>;
 }

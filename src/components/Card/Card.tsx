@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { car } from "../../../mock";
 import { UserContext } from "../../providers/UserContext";
 import { StyledButton } from "../../styles/button";
 import { StyledTitle } from "../../styles/typography";
 import { StyledDivCard } from "./styled";
 import { Link } from "react-router-dom";
 import { StyledLinkDetails } from "../../styles/link";
+import { AdminContext } from "../../providers/AdminContext";
 
 export const Card = ({
+  img,
   brand,
   model,
   year,
@@ -16,20 +17,37 @@ export const Card = ({
   price,
   description,
   isGoodToSale,
+  user,
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
+  const { setCarDetails } = useContext(AdminContext);
+
+  const handleSetCarDetails = () => {
+    setCarDetails({
+      img,
+      brand,
+      model,
+      year,
+      km,
+      fipePrice,
+      price,
+      description,
+      isGoodToSale,
+      user,
+    });
+  };
 
   return (
     <>
       <StyledDivCard>
-        <Link to="/adverts">
+        <Link to="/adverts" onClick={handleSetCarDetails}>
           <div className="div-img">
-            <img src={car.img} alt="imagem de carro" />
+            <img src={img} alt="imagem de carro" />
           </div>
           <StyledTitle tag="h2" fontSize="heading-7-600">
             {brand} - {model}
           </StyledTitle>
-          <StyledTitle tag="p" fontSize="body-2-400">
+          <StyledTitle tag="p" fontSize="body-2-400" className="ellipsis">
             {description}
           </StyledTitle>
 
@@ -82,7 +100,9 @@ export const Card = ({
               Editar
             </StyledButton>
 
-            <StyledLinkDetails to="/adverts">Ver detalhes</StyledLinkDetails>
+            <StyledLinkDetails to="/adverts" onClick={handleSetCarDetails}>
+              Ver detalhes
+            </StyledLinkDetails>
           </div>
         ) : null}
       </StyledDivCard>

@@ -51,18 +51,34 @@ export const StyledSection = styled.section`
       > div {
         margin-top: 1rem;
 
-        p {
-          color: var(--grey-3);
+        button {
+          color: var(--grey-1) !important;
           font-size: 16px;
           font-weight: 500;
+          width: 100%;
+          display: block;
+          text-align: left;
         }
-      }
 
-      > nav {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-        margin-top: 1rem;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type="number"] {
+          background-color: var(--grey-6);
+          -moz-appearance: textfield;
+          width: 6rem;
+          height: 2.2rem;
+          margin-right: 1rem;
+          border-radius: 4px;
+          text-align: center;
+
+          &::placeholder {
+            font-weight: 600;
+            color: var(--grey-1);
+          }
+        }
       }
     }
   }

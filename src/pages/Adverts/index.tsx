@@ -1,10 +1,12 @@
 import { Footer } from "../../components/Footer/Footer";
 import { Div } from "./style";
-import { car } from "../../../mock";
 import { StyledButton } from "../../styles/button";
 import { Header } from "../../components/Header/Header";
+import { useContext } from "react";
+import { AdminContext } from "../../providers/AdminContext";
 
 const Adverts = () => {
+  const { carDetails } = useContext(AdminContext);
   return (
     <>
       <Header />
@@ -12,17 +14,17 @@ const Adverts = () => {
       <Div>
         <section className="secRight">
           <div className="card1">
-            <img src={car.img} alt="" />
+            <img src={carDetails.img} alt="" />
           </div>
 
           <div className="card2">
-            <h3>{car.brand}</h3>
+            <h3>{carDetails.brand}</h3>
             <div>
               <div className="km">
-                <p>{car.year}</p>
-                <p>{car.km} KM</p>
+                <p>{carDetails.year}</p>
+                <p>{carDetails.km} KM</p>
               </div>
-              <p> R$ {car.price}</p>
+              <p> R$ {carDetails.price}</p>
             </div>
             <StyledButton width="eight" height="two" buttonStyled="blue">
               Comprar
@@ -31,12 +33,7 @@ const Adverts = () => {
 
           <div className="card3">
             <h3>Descrição</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </p>
+            <p>{carDetails.description}</p>
           </div>
 
           <div className="card4">
@@ -96,18 +93,18 @@ const Adverts = () => {
           <div className="card6">
             <h3>Fotos</h3>
             <div className="minCar">
-              <img src={car.img} alt="carro" />
-              <img src={car.img} alt="carro" />
-              <img src={car.img} alt="carro" />
-              <img src={car.img} alt="carro" />
-              <img src={car.img} alt="carro" />
-              <img src={car.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
+              <img src={carDetails.img} alt="carro" />
             </div>
           </div>
 
           <div className="card7">
             <p className="acronym2">PL</p>
-            <p className="name2">Petrus Lobato</p>
+            <p className="name2">{carDetails.user}</p>
             <p className="text1">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's

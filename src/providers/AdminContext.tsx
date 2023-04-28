@@ -10,6 +10,8 @@ import {
 export const AdminContext = createContext({} as IAdminContext);
 
 export const AdminProvider = ({ children }: IChildren) => {
+  const [carDetails, setCarDetails] = useState<any>({});
+
   const {
     announcements,
     setUserLoginAdminInfo,
@@ -108,6 +110,8 @@ export const AdminProvider = ({ children }: IChildren) => {
         previousPage,
         exit,
         handleNewAnnouncement,
+        carDetails,
+        setCarDetails,
       }}
     >
       {children}
