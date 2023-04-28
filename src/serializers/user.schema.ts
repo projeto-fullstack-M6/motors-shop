@@ -110,3 +110,11 @@ export const userLoginInfo = z.object({
   isAdm: z.boolean(),
   address: createAddressSchema.nullable(),
 });
+
+export const userForgotPasswordSchema = z.object({
+  email: z
+    .string()
+    .nonempty("Email é um campo obrigatório")
+    .email("Email inválido")
+    .trim(),
+});
