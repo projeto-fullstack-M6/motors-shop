@@ -15,7 +15,7 @@ import { StyledButton } from "../../../styles/button";
 import { StyledTitle } from "../../../styles/typography";
 
 export const ForgotPassword = () => {
-  const { setForgotPassword } = useContext(UserContext);
+  const { setForgotPassword, userSendEmail, loading } = useContext(UserContext);
 
   const {
     register,
@@ -53,7 +53,7 @@ export const ForgotPassword = () => {
             Informação do usuário
           </StyledTitle>
 
-          <StyledForm>
+          <StyledForm onSubmit={handleSubmit((data) => userSendEmail(data))}>
             <Input
               label="E-mail"
               type="email"
@@ -80,7 +80,7 @@ export const ForgotPassword = () => {
                 buttonStyled="blue"
                 font="two"
               >
-                Enviar
+                {loading ? "Enviando..." : "Enviar"}
               </StyledButton>
             </div>
           </StyledForm>

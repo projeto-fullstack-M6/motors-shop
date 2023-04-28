@@ -10,6 +10,7 @@ import {
   IUserContext,
 } from "../interfaces/Context/contexts.interface";
 import {
+  IUserForgotPassword,
   IUserLogin,
   IUserLoginInfo,
   IUserRegister,
@@ -30,6 +31,8 @@ export const UserProvider = ({ children }: IChildren) => {
   const [showEditAddress, setShowEditAddress] = useState(false);
 
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const [userLoginAdminInfo, setUserLoginAdminInfo] =
     useState<IUserLoginInfo | null>(null);
@@ -137,6 +140,22 @@ export const UserProvider = ({ children }: IChildren) => {
     navigate("/");
   };
 
+  const userSendEmail = async (data: IUserForgotPassword) => {
+    console.log(data);
+    try {
+      await ApiRequests.post("/users/reset-password", data);
+      setLoading(true);
+      toast.success("Email enviado com sucesso.");
+    } catch (error) {
+      console.log(error);
+      toast.error("E-mail não pôde ser enviado");
+    } finally {
+      setLoading(false);
+      setForgotPassword(false);
+      navigate("/login");
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -148,6 +167,7 @@ export const UserProvider = ({ children }: IChildren) => {
         updateUser,
         deleteUser,
         userLogout,
+        userSendEmail,
         forgotPassword,
         setForgotPassword,
         showEditUser,
@@ -156,6 +176,8 @@ export const UserProvider = ({ children }: IChildren) => {
         setShowEditAddress,
         showDropdown,
         setShowDropdown,
+        loading,
+        setLoading,
         userLoginAdminInfo,
         setUserLoginAdminInfo,
         announcements,
