@@ -27,6 +27,15 @@ export const StyledDivCard = styled.div`
     }
   }
 
+  .next-previous {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10%;
+    width: 100%;
+    color: var(--brand-1);
+  }
+
   .div-name {
     display: flex;
     align-items: center;
@@ -51,14 +60,5 @@ export const StyledDivCard = styled.div`
   .div-button {
     display: flex;
     gap: var(--gap-10);
-  }
-
-  .next-previous {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 10%;
-    width: 100%;
-    color: var(--brand-1);
   }
 `;

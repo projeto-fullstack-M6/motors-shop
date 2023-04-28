@@ -1,13 +1,15 @@
 import { useContext } from "react";
+
 import { UserContext } from "../../providers/UserContext";
 import { AdminContext } from "../../providers/AdminContext";
-import { IAdRegister } from "../../interfaces/adSchema.interface";
+
 import { Header } from "../../components/Header/Header";
 import { Card } from "../../components/Card/Card";
 import { Footer } from "../../components/Footer/Footer";
-import { StyledButton } from "../../styles/button";
-import ModalAds from "../../components/ModalAd";
 import { HomePage } from "../Home";
+import ModalAds from "../../components/ModalAd";
+
+import { StyledButton } from "../../styles/button";
 import { StyledTitle } from "../../styles/typography";
 import {
   StyledAdminCardInfo,
@@ -18,7 +20,6 @@ import {
 
 export const AdminDashboard = () => {
   const {
-    exit,
     nextPage,
     previousPage,
     isAnnouncementModalActive,
@@ -37,7 +38,9 @@ export const AdminDashboard = () => {
       {userLoginAdminInfo?.isBuyer === true ? (
         <>
           <Header />
+
           <StyledSectionAdmin />
+
           <StyledAdminCardInfo>
             <span className="acronym-info">
               {userLoginAdminInfo?.name

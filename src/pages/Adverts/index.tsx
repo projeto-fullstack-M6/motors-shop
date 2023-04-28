@@ -1,10 +1,11 @@
 import { Footer } from "../../components/Footer/Footer";
-import { StyledAdvertDetailing } from "./style";
-import { car } from "../../../mock";
-import { StyledButton } from "../../styles/button";
 import { Header } from "../../components/Header/Header";
-import { StyledTitle } from "../../styles/typography";
 import { Comments } from "../../components/Comments/Comments";
+
+import { StyledAdvertDetailing } from "./style";
+import { StyledButton } from "../../styles/button";
+import { StyledTitle } from "../../styles/typography";
+import { car } from "../../../mock";
 
 const Adverts = () => {
   return (
@@ -22,7 +23,7 @@ const Adverts = () => {
 
             <div className="card2">
               <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
-                {car.brand}
+                {car.brand} {car.model}
               </StyledTitle>
 
               <div>
@@ -52,17 +53,27 @@ const Adverts = () => {
                 </StyledTitle>
               </div>
 
-              <StyledButton width="eight" height="two" buttonStyled="blue">
+              <StyledButton
+                width="eight"
+                height="two"
+                buttonStyled="blue"
+                font="two"
+              >
                 Comprar
               </StyledButton>
             </div>
 
             <div className="card3">
-              <StyledTitle tag="h3" fontSize="heading-6-600">
+              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
                 Descrição
               </StyledTitle>
 
-              <StyledTitle tag="p" fontSize="body-1-400" color="grey-2">
+              <StyledTitle
+                tag="p"
+                fontSize="body-1-400"
+                color="grey-2"
+                className="description"
+              >
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -71,7 +82,7 @@ const Adverts = () => {
             </div>
 
             <div className="card4">
-              <StyledTitle tag="h3" fontSize="heading-6-600">
+              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
                 Comentários
               </StyledTitle>
 
@@ -98,8 +109,7 @@ const Adverts = () => {
               <div className="divpublication">
                 <textarea
                   className="publication"
-                  defaultValue="Carro muito confortável, foi uma ótima experiência de
-                  compra..."
+                  defaultValue="Carro muito confortável, foi uma ótima experiência de compra..."
                 ></textarea>
 
                 <StyledButton
@@ -122,6 +132,7 @@ const Adverts = () => {
                 >
                   Gostei Muito!
                 </StyledTitle>
+
                 <StyledTitle
                   tag="span"
                   fontSize="span-tag"
@@ -130,6 +141,7 @@ const Adverts = () => {
                 >
                   Incrivel!
                 </StyledTitle>
+
                 <StyledTitle
                   tag="span"
                   fontSize="span-tag"
@@ -144,7 +156,10 @@ const Adverts = () => {
 
           <section className="secLeft">
             <div className="card6">
-              <h3>Fotos</h3>
+              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
+                Fotos
+              </StyledTitle>
+
               <div className="minCar">
                 <img src={car.img} alt="carro" />
                 <img src={car.img} alt="carro" />
@@ -156,13 +171,28 @@ const Adverts = () => {
             </div>
 
             <div className="card7">
-              <p className="acronym2">PL</p>
-              <p className="name2">Petrus Lobato</p>
-              <p className="text1">
+              <p className="acronym-bio">PL</p>
+
+              <StyledTitle tag="p" fontSize="heading-6-600" color="grey-1">
+                Petrus Lobato
+              </StyledTitle>
+
+              <StyledTitle
+                tag="p"
+                fontSize="body-1-400"
+                color="grey-2"
+                className="text-bio"
+              >
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's
-              </p>
-              <StyledButton width="three" height="one" buttonStyled="black">
+                industry. Lorem Ipsum has been the industry's.
+              </StyledTitle>
+
+              <StyledButton
+                width="four"
+                height="one"
+                buttonStyled="black"
+                font="two"
+              >
                 Ver todos anuncios
               </StyledButton>
             </div>

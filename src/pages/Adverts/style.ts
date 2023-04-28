@@ -59,6 +59,7 @@ export const StyledAdvertDetailing = styled.div`
         div {
           display: flex;
           justify-content: space-between;
+          padding-top: 15px;
 
           .km {
             display: flex;
@@ -78,10 +79,16 @@ export const StyledAdvertDetailing = styled.div`
         gap: var(--gap-20);
         background-color: var(--grey-10);
         border-radius: var(--border-radius-4);
+
+        .description {
+          line-height: 28px;
+          text-align: justify;
+        }
       }
 
       .card4 {
         width: 95%;
+        height: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -126,7 +133,7 @@ export const StyledAdvertDetailing = styled.div`
 
           .publication {
             width: 80%;
-            height: 100%;
+            height: 128px;
             font-size: var(--size-body-2);
             font-weight: var(--weight-400);
             font-family: var(--font-family-inter);
@@ -134,6 +141,7 @@ export const StyledAdvertDetailing = styled.div`
             border-radius: var(--border-radius-4);
             padding: 10px 0;
             text-align: justify;
+            resize: none;
 
             &:focus {
               outline: 0;
@@ -157,23 +165,30 @@ export const StyledAdvertDetailing = styled.div`
       width: 35%;
 
       .card6 {
-        background-color: var(--grey-10);
-        height: 370px;
-        border-radius: var(--border-radius-4);
         display: flex;
         flex-direction: column;
+        padding: 25px 40px;
+        background-color: var(--grey-10);
+        border-radius: var(--border-radius-4);
+        gap: var(--gap-20);
 
         .minCar {
           display: flex;
-          flex-direction: row;
-          gap: 10px;
+          gap: var(--gap-10);
           flex-wrap: wrap;
-          justify-content: center;
+          align-items: center;
+          justify-content: space-between;
 
           img {
-            width: 25%;
+            width: 108px;
             height: 108px;
+            object-fit: cover;
             border-radius: var(--border-radius-4);
+
+            @media (max-width: 400px) {
+              width: 90px;
+              height: 90px;
+            }
           }
         }
       }
@@ -181,34 +196,31 @@ export const StyledAdvertDetailing = styled.div`
       .card7 {
         display: flex;
         flex-direction: column;
-        background-color: var(--grey-10);
-        height: 420px;
-        margin-top: 30px;
-        border-radius: var(--border-radius-4);
         justify-content: center;
         align-items: center;
+        height: fit-content;
+        margin-top: 30px;
+        background-color: var(--grey-10);
+        border-radius: var(--border-radius-4);
         padding: 25px 40px;
         gap: 20px;
 
-        .acronym2 {
-          background-color: var(--brand-1);
+        .acronym-bio {
           width: 104px;
           height: 104px;
-          border-radius: 200px;
-          color: var(--white);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 25px;
+          color: var(--white);
+          background-color: var(--brand-1);
+          font-size: var(--size-h5);
           font-weight: var(--weight-500);
+          border-radius: var(--border-radius-150);
         }
-        .name2 {
-          font-size: 20px;
-          font-weight: var(--weight-600);
-        }
-        .text1 {
-          font-size: 16px;
-          font-weight: var(--weight-400);
+
+        .text-bio {
+          line-height: 28px;
+          text-align: justify;
         }
       }
     }
