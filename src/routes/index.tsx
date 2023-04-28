@@ -4,7 +4,7 @@ import { HomePage } from "../pages/Home";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import { LoginPage } from "../pages/Login/Login";
 import { RegisterPage } from "../pages/Register/Register";
-import { NotFound } from "../components/NotFound";
+import { NotFound } from "../components/NotFound/NotFound";
 
 const AppRoutes = () => {
   return (

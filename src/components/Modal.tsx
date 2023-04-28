@@ -1,8 +1,8 @@
 import { FieldError, useForm } from "react-hook-form";
-import { Input } from "../components/Input";
+import { Input } from "./Input/Input";
 import { StyledButton } from "../styles/button";
 import { StyledForm } from "../styles/form";
-import { StyledSectionModal } from "../styles/section";
+import { StyledSectionModal } from "./Modals/style";
 import { AiOutlineClose } from "react-icons/ai";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
