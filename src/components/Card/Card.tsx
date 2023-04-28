@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { StyledButton } from "../../styles/button";
 import { StyledTitle } from "../../styles/typography";
 import { StyledDivCard } from "./styled";
 import { Link } from "react-router-dom";
 import { StyledLinkDetails } from "../../styles/link";
+import { car } from "../../../mock";
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
 
 export const Card = ({
   brand,
@@ -18,13 +21,50 @@ export const Card = ({
   images,
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
+  const [imageNumber, setImageNumber] = useState(0);
+  const nextImageNumber = () => {
+    if (imageNumber < images?.length - 1) {
+      console.log(imageNumber);
+      setImageNumber(imageNumber + 1);
+    }
+  };
+  const previousImageNumber = () => {
+    if (imageNumber > 0) {
+      setImageNumber(imageNumber - 1);
+    }
+    console.log(imageNumber);
+  };
   return (
     <>
       <StyledDivCard>
-        <Link to="/adverts">
+        {userLoginAdminInfo?.isBuyer ? (
+          <>
+            <div className="div-img">
+              <img src={images![imageNumber]} alt="imagem de carro" />
+            </div>
+            <div className="next-previous">
+              {images?.length > 1 ? (
+                <GrPrevious
+                  onClick={() => previousImageNumber()}
+                  enableBackground="#4529e6"
+                  cursor={"pointer"}
+                />
+              ) : null}
+              {images?.length > 1 ? (
+                <GrNext
+                  onClick={() => nextImageNumber()}
+                  color="#4529e6"
+                  cursor={"pointer"}
+                />
+              ) : null}
+            </div>
+          </>
+        ) : (
           <div className="div-img">
-            <img src={images[0]} alt="imagem de carro" />
+            <img src={car.img} alt="imagem de carro" />
           </div>
+        )}
+        <Link to="/adverts">
           <StyledTitle tag="h2" fontSize="heading-7-600">
             {brand} - {model}
           </StyledTitle>
@@ -52,7 +92,7 @@ export const Card = ({
           <div className="div-data">
             <div className="div-button">
               <StyledButton
-                width="eleven"
+                width="eight"
                 height="three"
                 buttonStyled="light-blue"
               >

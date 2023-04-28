@@ -34,12 +34,10 @@ export const AdminDashboard = () => {
   };
   return (
     <>
-      {userLoginAdminInfo?.isBuyer === false ? (
+      {userLoginAdminInfo?.isBuyer === true ? (
         <>
           <Header />
-
           <StyledSectionAdmin />
-
           <StyledAdminCardInfo>
             <span className="acronym-info">
               {userLoginAdminInfo?.name
@@ -116,8 +114,8 @@ export const AdminDashboard = () => {
             <div>
               <div>
                 <p>{actualPage}</p>
+                <p> de</p>
                 <span>
-                  de
                   {announcements!.length < 16 ? 1 : announcements!.length < 16}
                 </span>
               </div>
@@ -137,7 +135,6 @@ export const AdminDashboard = () => {
               )}
             </div>
           </StyledAdminPageSection>
-
           <Footer />
         </>
       ) : (

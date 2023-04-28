@@ -95,7 +95,8 @@ export const StyledAdminPageSection = styled.section`
     > div {
       display: flex;
       justify-content: space-between;
-      width: 29%;
+      min-width: 25%;
+
       p {
         color: var(--grey-3);
       }

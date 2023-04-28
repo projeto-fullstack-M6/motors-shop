@@ -52,4 +52,13 @@ export const StyledDivCard = styled.div`
     display: flex;
     gap: var(--gap-10);
   }
+
+  .next-previous {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10%;
+    width: 100%;
+    color: var(--brand-1);
+  }
 `;
