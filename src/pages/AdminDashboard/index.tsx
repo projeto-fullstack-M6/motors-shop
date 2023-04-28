@@ -123,7 +123,9 @@ export const AdminDashboard = () => {
                 <p>{actualPage}</p>
                 <p> de</p>
                 <span>
-                  {announcements?.length! < 16 ? 1 : announcements?.length! < 16}
+                  {announcements?.length! < 16
+                    ? 1
+                    : announcements?.length! < 16}
                 </span>
               </div>
 

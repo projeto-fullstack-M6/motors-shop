@@ -134,6 +134,7 @@ export const AdminProvider = ({ children }: IChildren) => {
       const newAnnouncement = await ApiRequests.post("/announcements", newData);
       setAnnouncements([newAnnouncement.data, ...announcements!]);
       toast.success("Anúncio criado com sucesso");
+      setAllAnnouncementsImages([]);
     } catch (error) {
       console.log(error);
       toast.error(
