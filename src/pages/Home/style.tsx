@@ -115,9 +115,6 @@ export const StyledPageSection = styled.section`
       display: flex;
       justify-content: space-between;
       width: 29%;
-      p {
-        color: var(--grey-3);
-      }
 
       span {
         color: #868e968a;

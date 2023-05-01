@@ -174,6 +174,12 @@ ${({ buttonStyled }) => {
           color: var(--brand-4);
           cursor: not-allowed;
         `;
+      case "off":
+        return css`
+          background-color: transparent;
+          color: transparent;
+          cursor: not-allowed;
+        `;
     }
   }}
 `;

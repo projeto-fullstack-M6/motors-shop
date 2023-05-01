@@ -7,9 +7,12 @@ export const Div = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  display: flex;
+  flex-direction: column;
   margin-top: 30px;
   color: var(--black);
   margin-bottom: 20px;
+  gap: 30px;
 
 
 
@@ -49,12 +52,29 @@ export const Div = styled.div`
       .allComment{
         width: 60%;
       }
-    }
+
+      > div{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+  }
+
+  .card8 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+
+
+
 `
 
 
 export const Main = styled.main`
 
-  background: linear-gradient(to bottom, rgba(69, 41, 230, 1) 50% , rgb(222, 226, 230) 50%);
+  background: linear-gradient(to bottom, rgba(69, 41, 230, 1) 20% , rgb(222, 226, 230) 20%);
   width: 100vw; 
 `

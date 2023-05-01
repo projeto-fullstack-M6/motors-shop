@@ -24,5 +24,6 @@ export interface IButton {
     | "border-blue"
     | "feedback-alert"
     | "feedback-sucess"
-    | "disable";
+    | "disable"
+    | "off";
 }
