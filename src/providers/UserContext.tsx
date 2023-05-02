@@ -10,6 +10,7 @@ import {
   IUserContext,
 } from "../interfaces/Context/contexts.interface";
 import {
+  IForgotPasswordPage,
   IUserForgotPassword,
   IUserLogin,
   IUserLoginInfo,
@@ -155,9 +156,11 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
-  const userChangePassword = async (data: IUserUpdate) => {
+  const userChangePassword = async (data: IForgotPasswordPage) => {
+    const { token } = useParams();
+
     try {
-      await ApiRequests.post(`/users/reset-password/${user?.resetToken}`, data);
+      await ApiRequests.post(`/users/reset-password/${token}`, data);
       toast.success("Senha foi alterada com sucesso.");
     } catch (error) {
       console.log(error);

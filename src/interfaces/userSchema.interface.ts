@@ -4,11 +4,10 @@ import {
   updateUserSchema,
   userResponseSchema,
   createUserSchema,
-} from "../serializers";
-import {
-  userForgotPasswordSchema,
   userLoginInfo,
-} from "../serializers/user.schema";
+  userForgotPasswordSchema,
+  forgotPasswordPageSchema,
+} from "../serializers";
 
 export type IUserLogin = z.infer<typeof loginSchema>;
 
@@ -21,3 +20,5 @@ export type IUserResponse = z.infer<typeof userResponseSchema>;
 export type IUserLoginInfo = z.infer<typeof userLoginInfo>;
 
 export type IUserForgotPassword = z.infer<typeof userForgotPasswordSchema>;
+
+export type IForgotPasswordPage = z.infer<typeof forgotPasswordPageSchema>;
