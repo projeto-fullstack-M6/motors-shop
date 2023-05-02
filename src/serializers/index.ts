@@ -3,6 +3,9 @@ import {
   createUserSchema,
   userResponseSchema,
   updateUserSchema,
+  forgotPasswordPageSchema,
+  userForgotPasswordSchema,
+  userLoginInfo,
 } from "./user.schema";
 import {
   createAddressSchema,
@@ -26,6 +29,9 @@ export {
   createUserSchema,
   userResponseSchema,
   updateUserSchema,
+  forgotPasswordPageSchema,
+  userForgotPasswordSchema,
+  userLoginInfo,
   createAddressSchema,
   updateAddressSchema,
   addressResponseSchema,
