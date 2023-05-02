@@ -1,6 +1,5 @@
 import { Footer } from "../../components/Footer/Footer";
 
-import { Div } from "./style";
 import { StyledButton } from "../../styles/button";
 
 import { useContext } from "react";
@@ -13,43 +12,26 @@ import { StyledAdvertDetailing } from "./style";
 
 import { StyledTitle } from "../../styles/typography";
 
-
-
 const Adverts = () => {
   const { carDetails } = useContext(AdminContext);
+
   return (
     <>
       <Header />
 
-      <Div>
-        <section className="secRight">
-          <div className="card1">
-            <img src={carDetails.img} alt="" />
-          </div>
+      <StyledAdvertDetailing>
+        <div className="advert">
+          <div className="background-blue"></div>
 
-          <div className="card2">
-            <h3>{carDetails.brand}</h3>
-            <div>
-              <div className="km">
-                <p>{carDetails.year}</p>
-                <p>{carDetails.km} KM</p>
-              </div>
-              <p> R$ {carDetails.price}</p>
+          <section className="secRight">
+            <div className="card1">
+              <img src={carDetails.img} alt="" />
             </div>
-            <StyledButton width="eight" height="two" buttonStyled="blue">
-              Comprar
-            </StyledButton>
-          </div>
 
-          <div className="card3">
-            <h3>Descrição</h3>
-            <p>{carDetails.description}</p>
-          </div>
-
-          <div className="card4">
-            <h3>Comentários</h3>
-
-            <div className="comment">
+            <div className="card2">
+              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
+                {carDetails.brand} {carDetails.model}
+              </StyledTitle>
 
               <div>
                 <div className="km">
@@ -58,7 +40,7 @@ const Adverts = () => {
                     height="three"
                     buttonStyled="light-blue"
                   >
-                    {car.year}
+                    {carDetails.year}
                   </StyledButton>
 
                   <StyledButton
@@ -66,13 +48,13 @@ const Adverts = () => {
                     height="three"
                     buttonStyled="light-blue"
                   >
-                    {car.km} KM
+                    {carDetails.km} KM
                   </StyledButton>
                 </div>
 
                 <StyledTitle tag="span" fontSize="heading-7-500" color="grey-1">
                   R$
-                  {parseFloat(car.price).toLocaleString("pt-BR", {
+                  {parseFloat(carDetails.price).toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                   })}
                 </StyledTitle>
@@ -186,12 +168,12 @@ const Adverts = () => {
               </StyledTitle>
 
               <div className="minCar">
-                <img src={car.img} alt="carro" />
-                <img src={car.img} alt="carro" />
-                <img src={car.img} alt="carro" />
-                <img src={car.img} alt="carro" />
-                <img src={car.img} alt="carro" />
-                <img src={car.img} alt="carro" />
+                <img src={carDetails.img} alt="carro" />
+                <img src={carDetails.img} alt="carro" />
+                <img src={carDetails.img} alt="carro" />
+                <img src={carDetails.img} alt="carro" />
+                <img src={carDetails.img} alt="carro" />
+                <img src={carDetails.img} alt="carro" />
               </div>
             </div>
 
@@ -221,46 +203,9 @@ const Adverts = () => {
                 Ver todos anuncios
               </StyledButton>
             </div>
-
-            <div>
-              <span>Gostei Muito!</span>
-              <span> Incrivel!</span>
-              <span>Recomendarei para amigos!</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="secLeft">
-          <div className="card6">
-            <h3>Fotos</h3>
-            <div className="minCar">
-              <img src={carDetails.img} alt="carro" />
-              <img src={carDetails.img} alt="carro" />
-              <img src={carDetails.img} alt="carro" />
-              <img src={carDetails.img} alt="carro" />
-              <img src={carDetails.img} alt="carro" />
-              <img src={carDetails.img} alt="carro" />
-            </div>
-          </div>
-
-          <div className="card7">
-            <p className="acronym2">PL</p>
-            <p className="name2">{carDetails.user}</p>
-            <p className="text1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
-            </p>
-            <StyledButton width="three" height="one" buttonStyled="black">
-              {" "}
-              Ver todos anuncios{" "}
-            </StyledButton>
-          </div>
-        </section>
-      </Div>
-       </StyledAdvertDetailing>
-
-       
-     
+          </section>
+        </div>
+      </StyledAdvertDetailing>
 
       <Footer />
     </>

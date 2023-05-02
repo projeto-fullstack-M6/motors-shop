@@ -74,5 +74,4 @@ export interface IAdminContext {
   setCarYearClosedOption: React.Dispatch<React.SetStateAction<string>>;
   getAllCarsForAnnouncements: (selectedBrand: string) => Promise<void>;
   getCarInfoClosedOption: (carId: string) => void;
-
 }

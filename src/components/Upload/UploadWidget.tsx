@@ -2,12 +2,11 @@ import { useContext, useEffect, useRef } from "react";
 import { AdminContext } from "../../providers/AdminContext";
 import { StyledParagraph } from "./style";
 import { BsUpload } from "react-icons/bs";
-import { IImage } from "../../interfaces/widgetInterfaces";
 
 export const UploadWidget: React.FC = () => {
   const { setAllAnnouncementsImages } = useContext(AdminContext);
-  const cloudinaryRef = useRef();
-  const widgetRef = useRef();
+  const cloudinaryRef = useRef<any>();
+  const widgetRef = useRef<any>();
   const allImages: string[] = [];
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;

@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
+
 import Adverts from "../pages/Adverts";
 import { HomePage } from "../pages/Home";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import { LoginPage } from "../pages/Login/Login";
 import { RegisterPage } from "../pages/Register/Register";
 import { NotFound } from "../components/NotFound/NotFound";
+import { ResetPassword } from "../pages/ResetPassword/ResetPassword";
 
 const AppRoutes = () => {
   return (
@@ -13,6 +15,7 @@ const AppRoutes = () => {
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
 
       <Route path="/adverts" element={<Adverts />} />
 

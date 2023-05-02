@@ -95,14 +95,15 @@ export const updateUserSchema = z.object({
   address: createAddressSchema.optional().nullable(),
 });
 
+
 export const userLoginInfo = z.object({
   id: z.string().trim(),
   name: z.string().min(1).trim(),
   email: z
-    .string()
-    .nonempty("Email é um campo obrigatório")
-    .email("Email inválido")
-    .trim(),
+  .string()
+  .nonempty("Email é um campo obrigatório")
+  .email("Email inválido")
+  .trim(),
   cpf: z.string().min(11).max(11).nonempty("CPF é um campo obrigatório").trim(),
   cellPhone: z.string().min(11).trim(),
   birthdate: z.string().min(8).trim(),
@@ -114,8 +115,27 @@ export const userLoginInfo = z.object({
 
 export const userForgotPasswordSchema = z.object({
   email: z
-    .string()
-    .nonempty("Email é um campo obrigatório")
-    .email("Email inválido")
-    .trim(),
+  .string()
+  .nonempty("Email é um campo obrigatório")
+  .email("Email inválido")
+  .trim(),
 });
+
+export const forgotPasswordPageSchema = z
+  .object({
+    password: z
+      .string()
+      .trim()
+      .regex(/[A-Z]/, "Precisa conter pelo menos uma letra maiúscula")
+      .regex(/([a-z])/, "Precisa conter pelo menos uma letra minúscula")
+      .regex(/(\d)/, "Precisa conter pelo menos um número")
+      .regex(/(\W)|_/, "Precisa conter pelo menos uma caracter especial")
+      .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters")
+      .optional()
+      .nullable(),
+    confirmPassword: z.string().optional().nullable(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Senhas não conferem",
+    path: ["confirmPassword"],
+  });

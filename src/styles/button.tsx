@@ -139,6 +139,8 @@ ${({ buttonStyled }) => {
           font-size: var(--size-body-2);
           font-weight: var(--weight-500);
           cursor: default;
+          width: fit-content;
+          padding: 0 10px;
         `;
       case "white":
         return css`
