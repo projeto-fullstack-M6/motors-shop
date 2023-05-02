@@ -30,7 +30,7 @@ export const ResetPasswordForm = () => {
   return (
     <>
       {token ? (
-        <StyledForm onSubmit={handleSubmit((data) => userChangePassword(data))}>
+        <StyledForm onSubmit={handleSubmit(userChangePassword)}>
           <StyledTitle
             tag="h3"
             fontSize="body-2-500"
@@ -49,14 +49,14 @@ export const ResetPasswordForm = () => {
             error={errors.password}
           />
 
-          {/* <Input
+          <Input
             label="Confirmar senha"
             type="password"
             register={register("confirmPassword")}
             defaultValue=""
             placeholder="Digitar senha"
             error={errors.confirmPassword}
-          /> */}
+          />
 
           <StyledButton
             width="one"

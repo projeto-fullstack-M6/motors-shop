@@ -133,9 +133,9 @@ export const forgotPasswordPageSchema = z
       .regex(/.{8,}/, "Precisa conter pelo menos 8 caracters")
       .optional()
       .nullable(),
-    // confirmPassword: z.string().optional().nullable(),
+    confirmPassword: z.string().optional().nullable(),
   })
-  // .refine((data) => data.password === data.confirmPassword, {
-  //   message: "Senhas não conferem",
-  //   path: ["confirmPassword"],
-  // });
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Senhas não conferem",
+    path: ["confirmPassword"],
+  });
