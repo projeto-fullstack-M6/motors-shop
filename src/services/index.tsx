@@ -3,7 +3,7 @@ import axios from "axios";
 const token = localStorage.getItem("@motors:token");
 
 export const ApiRequests = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://motors-api-deploy.onrender.com",
   timeout: 50000,
   headers: {
     "Content-Type": "application/json",
