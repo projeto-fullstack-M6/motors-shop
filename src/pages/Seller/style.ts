@@ -65,6 +65,7 @@ export const Div = styled.div`
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
+    gap: 40px;
   }
 
 

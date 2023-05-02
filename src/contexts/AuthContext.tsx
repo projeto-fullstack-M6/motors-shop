@@ -5,7 +5,6 @@ import { IUser } from "../interfaces/user";
 interface IAuthContext{
     user: IUser | null; 
     refreshing:boolean;
-    advertiser:boolean; 
 }
 
 export interface IChildrenProps{
@@ -20,14 +19,13 @@ export const AuthProvider = ({children}:IChildrenProps) => {
 
   const [refreshing, setRefreshing] = useState(true);
   const [user, setUser] = useState<IUser | null>(null);
-  const [advertiser, setAdvertiser] = useState(true)
 
   
   
 
   return(
 
-      <AuthContext.Provider value={{user, refreshing, advertiser}}>
+      <AuthContext.Provider value={{user, refreshing}}>
           {children}
       </AuthContext.Provider>
 

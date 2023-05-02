@@ -45,4 +45,10 @@ export const StyledDivCard = styled.div`
         gap: var(--gap-10);
     }
   }
+
+
+  .div-edit{
+    display: flex;
+    gap: 20px;
+  }
 `;

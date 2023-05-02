@@ -5,14 +5,12 @@ import { StyledTitle } from "../../styles/typography";
 import { StyledButton } from "../../styles/button";
 import { Card } from "../../components/Card/Card";
 import { StyledPageSection } from "../Home/style";
-import { AuthContext } from "../../contexts/AuthContext";
-import { useContext } from 'react'
+import { useState } from 'react'
 
 
 const Seller = () => {
 
-  const { advertiser } = useContext(AuthContext);
-  console.log(advertiser)
+  const [advertiser, setAdvertiser] = useState(true)
 
   return (
     

@@ -2,8 +2,13 @@ import { car } from "../../../mock";
 import { StyledButton } from "../../styles/button";
 import { StyledTitle } from "../../styles/typography";
 import { StyledDivCard } from "./styled";
+import {useState} from "react"
 
 export const Card = () => {
+
+  const [advertiser, setAdvertiser] = useState(true)
+
+
   return (
     <StyledDivCard>
       <div className="div-img">
@@ -44,6 +49,9 @@ export const Card = () => {
             minimumFractionDigits: 2,
           })}
         </StyledTitle>
+      </div>
+      <div className="div-edit">
+      <StyledButton  width="ten" height="three" buttonStyled={advertiser ? "border-black" : "off"}>Editar</StyledButton><StyledButton  width="seven" height="three" buttonStyled={advertiser ? "border-black" : "off"}>Ver delalhes</StyledButton>
       </div>
     </StyledDivCard>
   );
