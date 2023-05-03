@@ -168,7 +168,7 @@ export const AdminProvider = ({ children }: IChildren) => {
         // navigate("/");
       }
     }
-    loadAdminUser();
+    loadAdminUser();  
   }, []);
 
   return (

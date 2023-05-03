@@ -1,6 +1,7 @@
 import { NavigateFunction } from "react-router";
 import { IAdResponse } from "../adSchema.interface";
 import {
+  IForgotPasswordPage,
   IUserForgotPassword,
   IUserLogin,
   IUserLoginInfo,
@@ -24,7 +25,7 @@ export interface IUserContext {
   deleteUser: () => Promise<void>;
   userLogout: () => void;
   userSendEmail: (data: IUserForgotPassword) => Promise<void>;
-  userChangePassword: (data: IUserUpdate) => Promise<void>;
+  userChangePassword: (data: IForgotPasswordPage, token: string) => Promise<void>
   forgotPassword: boolean;
   setForgotPassword: React.Dispatch<React.SetStateAction<boolean>>;
   showEditUser: boolean;

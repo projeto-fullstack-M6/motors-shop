@@ -156,9 +156,7 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
-  const userChangePassword = async (data: IForgotPasswordPage) => {
-    const { token } = useParams();
-
+  const userChangePassword = async (data: IForgotPasswordPage, token: string) => {
     try {
       await ApiRequests.post(`/users/reset-password/${token}`, data);
       toast.success("Senha foi alterada com sucesso.");
