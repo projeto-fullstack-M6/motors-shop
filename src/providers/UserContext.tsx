@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
@@ -156,15 +156,18 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
-  const userChangePassword = async (data: IForgotPasswordPage, token: string) => {
-    try {
-      await ApiRequests.post(`/users/reset-password/${token}`, data);
-      toast.success("Senha foi alterada com sucesso.");
-    } catch (error) {
-      console.log(error);
-      toast.error("Senha não pôde ser alterada");
-    }
-  };
+  const userChangePassword = useCallback(
+    async (data: IForgotPasswordPage, token: string) => {
+      try {
+        await ApiRequests.post(`/users/reset-password/${token}`, data);
+        toast.success("Senha foi alterada com sucesso.");
+      } catch (error) {
+        console.log(error);
+        toast.error("Senha não pôde ser alterada");
+      }
+    },
+    []
+  );
 
   return (
     <UserContext.Provider
