@@ -30,7 +30,9 @@ export const ResetPasswordForm = () => {
   return (
     <>
       {token ? (
-        <StyledForm onSubmit={handleSubmit(userChangePassword)}>
+        <StyledForm
+          onSubmit={handleSubmit((data) => userChangePassword(data, token))}
+        >
           <StyledTitle
             tag="h3"
             fontSize="body-2-500"
