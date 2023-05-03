@@ -12,11 +12,10 @@ import { forgotPasswordPageSchema } from "../../serializers";
 import { StyledButton } from "../../styles/button";
 import { StyledForm } from "../../styles/form";
 import { StyledTitle } from "../../styles/typography";
-import { NotFound } from "../../components/NotFound/NotFound";
+import { toast } from "react-hot-toast";
+import { ApiRequests } from "../../services";
 
 export const ResetPasswordForm = () => {
-  const { userChangePassword } = useContext(UserContext);
-
   const {
     register,
     handleSubmit,
@@ -27,51 +26,55 @@ export const ResetPasswordForm = () => {
 
   const { token } = useParams();
 
+  const userChangePassword = async (data: IForgotPasswordPage) => {
+    try {
+      await ApiRequests.post(`/users/reset-password/${token}`, data);
+      toast.success("Senha foi alterada com sucesso.");
+    } catch (error) {
+      console.log(error);
+      toast.error("Senha não pôde ser alterada");
+    }
+  };
+
   return (
     <>
-      {token ? (
-        <StyledForm
-          onSubmit={handleSubmit((data) => userChangePassword(data, token))}
+      <StyledForm onSubmit={handleSubmit(userChangePassword)}>
+        <StyledTitle
+          tag="h3"
+          fontSize="body-2-500"
+          color="black"
+          align="align-self-start"
         >
-          <StyledTitle
-            tag="h3"
-            fontSize="body-2-500"
-            color="black"
-            align="align-self-start"
-          >
-            Informações Pessoais
-          </StyledTitle>
+          Informações Pessoais
+        </StyledTitle>
 
-          <Input
-            label="Nova senha"
-            type="password"
-            register={register("password")}
-            defaultValue=""
-            placeholder="Digitar senha"
-            error={errors.password}
-          />
+        <Input
+          label="Nova senha"
+          type="password"
+          register={register("password")}
+          defaultValue=""
+          placeholder="Digitar senha"
+          error={errors.password}
+        />
 
-          <Input
-            label="Confirmar nova senha"
-            type="password"
-            register={register("confirmPassword")}
-            defaultValue=""
-            placeholder="Digitar senha"
-            error={errors.confirmPassword}
-          />
+        <Input
+          label="Confirmar nova senha"
+          type="password"
+          register={register("confirmPassword")}
+          defaultValue=""
+          placeholder="Digitar senha"
+          error={errors.confirmPassword}
+        />
 
-          <StyledButton
-            width="one"
-            height="one"
-            buttonStyled="blue"
-            type="submit"
-          >
-            Trocar Senha
-          </StyledButton>
-        </StyledForm>
-      ) : (
-        <NotFound />
-      )}
+        <StyledButton
+          width="one"
+          height="one"
+          buttonStyled="blue"
+          type="submit"
+        >
+          Trocar Senha
+        </StyledButton>
+      </StyledForm>
     </>
   );
 };
