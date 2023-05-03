@@ -43,7 +43,7 @@ export const ResetPasswordForm = () => {
           </StyledTitle>
 
           <Input
-            label="Senha"
+            label="Nova senha"
             type="password"
             register={register("password")}
             defaultValue=""
@@ -52,7 +52,7 @@ export const ResetPasswordForm = () => {
           />
 
           <Input
-            label="Confirmar senha"
+            label="Confirmar nova senha"
             type="password"
             register={register("confirmPassword")}
             defaultValue=""
