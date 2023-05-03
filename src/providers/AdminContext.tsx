@@ -165,7 +165,7 @@ export const AdminProvider = ({ children }: IChildren) => {
           console.log(error);
         }
       } else {
-        navigate("/");
+        // navigate("/");
       }
     }
     loadAdminUser();
@@ -201,7 +201,6 @@ export const AdminProvider = ({ children }: IChildren) => {
         getAllBrandsForAnnouncements,
         getAllCarsForAnnouncements,
         getCarInfoClosedOption,
-
       }}
     >
       {children}
