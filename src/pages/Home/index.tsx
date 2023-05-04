@@ -8,8 +8,6 @@ import { Footer } from "../../components/Footer/Footer";
 import { StyledButton } from "../../styles/button";
 import { StyledImg, StyledPageSection, StyledSection } from "./style";
 
-import { Card } from "../../components/Card/Card";
-import { Header } from "../../components/Header/Header";
 import { cars } from "../../../mock";
 import { useState } from "react";
 
@@ -65,10 +63,6 @@ export const HomePage = () => {
       max: "",
     });
   };
-
-
-
-export const HomePage = () => {
 
   const { announcements } = useContext(UserContext);
   return (
@@ -210,7 +204,6 @@ export const HomePage = () => {
           </div>
         </aside>
         <main>
-
           {filteredCars.map((car, index) => (
             <Card
               key={index}
@@ -224,8 +217,6 @@ export const HomePage = () => {
               user={car.user}
             />
           ))}
-
-       
         </main>
       </StyledSection>
 
