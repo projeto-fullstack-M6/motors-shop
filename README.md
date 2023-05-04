@@ -44,8 +44,6 @@ O projeto utiliza as seguintes tecnologias e bibliotecas:
 - Vite: Ferramenta de build e servidor de desenvolvimento.
 - TypeScript (^4.9.3): Superset do JavaScript que adiciona tipos estáticos.
 
-## Arquitetura
-
 ### Arquitetura
 
 A arquitetura do projeto "Motors Shop" é dividida em duas partes principais: frontend e backend. O frontend é construído usando React, enquanto o backend utiliza Node.js, Express e TypeScript.
@@ -106,7 +104,7 @@ Este comando criará uma pasta chamada motors-API contendo os arquivos do projet
 
 ## Passo 2: Instalar as dependências
 
-Navegue até a pasta do projeto e instale as dependências do frontend.
+Navegue até a pasta do projeto e instale as dependências do frontend e backend.
 execute:
 
 ```bash
