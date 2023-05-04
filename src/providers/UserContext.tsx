@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
 
@@ -10,7 +10,6 @@ import {
   IUserContext,
 } from "../interfaces/Context/contexts.interface";
 import {
-  IForgotPasswordPage,
   IUserForgotPassword,
   IUserLogin,
   IUserLoginInfo,
@@ -161,18 +160,6 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
-  const userChangePassword = async (data: IForgotPasswordPage) => {
-    const { token } = useParams();
-
-    try {
-      await ApiRequests.post(`/users/reset-password/${token}`, data);
-      toast.success("Senha foi alterada com sucesso.");
-    } catch (error) {
-      console.log(error);
-      toast.error("Senha não pôde ser alterada");
-    }
-  };
-
   return (
     <UserContext.Provider
       value={{
@@ -185,7 +172,6 @@ export const UserProvider = ({ children }: IChildren) => {
         deleteUser,
         userLogout,
         userSendEmail,
-        userChangePassword,
         forgotPassword,
         setForgotPassword,
         showEditUser,

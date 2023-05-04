@@ -166,10 +166,10 @@ export const AdminProvider = ({ children }: IChildren) => {
           console.log(error);
         }
       } else {
-        navigate("/");
+        // navigate("/");
       }
     }
-    loadAdminUser();
+    loadAdminUser();  
   }, []);
 
   return (
@@ -202,7 +202,6 @@ export const AdminProvider = ({ children }: IChildren) => {
         getAllBrandsForAnnouncements,
         getAllCarsForAnnouncements,
         getCarInfoClosedOption,
-
       }}
     >
       {children}
