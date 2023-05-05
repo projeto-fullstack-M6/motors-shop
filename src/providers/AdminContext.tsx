@@ -7,7 +7,7 @@ import {
   IChildren,
 } from "../interfaces/Context/contexts.interface";
 import { kenzieKarsRequests } from "../services/kenzieKars";
-import { IAdRegister } from "../interfaces/adSchema.interface";
+import { IAdRegister, IAdUpdate } from "../interfaces/adSchema.interface";
 
 export const AdminContext = createContext({} as IAdminContext);
 
@@ -34,6 +34,22 @@ export const AdminProvider = ({ children }: IChildren) => {
   const [carYearClosedOption, setCarYearClosedOption] = useState("");
   const [carFuelClosedOption, setCarFuelClosedOption] = useState("");
   const [carFipePriceClosedOption, setCarFipePriceClosedOption] = useState("");
+  const [isEditAndDeleteAdModalActive, setIsEditAndDeleteAdModalActive] =
+    useState(false);
+  const [updatingAd, setUpdatingAd] = useState(false);
+  const [deletingAd, setDeletingAd] = useState(false);
+  const [confirmDeleteAd, setConfirmDeleteAd] = useState(false);
+  const [adToDeleteOrUpdateId, setAdToDeleteOrUpdateId] = useState("");
+  const [defaultBrandValueEditModal, setDefaultBrandValueEditModal] =
+    useState("");
+  const [defaultModelValueEditModal, setDefaultModelValueEditModal] =
+    useState("");
+  const [allAnnouncements, setAllAnnouncements] = useState<any>(null);
+
+  const getAllAnnouncementsToHomePage = async () => {
+    const everyAnnouncement = await ApiRequests.get("/announcements/?page=1");
+    setAllAnnouncements(everyAnnouncement.data.data);
+  };
 
   const getTheBrands = (response: any) => {
     const allBrandOptions = [];
@@ -144,6 +160,64 @@ export const AdminProvider = ({ children }: IChildren) => {
     } finally {
       setLoadingAdminPage(false);
       setIsAnnouncementModalActive(false);
+      setAllAnnouncementsImages([]);
+    }
+  };
+
+  const handleUpdateAnnouncement = async (data: IAdUpdate) => {
+    try {
+      setUpdatingAd(true);
+      const newData = {
+        model: data.model === "--" ? undefined : data.model,
+        brand: data.brand === "" ? undefined : data.brand,
+        description: data.description === "" ? undefined : data.description,
+        price: data.price === "" ? undefined : data.price,
+        km: data.km === "" ? undefined : data.km,
+        color: data.color === "" ? undefined : data.color,
+        fipePrice: data.fipePrice === "" ? undefined : data.fipePrice,
+        images:
+          allAnnouncementsImages!.length === 0
+            ? undefined
+            : allAnnouncementsImages,
+      };
+      const updateAd = await ApiRequests.patch(
+        `/announcements/${adToDeleteOrUpdateId}`,
+        newData
+      );
+      const filterAds = announcements?.filter(
+        (announcement) => announcement.id !== adToDeleteOrUpdateId
+      );
+      setAnnouncements([updateAd.data, ...filterAds!]);
+      toast.success("Anúncio atualizado com sucesse!");
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        "Não foi possível atualizar o anúncio. Tente novamente mais tarde"
+      );
+    } finally {
+      setUpdatingAd(false);
+      setAllAnnouncementsImages([]);
+      setIsEditAndDeleteAdModalActive(false);
+    }
+  };
+
+  const handleDeleteAnnouncement = async () => {
+    try {
+      setDeletingAd(true);
+      await ApiRequests.delete(`/announcements/${adToDeleteOrUpdateId}`);
+      const filterAnnuncements = announcements?.filter(
+        (announcement) => announcement.id !== adToDeleteOrUpdateId
+      );
+      setAnnouncements([...filterAnnuncements!]);
+      toast.success("Anúncio deletado com sucesso!");
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        "Não foi possível deletar o anúncio. Tente novamente mais tarde"
+      );
+    } finally {
+      setDeletingAd(false);
+      setConfirmDeleteAd(false);
     }
   };
 
@@ -168,7 +242,7 @@ export const AdminProvider = ({ children }: IChildren) => {
         // navigate("/");
       }
     }
-    loadAdminUser();  
+    loadAdminUser();
   }, []);
 
   return (
@@ -192,15 +266,32 @@ export const AdminProvider = ({ children }: IChildren) => {
         previousPage,
         exit,
         handleNewAnnouncement,
-
+        handleUpdateAnnouncement,
+        handleDeleteAnnouncement,
         carDetails,
         setCarDetails,
-
         isAnnouncementModalActive,
         setIsAnnouncementModalActive,
         getAllBrandsForAnnouncements,
         getAllCarsForAnnouncements,
         getCarInfoClosedOption,
+        getAllAnnouncementsToHomePage,
+        isEditAndDeleteAdModalActive,
+        setIsEditAndDeleteAdModalActive,
+        updatingAd,
+        setUpdatingAd,
+        deletingAd,
+        setDeletingAd,
+        adToDeleteOrUpdateId,
+        setAdToDeleteOrUpdateId,
+        confirmDeleteAd,
+        setConfirmDeleteAd,
+        defaultBrandValueEditModal,
+        setDefaultBrandValueEditModal,
+        defaultModelValueEditModal,
+        setDefaultModelValueEditModal,
+        allAnnouncements,
+        setAllAnnouncements,
       }}
     >
       {children}

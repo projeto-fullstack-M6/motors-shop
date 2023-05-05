@@ -25,7 +25,7 @@ const Adverts = () => {
 
           <section className="secRight">
             <div className="card1">
-              <img src={carDetails.img} alt="" />
+              <img src={carDetails.images![0]} alt="" />
             </div>
 
             <div className="card2">

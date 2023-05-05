@@ -6,7 +6,7 @@ import MotorsShop from "../../assets/MotorsShop.svg";
 
 import { StyledTitle } from "../../styles/typography";
 import { StyledHeader } from "./style";
-import { Dropdown } from "../Modals/Dropdown/Dropdown";
+import { Dropdown } from "../Dropdown/Dropdown";
 import { StyledLinkLogin, StyledLinkRegister } from "../../styles/link";
 import { Link } from "react-router-dom";
 

@@ -72,6 +72,11 @@ export const UserProvider = ({ children }: IChildren) => {
         );
         setAnnouncements(userAnnouncements.data.data);
         // navigate("/dashboard");
+      } else {
+        const allAnnouncements: any = await ApiRequests.get(
+          `/announcements/?page=${actualPage}`
+        );
+        setAnnouncements(allAnnouncements.data.data);
       }
       navigate("/dashboard");
       toast.success("Login realizado com sucesso.");

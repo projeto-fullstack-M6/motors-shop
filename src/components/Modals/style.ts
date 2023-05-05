@@ -51,4 +51,11 @@ export const StyledSectionModal = styled.section`
     gap: var(--gap-10);
     width: 100%;
   }
+
+  .div-modal-button-delete {
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-10);
+    width: 100%;
+  }
 `;
