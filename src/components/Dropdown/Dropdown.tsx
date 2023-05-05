@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { UserContext } from "../../../providers/UserContext";
+import { UserContext } from "../../providers/UserContext";
 
-import { ModalEditProfile } from "../ModalEditProfile/ModalEditProfile";
-import { ModalEditAddress } from "../ModalEditAddress/ModalEditAddress";
+import { ModalEditProfile } from "../Modals/ModalEditProfile/ModalEditProfile";
+import { ModalEditAddress } from "../Modals/ModalEditAddress/ModalEditAddress";
 
-import { StyledButton } from "../../../styles/button";
+import { StyledButton } from "../../styles/button";
 import { StyledDropdown } from "./styled";
-import { StyledLinkDropdown } from "../../../styles/link";
+import { StyledLinkDropdown } from "../../styles/link";
 
 export const Dropdown = () => {
   const {

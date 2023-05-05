@@ -6,10 +6,16 @@ import { StyledButton } from "../../styles/button";
 import { StyledImg, StyledPageSection, StyledSection } from "./style";
 
 import { cars } from "../../../mock";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StyledTitle } from "../../styles/typography";
+import { AdminContext } from "../../providers/AdminContext";
 
 export const HomePage = () => {
+  const { getAllAnnouncementsToHomePage, allAnnouncements } =
+    useContext(AdminContext);
+  useEffect(() => {
+    getAllAnnouncementsToHomePage();
+  }, []);
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedYear, setSelectedYear] = useState(0);
@@ -24,27 +30,37 @@ export const HomePage = () => {
     max: "",
   });
 
-  const filteredCars = cars.filter((car) => {
+  const filteredCars = allAnnouncements?.filter((announcement: any) => {
     return (
-      (!selectedBrand || car.brand === selectedBrand) &&
-      (!selectedModel || car.model === selectedModel) &&
-      (!selectedYear || car.year === selectedYear) &&
-      (!selectedFuel || car.fuel === selectedFuel) &&
-      (!selectedColor || car.color === selectedColor) &&
-      (!selectedKm.min || car.km >= selectedKm.min) &&
-      (!selectedKm.max || car.km <= selectedKm.max) &&
+      (!selectedBrand || announcement.brand === selectedBrand) &&
+      (!selectedModel || announcement.model === selectedModel) &&
+      (!selectedYear || announcement.year === selectedYear) &&
+      (!selectedFuel || announcement.fuel === selectedFuel) &&
+      (!selectedColor || announcement.color === selectedColor) &&
+      (!selectedKm.min || announcement.km >= selectedKm.min) &&
+      (!selectedKm.max || announcement.km <= selectedKm.max) &&
       (!selectedPrice.min ||
-        parseFloat(car.price) >= parseFloat(selectedPrice.min)) &&
+        parseFloat(announcement.price) >= parseFloat(selectedPrice.min)) &&
       (!selectedPrice.max ||
-        parseFloat(car.price) <= parseFloat(selectedPrice.max))
+        parseFloat(announcement.price) <= parseFloat(selectedPrice.max))
     );
   });
 
-  const uniqueBrands = [...new Set(filteredCars.map((car) => car.brand))];
-  const uniqueModels = [...new Set(filteredCars.map((car) => car.model))];
-  const uniqueYears = [...new Set(filteredCars.map((car) => car.year))];
-  const uniqueFuel = [...new Set(filteredCars.map((car) => car.fuel))];
-  const uniqueColors = [...new Set(filteredCars.map((car) => car.color))];
+  const uniqueBrands = [
+    ...new Set(filteredCars?.map((announcement: any) => announcement.brand)),
+  ];
+  const uniqueModels = [
+    ...new Set(filteredCars?.map((announcement: any) => announcement.model)),
+  ];
+  const uniqueYears = [
+    ...new Set(filteredCars?.map((announcement: any) => announcement.year)),
+  ];
+  const uniqueFuel = [
+    ...new Set(filteredCars?.map((announcement: any) => announcement.fuel)),
+  ];
+  const uniqueColors = [
+    ...new Set(filteredCars?.map((announcement: any) => announcement.color)),
+  ];
 
   const handleClearFilters = () => {
     setSelectedBrand("");
@@ -85,7 +101,7 @@ export const HomePage = () => {
             </StyledTitle>
 
             <div>
-              {uniqueBrands.map((brand, index) => (
+              {uniqueBrands.map((brand: any, index) => (
                 <button
                   className="button-filter"
                   key={index}
@@ -102,7 +118,7 @@ export const HomePage = () => {
               Modelo
             </StyledTitle>
             <div>
-              {uniqueModels.map((model, index) => (
+              {uniqueModels.map((model: any, index) => (
                 <button
                   className="button-filter"
                   key={index}
@@ -119,7 +135,7 @@ export const HomePage = () => {
               Cor
             </StyledTitle>
             <div>
-              {uniqueColors.map((color, index) => (
+              {uniqueColors.map((color: any, index) => (
                 <button
                   className="button-filter"
                   key={index}
@@ -136,7 +152,7 @@ export const HomePage = () => {
               Ano
             </StyledTitle>
             <div>
-              {uniqueYears.map((year, index) => (
+              {uniqueYears.map((year: any, index) => (
                 <button
                   className="button-filter"
                   key={index}
@@ -153,7 +169,7 @@ export const HomePage = () => {
               Combustível
             </StyledTitle>
             <div>
-              {uniqueFuel.map((fuel, index) => (
+              {uniqueFuel.map((fuel: any, index) => (
                 <button
                   className="button-filter"
                   key={index}
@@ -241,10 +257,10 @@ export const HomePage = () => {
         </aside>
 
         <main>
-          {filteredCars.map((car, index) => (
+          {filteredCars?.map((car: any, index: any) => (
             <Card
               key={index}
-              img={car.img}
+              images={car.images}
               brand={car.brand}
               model={car.model}
               year={car.year}

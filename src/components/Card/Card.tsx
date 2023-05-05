@@ -13,7 +13,7 @@ import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 
 export const Card = ({
-  img,
+  images,
   brand,
   model,
   year,
@@ -23,18 +23,34 @@ export const Card = ({
   description,
   isGoodToSale,
   user,
+  id,
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
+  const {
+    getAllBrandsForAnnouncements,
+    setAdToDeleteOrUpdateId,
+    setDefaultBrandValueEditModal,
+    setDefaultModelValueEditModal,
+  } = useContext(AdminContext);
 
   const token = localStorage.getItem("@motors:token");
 
-  const { setCarDetails } = useContext(AdminContext);
+  const handleOpenUpdateModal = () => {
+    getAllBrandsForAnnouncements();
+    setIsEditAndDeleteAdModalActive(true);
+    setAdToDeleteOrUpdateId(id);
+    setDefaultBrandValueEditModal(brand);
+    setDefaultModelValueEditModal(model);
+  };
+
+  const { setCarDetails, setIsEditAndDeleteAdModalActive } =
+    useContext(AdminContext);
 
   const [imageNumber, setImageNumber] = useState(0);
 
   const handleSetCarDetails = () => {
     setCarDetails({
-      img,
+      images,
       brand,
       model,
       year,
@@ -48,7 +64,7 @@ export const Card = ({
   };
 
   const nextImageNumber = () => {
-    if (imageNumber < img?.length - 1) {
+    if (imageNumber < images?.length - 1) {
       setImageNumber(imageNumber + 1);
     }
   };
@@ -61,20 +77,20 @@ export const Card = ({
 
   return (
     <StyledDivCard>
-      {img && img.length >= 1 ? (
+      {images && images.length >= 1 ? (
         <section>
           <div className="div-img">
-            <img src={img![imageNumber]} alt="imagem de carro" />
+            <img src={images![imageNumber]} alt="imagem de carro" />
           </div>
           <div className="next-previous">
-            {img?.length > 1 ? (
+            {images?.length > 1 ? (
               <GrPrevious
                 onClick={() => previousImageNumber()}
                 enableBackground="#4529e6"
                 cursor={"pointer"}
               />
             ) : null}
-            {img?.length > 1 ? (
+            {images?.length > 1 ? (
               <GrNext
                 onClick={() => nextImageNumber()}
                 color="#4529e6"
@@ -157,10 +173,14 @@ export const Card = ({
 
       {!userLoginAdminInfo?.isBuyer && token ? (
         <div className="div-button">
-          <StyledButton width="ten" height="two" buttonStyled="border-black">
+          <StyledButton
+            width="ten"
+            height="two"
+            buttonStyled="border-black"
+            onClick={() => handleOpenUpdateModal()}
+          >
             Editar
           </StyledButton>
-
           <StyledLinkDetails to="/adverts" onClick={handleSetCarDetails}>
             Ver detalhes
           </StyledLinkDetails>

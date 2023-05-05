@@ -52,7 +52,8 @@ export interface IAdminContext {
   previousPage: () => Promise<void>;
   exit: () => void;
   handleNewAnnouncement: (data: any) => Promise<void>;
-
+  handleUpdateAnnouncement: (data: any) => Promise<void>;
+  handleDeleteAnnouncement: () => Promise<void>;
   carDetails: any;
   setCarDetails: React.Dispatch<React.SetStateAction<any>>;
   isAnnouncementModalActive: boolean;
@@ -74,4 +75,23 @@ export interface IAdminContext {
   setCarYearClosedOption: React.Dispatch<React.SetStateAction<string>>;
   getAllCarsForAnnouncements: (selectedBrand: string) => Promise<void>;
   getCarInfoClosedOption: (carId: string) => void;
+  isEditAndDeleteAdModalActive: boolean;
+  setIsEditAndDeleteAdModalActive: React.Dispatch<
+    React.SetStateAction<boolean>
+  >;
+  updatingAd: boolean;
+  setUpdatingAd: React.Dispatch<React.SetStateAction<boolean>>;
+  deletingAd: boolean;
+  setDeletingAd: React.Dispatch<React.SetStateAction<boolean>>;
+  adToDeleteOrUpdateId: string;
+  setAdToDeleteOrUpdateId: React.Dispatch<React.SetStateAction<string>>;
+  confirmDeleteAd: boolean;
+  setConfirmDeleteAd: React.Dispatch<React.SetStateAction<boolean>>;
+  defaultBrandValueEditModal: string;
+  setDefaultBrandValueEditModal: React.Dispatch<React.SetStateAction<string>>;
+  defaultModelValueEditModal: string;
+  setDefaultModelValueEditModal: React.Dispatch<React.SetStateAction<string>>;
+  allAnnouncements: any;
+  setAllAnnouncements: React.Dispatch<any>;
+  getAllAnnouncementsToHomePage: () => Promise<void>;
 }

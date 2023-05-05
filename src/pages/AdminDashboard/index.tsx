@@ -17,6 +17,8 @@ import {
   StyledMainContentAdmin,
   StyledSectionAdmin,
 } from "./style";
+import ModalEditAds from "../../components/Modals/ModalEditandDeleteAd";
+import ModalCofirmDeleteAd from "../../components/Modals/DeleteAdModal";
 
 export const AdminDashboard = () => {
   const {
@@ -25,6 +27,8 @@ export const AdminDashboard = () => {
     isAnnouncementModalActive,
     setIsAnnouncementModalActive,
     getAllBrandsForAnnouncements,
+    isEditAndDeleteAdModalActive,
+    confirmDeleteAd,
   } = useContext(AdminContext);
   const { userLoginAdminInfo, announcements, actualPage, setActualPage } =
     useContext(UserContext);
@@ -38,9 +42,7 @@ export const AdminDashboard = () => {
       {!userLoginAdminInfo?.isBuyer ? (
         <>
           <Header />
-
           <StyledSectionAdmin />
-
           <StyledAdminCardInfo>
             <span className="acronym-info">
               {userLoginAdminInfo?.name
@@ -81,6 +83,8 @@ export const AdminDashboard = () => {
           <StyledMainContentAdmin>
             <div>
               {isAnnouncementModalActive && <ModalAds />}
+              {isEditAndDeleteAdModalActive && <ModalEditAds />}
+              {confirmDeleteAd && <ModalCofirmDeleteAd />}
               {announcements?.length === 0 ? (
                 <StyledTitle tag="span" fontSize="body-1-400">
                   Ainda não possui nenhum anúncio
@@ -101,6 +105,7 @@ export const AdminDashboard = () => {
                   }: any) => (
                     <Card
                       key={id}
+                      id={id}
                       brand={brand}
                       model={model}
                       year={year}
