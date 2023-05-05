@@ -130,7 +130,11 @@ const Adverts = () => {
 										key={index}
 										comment={comment.text}
 										user={comment.user}
-										date={comment.createdAt}
+										date={comment.createdAt
+											.slice(0, 10)
+											.split("-")
+											.reverse()
+											.join("/")}
 									/>
 								))
 							) : (
