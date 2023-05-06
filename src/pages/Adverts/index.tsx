@@ -2,7 +2,7 @@ import { Footer } from "../../components/Footer/Footer";
 
 import { StyledButton } from "../../styles/button";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../providers/AdminContext";
 import { UserContext } from "../../providers/UserContext";
 
@@ -12,20 +12,24 @@ import { Comments } from "../../components/Comments/Comments";
 import { StyledAdvertDetailing } from "./style";
 
 import { StyledTitle } from "../../styles/typography";
-import { ApiRequests } from "../../services";
 
 const Adverts = () => {
 	const { carDetails } = useContext(AdminContext);
-	const [comments, setComments] = useState<any>([]);
-	const { userLoginAdminInfo } = useContext(UserContext);
+	const { userLoginAdminInfo, comments, getComments, newComment, loading } =
+		useContext(UserContext);
 
-	ApiRequests.get("/comments").then((response) => {
-		setComments(response.data.data);
-	});
+	useEffect(() => {
+		getComments();
+	}, [loading]);
 
-	const newComment = (event: any) => {
+	const onSubmitFunc = (event: any) => {
 		event.preventDefault();
-		console.log(event.target[0].value);
+
+		const comment = {
+			text: event.target[0].value,
+		};
+
+		newComment(comment, carDetails.id);
 	};
 
 	return (
@@ -120,10 +124,22 @@ const Adverts = () => {
 							>
 								Comentários
 							</StyledTitle>
-							{/* comments ? <Comments /> : <h1>oi</h1> */}
-							<Comments />
-							<Comments />
-							<Comments />
+							{comments.length ? (
+								comments.map((comment: any, index: number) => (
+									<Comments
+										key={index}
+										comment={comment.text}
+										user={comment.user}
+										date={comment.createdAt
+											.slice(0, 10)
+											.split("-")
+											.reverse()
+											.join("/")}
+									/>
+								))
+							) : (
+								<sub>Ainda sem comentários...</sub>
+							)}
 						</div>
 
 						<div className="card5">
@@ -147,7 +163,7 @@ const Adverts = () => {
 
 							<form
 								className="divpublication"
-								onSubmit={newComment}
+								onSubmit={onSubmitFunc}
 							>
 								<textarea
 									className="publication"
