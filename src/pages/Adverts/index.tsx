@@ -2,8 +2,9 @@ import { Footer } from "../../components/Footer/Footer";
 
 import { StyledButton } from "../../styles/button";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AdminContext } from "../../providers/AdminContext";
+import { UserContext } from "../../providers/UserContext";
 
 import { Header } from "../../components/Header/Header";
 import { Comments } from "../../components/Comments/Comments";
@@ -11,205 +12,251 @@ import { Comments } from "../../components/Comments/Comments";
 import { StyledAdvertDetailing } from "./style";
 
 import { StyledTitle } from "../../styles/typography";
+import { ApiRequests } from "../../services";
 
 const Adverts = () => {
-  const { carDetails } = useContext(AdminContext);
+	const { carDetails } = useContext(AdminContext);
+	const [comments, setComments] = useState<any>([]);
+	const { userLoginAdminInfo } = useContext(UserContext);
 
-  return (
-    <>
-      <Header />
+	ApiRequests.get("/comments").then((response) => {
+		setComments(response.data.data);
+	});
 
-      <StyledAdvertDetailing>
-        <div className="advert">
-          <div className="background-blue"></div>
+	const newComment = (event: any) => {
+		event.preventDefault();
+		console.log(event.target[0].value);
+	};
 
-          <section className="secRight">
-            <div className="card1">
-              <img src={carDetails.images![0]} alt="" />
-            </div>
+	return (
+		<>
+			<Header />
 
-            <div className="card2">
-              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
-                {carDetails.brand} {carDetails.model}
-              </StyledTitle>
+			<StyledAdvertDetailing>
+				<div className="advert">
+					<div className="background-blue"></div>
 
-              <div>
-                <div className="km">
-                  <StyledButton
-                    width="eleven"
-                    height="three"
-                    buttonStyled="light-blue"
-                  >
-                    {carDetails.year}
-                  </StyledButton>
+					<section className="secRight">
+						<div className="card1">
+							<img src={carDetails.images![0]} alt="" />
+						</div>
 
-                  <StyledButton
-                    width="eleven"
-                    height="three"
-                    buttonStyled="light-blue"
-                  >
-                    {carDetails.km} KM
-                  </StyledButton>
-                </div>
+						<div className="card2">
+							<StyledTitle
+								tag="h3"
+								fontSize="heading-6-600"
+								color="grey-1"
+							>
+								{carDetails.brand} - {carDetails.model}
+							</StyledTitle>
 
-                <StyledTitle tag="span" fontSize="heading-7-500" color="grey-1">
-                  R$
-                  {parseFloat(carDetails.price).toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                  })}
-                </StyledTitle>
-              </div>
+							<div>
+								<div className="km">
+									<StyledButton
+										width="eleven"
+										height="three"
+										buttonStyled="light-blue"
+									>
+										{carDetails.year}
+									</StyledButton>
 
-              <StyledButton
-                width="eight"
-                height="two"
-                buttonStyled="blue"
-                font="two"
-              >
-                Comprar
-              </StyledButton>
-            </div>
+									<StyledButton
+										width="eleven"
+										height="three"
+										buttonStyled="light-blue"
+									>
+										{carDetails.km} KM
+									</StyledButton>
+								</div>
 
-            <div className="card3">
-              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
-                Descrição
-              </StyledTitle>
+								<StyledTitle
+									tag="span"
+									fontSize="heading-7-500"
+									color="grey-1"
+								>
+									R$
+									{parseFloat(
+										carDetails.price
+									).toLocaleString("pt-BR", {
+										minimumFractionDigits: 2,
+									})}
+								</StyledTitle>
+							</div>
 
-              <StyledTitle
-                tag="p"
-                fontSize="body-1-400"
-                color="grey-2"
-                className="description"
-              >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </StyledTitle>
-            </div>
+							<StyledButton
+								width="eight"
+								height="two"
+								buttonStyled="blue"
+								font="two"
+							>
+								Comprar
+							</StyledButton>
+						</div>
 
-            <div className="card4">
-              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
-                Comentários
-              </StyledTitle>
+						<div className="card3">
+							<StyledTitle
+								tag="h3"
+								fontSize="heading-6-600"
+								color="grey-1"
+							>
+								Descrição
+							</StyledTitle>
 
-              <Comments />
-              <Comments />
-              <Comments />
-            </div>
+							<StyledTitle
+								tag="p"
+								fontSize="body-1-400"
+								color="grey-2"
+								className="description"
+							>
+								{carDetails.description}
+							</StyledTitle>
+						</div>
 
-            <div className="card5">
-              <div>
-                <StyledTitle
-                  tag="p"
-                  fontSize="body-2-500"
-                  color="white"
-                  className="acronym"
-                >
-                  PL
-                </StyledTitle>
-                <StyledTitle tag="p" fontSize="body-2-500" color="grey-1">
-                  Petrus Lobato
-                </StyledTitle>
-              </div>
+						<div className="card4">
+							<StyledTitle
+								tag="h3"
+								fontSize="heading-6-600"
+								color="grey-1"
+							>
+								Comentários
+							</StyledTitle>
+							{/* comments ? <Comments /> : <h1>oi</h1> */}
+							<Comments />
+							<Comments />
+							<Comments />
+						</div>
 
-              <div className="divpublication">
-                <textarea
-                  className="publication"
-                  defaultValue="Carro muito confortável, foi uma ótima experiência de compra..."
-                ></textarea>
+						<div className="card5">
+							<div>
+								<StyledTitle
+									tag="p"
+									fontSize="body-2-500"
+									color="white"
+									className="acronym"
+								>
+									{userLoginAdminInfo?.name.charAt(0)}
+								</StyledTitle>
+								<StyledTitle
+									tag="p"
+									fontSize="body-2-500"
+									color="grey-1"
+								>
+									{userLoginAdminInfo?.name}
+								</StyledTitle>
+							</div>
 
-                <StyledButton
-                  width="eight"
-                  height="two"
-                  buttonStyled="blue"
-                  font="two"
-                  className="align"
-                >
-                  Comentar
-                </StyledButton>
-              </div>
+							<form
+								className="divpublication"
+								onSubmit={newComment}
+							>
+								<textarea
+									className="publication"
+									placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
+								></textarea>
 
-              <div>
-                <StyledTitle
-                  tag="span"
-                  fontSize="span-tag"
-                  color="grey-3"
-                  className="span-tag"
-                >
-                  Gostei Muito!
-                </StyledTitle>
+								<StyledButton
+									width="eight"
+									height="two"
+									buttonStyled="blue"
+									font="two"
+									className="align"
+								>
+									Comentar
+								</StyledButton>
+							</form>
 
-                <StyledTitle
-                  tag="span"
-                  fontSize="span-tag"
-                  color="grey-3"
-                  className="span-tag"
-                >
-                  Incrivel!
-                </StyledTitle>
+							<div>
+								<StyledTitle
+									tag="span"
+									fontSize="span-tag"
+									color="grey-3"
+									className="span-tag"
+								>
+									Gostei Muito!
+								</StyledTitle>
 
-                <StyledTitle
-                  tag="span"
-                  fontSize="span-tag"
-                  color="grey-3"
-                  className="span-tag"
-                >
-                  Recomendarei para amigos!
-                </StyledTitle>
-              </div>
-            </div>
-          </section>
+								<StyledTitle
+									tag="span"
+									fontSize="span-tag"
+									color="grey-3"
+									className="span-tag"
+								>
+									Incrivel!
+								</StyledTitle>
 
-          <section className="secLeft">
-            <div className="card6">
-              <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
-                Fotos
-              </StyledTitle>
+								<StyledTitle
+									tag="span"
+									fontSize="span-tag"
+									color="grey-3"
+									className="span-tag"
+								>
+									Recomendarei para amigos!
+								</StyledTitle>
+							</div>
+						</div>
+					</section>
 
-              <div className="minCar">
-                <img src={carDetails.img} alt="carro" />
-                <img src={carDetails.img} alt="carro" />
-                <img src={carDetails.img} alt="carro" />
-                <img src={carDetails.img} alt="carro" />
-                <img src={carDetails.img} alt="carro" />
-                <img src={carDetails.img} alt="carro" />
-              </div>
-            </div>
+					<section className="secLeft">
+						<div className="card6">
+							<StyledTitle
+								tag="h3"
+								fontSize="heading-6-600"
+								color="grey-1"
+							>
+								Fotos
+							</StyledTitle>
 
-            <div className="card7">
-              <p className="acronym-bio">PL</p>
+							<div className="minCar">
+								{carDetails.images?.map(
+									(image: any, index: number) => (
+										<img
+											key={index}
+											src={image}
+											alt="carro"
+										/>
+									)
+								)}
+							</div>
+						</div>
 
-              <StyledTitle tag="p" fontSize="heading-6-600" color="grey-1">
-                Petrus Lobato
-              </StyledTitle>
+						<div className="card7">
+							<p className="acronym-bio">
+								{userLoginAdminInfo?.name.charAt(0)}
+							</p>
 
-              <StyledTitle
-                tag="p"
-                fontSize="body-1-400"
-                color="grey-2"
-                className="text-bio"
-              >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's.
-              </StyledTitle>
+							<StyledTitle
+								tag="p"
+								fontSize="heading-6-600"
+								color="grey-1"
+							>
+								{userLoginAdminInfo?.name}
+							</StyledTitle>
 
-              <StyledButton
-                width="four"
-                height="one"
-                buttonStyled="black"
-                font="two"
-              >
-                Ver todos anuncios
-              </StyledButton>
-            </div>
-          </section>
-        </div>
-      </StyledAdvertDetailing>
+							<StyledTitle
+								tag="p"
+								fontSize="body-1-400"
+								color="grey-2"
+								className="text-bio"
+							>
+								{userLoginAdminInfo?.description}
+							</StyledTitle>
 
-      <Footer />
-    </>
-  );
+							<StyledButton
+								width="four"
+								height="one"
+								buttonStyled="black"
+								font="two"
+							>
+								Ver todos anuncios
+							</StyledButton>
+						</div>
+					</section>
+				</div>
+			</StyledAdvertDetailing>
+
+			<Footer />
+		</>
+	);
 };
 
 export default Adverts;
