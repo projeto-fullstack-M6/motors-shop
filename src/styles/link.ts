@@ -74,3 +74,23 @@ export const StyledLinkDetails = styled(Link)`
   }
   cursor: pointer;
 `;
+
+export const StyledLinkAdvertiser = styled(Link)`
+  width: 206px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--white);
+  background-color: var(--grey-0);
+  border-radius: var(--border-radius-4);
+  cursor: pointer;
+
+  font-size: 14px;
+
+  &:hover {
+    background-color: var(--grey-1);
+  }
+`;
