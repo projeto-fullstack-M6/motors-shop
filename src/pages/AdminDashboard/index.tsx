@@ -37,6 +37,7 @@ export const AdminDashboard = () => {
     getAllBrandsForAnnouncements();
     setIsAnnouncementModalActive(true);
   };
+
   return (
     <>
       {!userLoginAdminInfo?.isBuyer ? (
@@ -102,6 +103,7 @@ export const AdminDashboard = () => {
                     description,
                     isGoodToSale,
                     images,
+                    user,
                   }: any) => (
                     <Card
                       key={id}
@@ -115,6 +117,7 @@ export const AdminDashboard = () => {
                       description={description}
                       isGoodToSale={isGoodToSale}
                       images={images}
+                      user={user}
                     />
                   )
                 )

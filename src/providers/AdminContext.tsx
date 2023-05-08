@@ -125,15 +125,6 @@ export const AdminProvider = ({ children }: IChildren) => {
     }
   };
 
-  const exit = (): void => {
-    setUserLoginAdminInfo(null);
-    setAnnouncements(null);
-    setActualPage(1);
-    localStorage.removeItem("@motors:token");
-    navigate("/");
-    toast.success("Logout realizado com sucesso");
-  };
-
   const handleNewAnnouncement = async (data: IAdRegister) => {
     try {
       const newData = {
@@ -264,7 +255,6 @@ export const AdminProvider = ({ children }: IChildren) => {
         setAllAnnouncementsImages,
         nextPage,
         previousPage,
-        exit,
         handleNewAnnouncement,
         handleUpdateAnnouncement,
         handleDeleteAnnouncement,

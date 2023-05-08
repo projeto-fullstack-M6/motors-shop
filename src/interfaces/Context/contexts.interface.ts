@@ -1,7 +1,6 @@
 import { NavigateFunction } from "react-router";
 import { IAdResponse } from "../adSchema.interface";
 import {
-	IForgotPasswordPage,
 	IUserForgotPassword,
 	IUserLogin,
 	IUserLoginInfo,
@@ -54,7 +53,6 @@ export interface IAdminContext {
 	setLoadingAdminPage: React.Dispatch<React.SetStateAction<boolean>>;
 	nextPage: () => Promise<void>;
 	previousPage: () => Promise<void>;
-	exit: () => void;
 	handleNewAnnouncement: (data: any) => Promise<void>;
 	handleUpdateAnnouncement: (data: any) => Promise<void>;
 	handleDeleteAnnouncement: () => Promise<void>;

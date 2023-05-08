@@ -13,195 +13,179 @@ import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 
 export const Card = ({
-	images,
-	brand,
-	model,
-	year,
-	km,
-	fipePrice,
-	price,
-	description,
-	isGoodToSale,
-	id,
-	user,
+  images,
+  brand,
+  model,
+  year,
+  km,
+  fipePrice,
+  price,
+  description,
+  isGoodToSale,
+  id,
+  user,
 }: any) => {
-	const { userLoginAdminInfo } = useContext(UserContext);
-	const {
-		getAllBrandsForAnnouncements,
-		setAdToDeleteOrUpdateId,
-		setDefaultBrandValueEditModal,
-		setDefaultModelValueEditModal,
-	} = useContext(AdminContext);
+  const { userLoginAdminInfo } = useContext(UserContext);
 
-	const token = localStorage.getItem("@motors:token");
+  const {
+    getAllBrandsForAnnouncements,
+    setAdToDeleteOrUpdateId,
+    setDefaultBrandValueEditModal,
+    setDefaultModelValueEditModal,
+  } = useContext(AdminContext);
 
-	const handleOpenUpdateModal = () => {
-		getAllBrandsForAnnouncements();
-		setIsEditAndDeleteAdModalActive(true);
-		setAdToDeleteOrUpdateId(id);
-		setDefaultBrandValueEditModal(brand);
-		setDefaultModelValueEditModal(model);
-	};
+  const token = localStorage.getItem("@motors:token");
 
-	const { setCarDetails, setIsEditAndDeleteAdModalActive } =
-		useContext(AdminContext);
+  const handleOpenUpdateModal = () => {
+    getAllBrandsForAnnouncements();
+    setIsEditAndDeleteAdModalActive(true);
+    setAdToDeleteOrUpdateId(id);
+    setDefaultBrandValueEditModal(brand);
+    setDefaultModelValueEditModal(model);
+  };
 
-	const [imageNumber, setImageNumber] = useState(0);
+  const { setCarDetails, setIsEditAndDeleteAdModalActive } =
+    useContext(AdminContext);
 
-	const handleSetCarDetails = () => {
-		setCarDetails({
-			images,
-			brand,
-			model,
-			year,
-			km,
-			fipePrice,
-			price,
-			description,
-			isGoodToSale,
-			user,
-			id,
-		});
-	};
+  const [imageNumber, setImageNumber] = useState(0);
 
-	const nextImageNumber = () => {
-		if (imageNumber < images?.length - 1) {
-			setImageNumber(imageNumber + 1);
-		}
-	};
+  const handleSetCarDetails = () => {
+    setCarDetails({
+      images,
+      brand,
+      model,
+      year,
+      km,
+      fipePrice,
+      price,
+      description,
+      isGoodToSale,
+      user,
+      id,
+    });
+  };
 
-	const previousImageNumber = () => {
-		if (imageNumber > 0) {
-			setImageNumber(imageNumber - 1);
-		}
-	};
+  const nextImageNumber = () => {
+    if (imageNumber < images?.length - 1) {
+      setImageNumber(imageNumber + 1);
+    }
+  };
 
-	return (
-		<StyledDivCard>
-			{images && images.length >= 1 ? (
-				<section>
-					<div className="div-img">
-						<img src={images![imageNumber]} alt="imagem de carro" />
-					</div>
-					<div className="next-previous">
-						{images?.length > 1 ? (
-							<GrPrevious
-								onClick={() => previousImageNumber()}
-								enableBackground="#4529e6"
-								cursor={"pointer"}
-							/>
-						) : null}
-						{images?.length > 1 ? (
-							<GrNext
-								onClick={() => nextImageNumber()}
-								color="#4529e6"
-								cursor={"pointer"}
-							/>
-						) : null}
-					</div>
-				</section>
-			) : (
-				<div className="div-img">
-					<img src={NoImg} alt="sem imagem" title="sem imagem" />
-				</div>
-			)}
+  const previousImageNumber = () => {
+    if (imageNumber > 0) {
+      setImageNumber(imageNumber - 1);
+    }
+  };
 
-			<Link to="/adverts" onClick={handleSetCarDetails}>
-				<StyledTitle
-					tag="h2"
-					fontSize="heading-7-600"
-					color="grey-1"
-					className="ellipsis"
-				>
-					{brand} - {model}
-				</StyledTitle>
-				<StyledTitle
-					tag="p"
-					fontSize="body-2-400"
-					color="grey-2"
-					className="ellipsis"
-				>
-					{description}
-				</StyledTitle>
+  return (
+    <StyledDivCard>
+      {images && images.length >= 1 ? (
+        <section>
+          <div className="div-img">
+            <img src={images![imageNumber]} alt="imagem de carro" />
+          </div>
+          <div className="next-previous">
+            {images?.length > 1 ? (
+              <GrPrevious
+                onClick={() => previousImageNumber()}
+                enableBackground="#4529e6"
+                cursor={"pointer"}
+              />
+            ) : null}
+            {images?.length > 1 ? (
+              <GrNext
+                onClick={() => nextImageNumber()}
+                color="#4529e6"
+                cursor={"pointer"}
+              />
+            ) : null}
+          </div>
+        </section>
+      ) : (
+        <div className="div-img">
+          <img src={NoImg} alt="sem imagem" title="sem imagem" />
+        </div>
+      )}
 
-				{userLoginAdminInfo?.isBuyer || !token ? (
-					<div className="div-name">
-						<div className="div-acronym">
-							<StyledTitle
-								tag="p"
-								fontSize="body-2-500"
-								color="white"
-							>
-								{userLoginAdminInfo?.name
-									.split(" ")
-									.map((name) => name.charAt(0))
-									.join("")
-									.toUpperCase()}
-							</StyledTitle>
-						</div>
-						<StyledTitle
-							tag="p"
-							fontSize="body-2-500"
-							color="grey-2"
-						>
-							{userLoginAdminInfo?.name}
-						</StyledTitle>
-					</div>
-				) : null}
+      <Link to="/adverts" onClick={handleSetCarDetails}>
+        <StyledTitle
+          tag="h2"
+          fontSize="heading-7-600"
+          color="grey-1"
+          className="ellipsis"
+        >
+          {brand} - {model}
+        </StyledTitle>
+        <StyledTitle
+          tag="p"
+          fontSize="body-2-400"
+          color="grey-2"
+          className="ellipsis"
+        >
+          {description}
+        </StyledTitle>
 
-				<div className="div-data">
-					<div className="div-button">
-						<StyledButton
-							width="eight"
-							height="three"
-							buttonStyled="light-blue"
-						>
-							{parseFloat(km).toLocaleString("pt-BR", {
-								minimumFractionDigits: 0,
-							})}{" "}
-							KM
-						</StyledButton>
+        {user?.isBuyer || !token ? (
+          <div className="div-name">
+            <div className="div-acronym">
+              <StyledTitle tag="p" fontSize="body-2-500" color="white">
+                {user?.name.charAt(0).toUpperCase()}
+              </StyledTitle>
+            </div>
+            <StyledTitle tag="p" fontSize="body-2-500" color="grey-2">
+              {user?.name}
+            </StyledTitle>
+          </div>
+        ) : null}
 
-						<StyledButton
-							width="eleven"
-							height="three"
-							buttonStyled="light-blue"
-						>
-							{year}
-						</StyledButton>
-					</div>
+        <div className="div-data">
+          <div className="div-button">
+            <StyledButton
+              width="eight"
+              height="three"
+              buttonStyled="light-blue"
+            >
+              {parseFloat(km).toLocaleString("pt-BR", {
+                minimumFractionDigits: 0,
+              })}{" "}
+              KM
+            </StyledButton>
 
-					<StyledTitle
-						tag="span"
-						fontSize="heading-7-500"
-						color="grey-1"
-					>
-						R${" "}
-						{parseFloat(price).toLocaleString("pt-BR", {
-							minimumFractionDigits: 2,
-						})}
-					</StyledTitle>
-				</div>
-			</Link>
+            <StyledButton
+              width="eleven"
+              height="three"
+              buttonStyled="light-blue"
+            >
+              {year}
+            </StyledButton>
+          </div>
 
-			{!userLoginAdminInfo?.isBuyer && token ? (
-				<div className="div-button">
-					<StyledButton
-						width="ten"
-						height="two"
-						buttonStyled="border-black"
-						onClick={() => handleOpenUpdateModal()}
-					>
-						Editar
-					</StyledButton>
-					<StyledLinkDetails
-						to="/adverts"
-						onClick={handleSetCarDetails}
-					>
-						Ver detalhes
-					</StyledLinkDetails>
-				</div>
-			) : null}
-		</StyledDivCard>
-	);
+          <StyledTitle tag="span" fontSize="heading-7-500" color="grey-1">
+            R${" "}
+            {parseFloat(price).toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+            })}
+          </StyledTitle>
+        </div>
+      </Link>
+
+      {!userLoginAdminInfo?.isBuyer &&
+      token &&
+      (user && user.id == userLoginAdminInfo?.id) ? (
+        <div className="div-button">
+          <StyledButton
+            width="ten"
+            height="two"
+            buttonStyled="border-black"
+            onClick={() => handleOpenUpdateModal()}
+          >
+            Editar
+          </StyledButton>
+          <StyledLinkDetails to="/adverts" onClick={handleSetCarDetails}>
+            Ver detalhes
+          </StyledLinkDetails>
+        </div>
+      ) : null}
+    </StyledDivCard>
+  );
 };
