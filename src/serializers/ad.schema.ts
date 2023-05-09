@@ -20,7 +20,7 @@ export const adResponseSchema = adCreateSchema.extend({
   updatedAt: z.date(),
   deletedAt: z.date().nullable(),
   isGoodToSale: z.boolean(),
-  user: userResponseSchema.nullable(),
+  user: userResponseSchema,
 });
 
 export const adUpdateSchema = z.object({

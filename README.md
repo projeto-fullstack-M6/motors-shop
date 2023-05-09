@@ -2,15 +2,19 @@
 
 Projeto final do módulo M6 da Kenzie Academy Brasil.
 
+<br>
+
 ## Introdução
 
 Motors Shop é um projeto de um site de vendas de carros, que permite aos usuários criar, visualizar, editar e excluir anúncios de veículos com preço, detalhes do veículo e informações de contato do vendedor. Este projeto foi criado para praticar a implementação de um CRUD (Create, Read, Update, Delete) usando React no frontend e Node no backend.
+
+<br>
 
 ## Tecnologias e Bibliotecas
 
 O projeto utiliza as seguintes tecnologias e bibliotecas:
 
-### Frontend
+### <b>Frontend</b>
 
 - React: Biblioteca para construir interfaces de usuário.
 - React Route: Biblioteca de roteamento para React.
@@ -21,9 +25,9 @@ O projeto utiliza as seguintes tecnologias e bibliotecas:
 - Zod: Biblioteca de validação de dados e parsing.
 - React Hot Toast: Biblioteca para adicionar notificações e toasts ao seu projeto React.
 
-### Backend
+<br>
 
-### Tecnologias e bibliotecas
+### <b>Backend</b>
 
 - Node.js: Plataforma de tempo de execução do lado do servidor para executar JavaScript.
 - Express: Framework para desenvolvimento de aplicativos web e APIs em Node.js.
@@ -39,16 +43,29 @@ O projeto utiliza as seguintes tecnologias e bibliotecas:
 - nodemailer: Biblioteca para enviar e-mails de dentro do aplicativo Node.js.
 - mailgen: Biblioteca para gerar e-mails responsivos em HTML e texto simples.
 
-### Ferramentas de Desenvolvimento
+<br>
+
+## Deploy
+
+- ### <b>Front end</b>
+  https://motors-shop-git-developer-motors-shop-deploy.vercel.app/
+- ### <b>Back end</b>
+  https://motors-api-deploy.onrender.com/
+
+<br>
+
+## Ferramentas de Desenvolvimento
 
 - Vite: Ferramenta de build e servidor de desenvolvimento.
 - TypeScript: Superset do JavaScript que adiciona tipos estáticos.
 
-### Arquitetura
+<br>
+
+## Arquitetura
 
 A arquitetura do projeto "Motors Shop" é dividida em duas partes principais: frontend e backend. O frontend é construído usando React, enquanto o backend utiliza Node.js, Express e TypeScript.
 
-#### Frontend (React)
+### <b>Frontend (React)</b>
 
 O frontend segue a arquitetura baseada em componentes oferecida pelo React. Os principais componentes incluem:
 
@@ -59,7 +76,9 @@ O frontend segue a arquitetura baseada em componentes oferecida pelo React. Os p
 - Página de perfil: Exibe e permite a edição das informações do usuário.
 - Página de criação de anúncio: Permite aos usuários criar novos anúncios de veículos.
 
-#### Backend (Node.js, Express e TypeScript)
+<br>
+
+### <b>Backend (Node.js, Express e TypeScript)</b>
 
 O backend é construído com base no padrão de arquitetura MVC (Model-View-Controller) e segue as seguintes estruturas:
 
@@ -70,85 +89,91 @@ O backend é construído com base no padrão de arquitetura MVC (Model-View-Cont
 
 O backend se comunica com um banco de dados PostgreSQL para armazenar as informações dos usuários e anúncios de veículos.
 
+<br>
+
 ## Como baixar e executar o projeto Motors Shop
 
 Siga estas etapas para baixar e executar o projeto Motors Shop em seu computador local:
 
-### Pré-requisitos
+### <b>Pré-requisitos</b>
 
 Certifique-se de ter instalado em seu computador:
 
 - Node.js (versão 14 ou superior)
 - Yarn (opcional, mas recomendado)
-- Git
+- Git <br><br>
 
-### Passo 1: Clonar o repositório Frontend
+  ### Passo 1: Clonar o repositório Frontend
 
-Abra um terminal e execute o seguinte comando para clonar o repositório do projeto Motors Shop:
+  Abra um terminal e execute o seguinte comando para clonar o repositório do projeto Motors Shop:
 
-```bash
-git clone git@github.com:projeto-fullstack-M6/motors-shop.git
-```
+  ```bash
+  git clone git@github.com:projeto-fullstack-M6/motors-shop.git
+  ```
 
-Este comando criará uma pasta chamada motors-shop contendo os arquivos do projeto.
+  Este comando criará uma pasta chamada motors-shop contendo os arquivos do projeto. <br><br>
 
-### Passo 1.1: Clonar o repositório Backend
+  ### Passo 1.1: Clonar o repositório Backend
 
-Abra um terminal e execute o seguinte comando:
+  Abra um terminal e execute o seguinte comando:
 
-```bash
-git clone git@github.com:projeto-fullstack-M6/motors-API.git
-```
+  ```bash
+  git clone git@github.com:projeto-fullstack-M6/motors-API.git
+  ```
 
-Este comando criará uma pasta chamada motors-API contendo os arquivos do projeto.
+  Este comando criará uma pasta chamada motors-API contendo os arquivos do projeto. <br><br>
 
-## Passo 2: Instalar as dependências
+  ## Passo 2: Instalar as dependências
 
-Navegue até a pasta do projeto e instale as dependências do frontend e backend.
-execute:
+  Navegue até a pasta do projeto e instale as dependências do frontend e backend.
+  execute:
 
-```bash
-cd motors-shop
-npm install
-```
+  ```bash
+  cd motors-shop
+  npm install
+  ```
 
-```bash
-cd motors-API
-npm install
+  ```bash
+  cd motors-API
+  npm install
+  ```
 
-```
+    <br>
 
-## Passo 3: Configurar o banco de dados
+  ## Passo 3: Configurar o banco de dados
 
-Configure o banco de dados PostgreSQL seguindo as instruções específicas do seu sistema operacional e crie um banco de dados chamado motors_shop.
+  Configure o banco de dados PostgreSQL seguindo as instruções específicas do seu sistema operacional e crie um banco de dados chamado motors_shop.
 
-Atualize o arquivo .env na pasta backend com as informações de conexão do seu banco de dados.
+  Atualize o arquivo .env na pasta backend com as informações de conexão do seu banco de dados.
 
-## Passo 4: Executar as migrações
+    <br>
 
-Na pasta backend, execute o seguinte comando para criar as tabelas no banco de dados:
+  ## Passo 4: Executar as migrações
 
-```bash
-npm run typeorm migration:run
+  Na pasta backend, execute o seguinte comando para criar as tabelas no banco de dados:
 
-```
+  ```bash
+  npm run typeorm migration:run
+  ```
 
-## Passo 5: Executar o projeto
+    <br>
 
-Agora você pode executar o frontend e o backend do projeto Motors Shop. Abra dois terminais e navegue até as pastas frontend e backend. Em cada terminal, execute o seguinte comando:
+  ## Passo 5: Executar o projeto
 
-Para o frontend:
+  Agora você pode executar o frontend e o backend do projeto Motors Shop. Abra dois terminais e navegue até as pastas frontend e backend. Em cada terminal, execute o seguinte comando:
 
-```bash
-npm run dev
+  Para o frontend:
 
-```
+  ```bash
+  npm run dev
+  ```
 
-Para o backend:
+  Para o backend:
 
-```bash
-npm dev
+  ```bash
+  npm dev
+  ```
 
-```
+    <br>
 
 Agora você pode começar a explorar o projeto Motors Shop!

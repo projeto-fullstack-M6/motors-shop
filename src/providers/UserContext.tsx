@@ -89,7 +89,6 @@ export const UserProvider = ({ children }: IChildren) => {
 	};
 
 	const updateUser = async (data: IUserUpdate) => {
-		console.log(data);
 		try {
 			const token = localStorage.getItem("@motors:token");
 

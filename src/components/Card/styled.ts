@@ -19,12 +19,38 @@ export const StyledDivCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       width: 262px;
       height: 150px;
       object-fit: cover;
     }
-  }
+
+    .active {
+      background-color: var(--brand-1);
+      padding: 5px 10px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .inative {
+      background-color: var(--grey-4);
+      padding: 5px 10px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .isGoodToSale {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 95px;
+      height: 107px;
+      z-index: 500;
+    }
+  } 
 
   section {
     position: relative;
@@ -35,9 +61,12 @@ export const StyledDivCard = styled.div`
       align-items: center;
       min-height: 10%;
       width: 100%;
-      color: var(--brand-1);
       position: absolute;
       inset: 0;
+
+      &:hover {
+        border: 1px solid var(--brand-1);
+      }
     }
   }
 

@@ -1,9 +1,7 @@
-import { useContext } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-import { UserContext } from "../../providers/UserContext";
 import { Input } from "../../components/Input/Input";
 
 import { IForgotPasswordPage } from "../../interfaces/userSchema.interface";

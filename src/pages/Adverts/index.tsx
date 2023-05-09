@@ -2,7 +2,7 @@ import { Footer } from "../../components/Footer/Footer";
 
 import { StyledButton } from "../../styles/button";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AdminContext } from "../../providers/AdminContext";
 import { UserContext } from "../../providers/UserContext";
 
@@ -12,10 +12,11 @@ import { Comments } from "../../components/Comments/Comments";
 import { StyledAdvertDetailing } from "./style";
 
 import { StyledTitle } from "../../styles/typography";
+import { StyledLinkAdvertiser } from "../../styles/link";
 
 const Adverts = () => {
 	const { carDetails } = useContext(AdminContext);
-	const { userLoginAdminInfo, comments, getComments, newComment, loading } =
+	const { comments, getComments, newComment, loading, userLoginAdminInfo } =
 		useContext(UserContext);
 
 	useEffect(() => {
@@ -32,6 +33,8 @@ const Adverts = () => {
 		newComment(comment, carDetails.id);
 	};
 
+	const token = localStorage.getItem("@motors:token");
+
 	return (
 		<>
 			<Header />
@@ -42,7 +45,7 @@ const Adverts = () => {
 
 					<section className="secRight">
 						<div className="card1">
-							<img src={carDetails.images![0]} alt="" />
+							<img src={carDetails.images[0]} alt="" />
 						</div>
 
 						<div className="card2">
@@ -87,14 +90,16 @@ const Adverts = () => {
 								</StyledTitle>
 							</div>
 
-							<StyledButton
-								width="eight"
-								height="two"
-								buttonStyled="blue"
-								font="two"
-							>
-								Comprar
-							</StyledButton>
+							{token ? (
+								<StyledButton
+									width="eight"
+									height="two"
+									buttonStyled="blue"
+									font="two"
+								>
+									Comprar
+								</StyledButton>
+							) : null}
 						</div>
 
 						<div className="card3">
@@ -104,15 +109,6 @@ const Adverts = () => {
 								color="grey-1"
 							>
 								Descrição
-							</StyledTitle>
-
-							<StyledTitle
-								tag="p"
-								fontSize="body-1-400"
-								color="grey-2"
-								className="description"
-							>
-								{carDetails.description}
 							</StyledTitle>
 						</div>
 
@@ -144,24 +140,70 @@ const Adverts = () => {
 							)}
 						</div>
 
+						<div className="card4">
+							<StyledTitle
+								tag="h3"
+								fontSize="heading-6-600"
+								color="grey-1"
+							>
+								Comentários
+							</StyledTitle>
+							{comments.length ? (
+								comments.map((comment: any, index: number) => (
+									<Comments
+										key={index}
+										comment={comment.text}
+										user={comment.user}
+										date={comment.createdAt
+											.slice(0, 10)
+											.split("-")
+											.reverse()
+											.join("/")}
+									/>
+								))
+							) : (
+								<sub>Ainda sem comentários...</sub>
+							)}
+						</div>
+
 						<div className="card5">
-							<div>
-								<StyledTitle
-									tag="p"
-									fontSize="body-2-500"
-									color="white"
-									className="acronym"
-								>
-									{userLoginAdminInfo?.name.charAt(0)}
-								</StyledTitle>
-								<StyledTitle
-									tag="p"
-									fontSize="body-2-500"
-									color="grey-1"
-								>
-									{userLoginAdminInfo?.name}
-								</StyledTitle>
-							</div>
+							{token ? (
+								<div>
+									<StyledTitle
+										tag="p"
+										fontSize="body-2-500"
+										color="white"
+										className="acronym"
+									>
+										{userLoginAdminInfo?.name.charAt(0)}
+									</StyledTitle>
+									<StyledTitle
+										tag="p"
+										fontSize="body-2-500"
+										color="grey-1"
+									>
+										{userLoginAdminInfo?.name}
+									</StyledTitle>
+								</div>
+							) : (
+								<div>
+									<StyledTitle
+										tag="p"
+										fontSize="body-2-500"
+										color="white"
+										className="acronym"
+									>
+										A
+									</StyledTitle>
+									<StyledTitle
+										tag="p"
+										fontSize="body-2-500"
+										color="grey-1"
+									>
+										Anônimo
+									</StyledTitle>
+								</div>
+							)}
 
 							<form
 								className="divpublication"
@@ -239,7 +281,7 @@ const Adverts = () => {
 
 						<div className="card7">
 							<p className="acronym-bio">
-								{userLoginAdminInfo?.name.charAt(0)}
+								{carDetails.user?.name.charAt(0).toUpperCase()}
 							</p>
 
 							<StyledTitle
@@ -247,7 +289,7 @@ const Adverts = () => {
 								fontSize="heading-6-600"
 								color="grey-1"
 							>
-								{userLoginAdminInfo?.name}
+								{carDetails.user?.name}
 							</StyledTitle>
 
 							<StyledTitle
@@ -256,17 +298,12 @@ const Adverts = () => {
 								color="grey-2"
 								className="text-bio"
 							>
-								{userLoginAdminInfo?.description}
+								{carDetails.user?.description}
 							</StyledTitle>
 
-							<StyledButton
-								width="four"
-								height="one"
-								buttonStyled="black"
-								font="two"
-							>
+							<StyledLinkAdvertiser to="/advertiser">
 								Ver todos anuncios
-							</StyledButton>
+							</StyledLinkAdvertiser>
 						</div>
 					</section>
 				</div>

@@ -7,6 +7,7 @@ import { LoginPage } from "../pages/Login/Login";
 import { RegisterPage } from "../pages/Register/Register";
 import { NotFound } from "../components/NotFound/NotFound";
 import { ResetPassword } from "../pages/ResetPassword/ResetPassword";
+import { AdvertiserAdPage } from "../pages/AdvertiserAd/AdvertiserAd";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/reset-password/:token" element={<ResetPassword />} />
 
       <Route path="/adverts" element={<Adverts />} />
+      <Route path="/advertiser" element={<AdvertiserAdPage />} />
 
       <Route path="/dashboard" element={<AdminDashboard />} />
 
