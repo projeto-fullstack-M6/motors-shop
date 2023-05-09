@@ -263,22 +263,24 @@ export const HomePage = () => {
         </aside>
 
         <main>
-          {filteredCars?.map((car: any, index: any) => (
-            <Card
-              key={index}
-              images={car.images}
-              brand={car.brand}
-              model={car.model}
-              year={car.year}
-              km={car.km}
-              price={car.price}
-              description={car.description}
-              user={car.user}
-              isActive={car.isActive}
-              id={car.id}
-              isGoodToSale={car.isGoodToSale}
-            />
-          ))}
+          {filteredCars?.map((car: any, index: any) =>
+            car.isActive ? (
+              <Card
+                key={index}
+                images={car.images}
+                brand={car.brand}
+                model={car.model}
+                year={car.year}
+                km={car.km}
+                price={car.price}
+                description={car.description}
+                user={car.user}
+                isActive={car.isActive}
+                id={car.id}
+                isGoodToSale={car.isGoodToSale}
+              />
+            ) : null
+          )}
         </main>
       </StyledSection>
 
