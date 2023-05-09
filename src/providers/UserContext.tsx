@@ -142,6 +142,7 @@ export const UserProvider = ({ children }: IChildren) => {
 		setShowDropdown(false);
 		localStorage.removeItem("@motors:token");
 		localStorage.removeItem("@motors:id");
+		localStorage.clear();
 		toast("Desconectado com sucesso!");
 		navigate("/");
 	};

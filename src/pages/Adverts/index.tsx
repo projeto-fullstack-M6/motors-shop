@@ -125,40 +125,14 @@ const Adverts = () => {
 									<Comments
 										key={index}
 										comment={comment.text}
-										user={comment.user}
+										commentUser={comment.user}
 										date={comment.createdAt
 											.slice(0, 10)
 											.split("-")
 											.reverse()
 											.join("/")}
 										id={comment.id}
-										userId={comment.user.id}
-									/>
-								))
-							) : (
-								<sub>Ainda sem comentários...</sub>
-							)}
-						</div>
-
-						<div className="card4">
-							<StyledTitle
-								tag="h3"
-								fontSize="heading-6-600"
-								color="grey-1"
-							>
-								Comentários
-							</StyledTitle>
-							{comments.length ? (
-								comments.map((comment: any, index: number) => (
-									<Comments
-										key={index}
-										comment={comment.text}
-										user={comment.user}
-										date={comment.createdAt
-											.slice(0, 10)
-											.split("-")
-											.reverse()
-											.join("/")}
+										commentUserId={comment.user.id}
 									/>
 								))
 							) : (
