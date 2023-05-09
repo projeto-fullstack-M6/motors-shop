@@ -19,8 +19,8 @@ const Adverts = () => {
 		useContext(UserContext);
 
 	useEffect(() => {
-		getComments();
-	}, [loading]);
+		getComments(carDetails.id);
+	}, []);
 
 	const onSubmitFunc = (event: any) => {
 		event.preventDefault();
@@ -135,6 +135,8 @@ const Adverts = () => {
 											.split("-")
 											.reverse()
 											.join("/")}
+										id={comment.id}
+										userId={comment.user.id}
 									/>
 								))
 							) : (

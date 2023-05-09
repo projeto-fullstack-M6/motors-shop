@@ -44,9 +44,11 @@ export interface IUserContext {
 	>;
 	actualPage: number;
 	setActualPage: React.Dispatch<React.SetStateAction<number>>;
-	getComments: () => Promise<void>;
+	getComments: (carId: string) => Promise<void>;
 	comments: any;
 	newComment: (data: any, id: string) => Promise<void>;
+	updateComment: (text: any, id: string) => Promise<void>;
+	deleteComment: (id: string) => Promise<void>;
 }
 
 export interface IAdminContext {
