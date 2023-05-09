@@ -5,6 +5,7 @@ import { UserContext } from "../../providers/UserContext";
 import { AdminContext } from "../../providers/AdminContext";
 
 import NoImg from "../../assets/NoImg.png";
+import IsGoodToSale from "../../assets/IsGoodToSale.svg";
 import { StyledDivCard } from "./styled";
 import { StyledTitle } from "../../styles/typography";
 import { StyledButton } from "../../styles/button";
@@ -97,6 +98,14 @@ export const Card = ({
                 </StyledTitle>
               )}
             </div>
+
+            {isGoodToSale ? (
+              <img
+                className="isGoodToSale"
+                src={IsGoodToSale}
+                alt="Bom negócio"
+              />
+            ) : null}
           </div>
 
           <div className="next-previous">
