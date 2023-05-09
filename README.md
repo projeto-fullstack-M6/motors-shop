@@ -91,6 +91,18 @@ O backend se comunica com um banco de dados PostgreSQL para armazenar as informa
 
 <br>
 
+- #### <b>Documentação da API:</b>
+  https://kenzie-kars-documentation.vercel.app/#req_7a36eebd615341fbacb3997af5c925af
+  
+
+- #### <b>Insomnia:</b>
+  <a href="https://insomnia.rest/run?label=KenzieKarsApi&uri=https%3A%2F%2Fkenzie-kars-documentation.vercel.app%2Finsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+
+- #### <b>Repositório: </b>
+  https://github.com/projeto-fullstack-M6/motors-API
+
+<br>
+
 ## Como baixar e executar o projeto Motors Shop
 
 Siga estas etapas para baixar e executar o projeto Motors Shop em seu computador local:
