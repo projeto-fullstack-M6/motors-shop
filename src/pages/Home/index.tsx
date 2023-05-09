@@ -276,6 +276,7 @@ export const HomePage = () => {
               user={car.user}
               isActive={car.isActive}
               id={car.id}
+              isGoodToSale={car.isGoodToSale}
             />
           ))}
         </main>
