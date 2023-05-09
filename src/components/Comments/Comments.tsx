@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { StyledTitle } from "../../styles/typography";
 import { StyledComments } from "./style";
 import { UserContext } from "../../providers/UserContext";
+import ModalEditComment from "../Modals/ModalEditComment";
 
 export const Comments = ({
 	comment,
@@ -12,6 +13,7 @@ export const Comments = ({
 }: any) => {
 	const { deleteComment, userLoginAdminInfo } = useContext(UserContext);
 	const [isItSameUser, setIsItSameUser] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
 		setIsItSameUser(commentUserId === userLoginAdminInfo?.id);
@@ -19,6 +21,15 @@ export const Comments = ({
 
 	return (
 		<StyledComments>
+			{isOpen && (
+				<ModalEditComment
+					isOpen={isOpen}
+					setIsOpen={setIsOpen}
+					currentText={comment}
+					userId={userLoginAdminInfo?.id}
+					commentId={id}
+				/>
+			)}
 			<div className="comment-user">
 				<StyledTitle tag="p" fontSize="body-2-500" className="acronym">
 					{commentUser?.name.charAt(0)}
@@ -34,8 +45,9 @@ export const Comments = ({
 				{isItSameUser ? (
 					<>
 						<button
-							onClick={() => {
-								console.log(id);
+							onClick={async (e) => {
+								e.preventDefault();
+								setIsOpen(!isOpen);
 							}}
 						>
 							Editar

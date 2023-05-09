@@ -204,7 +204,8 @@ export const UserProvider = ({ children }: IChildren) => {
 			setComments(() => {
 				return comments.map((comment: any) => {
 					if (comment.id === id) {
-						return data;
+						comment.text = data.text;
+						return comment;
 					}
 					return comment;
 				});
