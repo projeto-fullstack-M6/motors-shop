@@ -164,8 +164,8 @@ export const UserProvider = ({ children }: IChildren) => {
 	const getComments = async () => {
 		setLoading(true);
 		try {
-			const response = await ApiRequests.get("/comments");
-			setComments(response.data);
+			// const response = await ApiRequests.get("/comments");
+			// setComments(response.data);
 			setLoading(false);
 		} catch (error) {
 			console.log(error);

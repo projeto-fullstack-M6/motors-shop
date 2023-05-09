@@ -23,6 +23,7 @@ export const Card = ({
   description,
   isGoodToSale,
   id,
+  isActive,
   user,
 }: any) => {
   const { userLoginAdminInfo } = useContext(UserContext);
@@ -61,6 +62,7 @@ export const Card = ({
       description,
       isGoodToSale,
       user,
+      isActive,
       id,
     });
   };
@@ -83,7 +85,20 @@ export const Card = ({
         <section>
           <div className="div-img">
             <img src={images![imageNumber]} alt="imagem de carro" />
+
+            <div className={isActive ? "active" : "inative"}>
+              {isActive ? (
+                <StyledTitle tag="p" fontSize="body-2-500" color="white">
+                  Ativo
+                </StyledTitle>
+              ) : (
+                <StyledTitle tag="p" fontSize="body-2-500" color="white">
+                  Inativo
+                </StyledTitle>
+              )}
+            </div>
           </div>
+
           <div className="next-previous">
             {images?.length > 1 ? (
               <GrPrevious
@@ -125,7 +140,7 @@ export const Card = ({
           {description}
         </StyledTitle>
 
-        {user?.isBuyer || !token ? (
+        {(user && user.id != userLoginAdminInfo?.id) || !token ? (
           <div className="div-name">
             <div className="div-acronym">
               <StyledTitle tag="p" fontSize="body-2-500" color="white">
@@ -171,7 +186,8 @@ export const Card = ({
 
       {!userLoginAdminInfo?.isBuyer &&
       token &&
-      (user && user.id == userLoginAdminInfo?.id) ? (
+      user &&
+      user.id == userLoginAdminInfo?.id ? (
         <div className="div-button">
           <StyledButton
             width="ten"

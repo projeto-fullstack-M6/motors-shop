@@ -19,6 +19,7 @@ export const StyledDivCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       width: 262px;
       height: 150px;
@@ -35,9 +36,12 @@ export const StyledDivCard = styled.div`
       align-items: center;
       min-height: 10%;
       width: 100%;
-      color: var(--brand-1);
       position: absolute;
       inset: 0;
+
+      &:hover {
+        border: 1px solid var(--brand-1);
+      }
     }
   }
 
@@ -71,5 +75,21 @@ export const StyledDivCard = styled.div`
   .div-button {
     display: flex;
     gap: var(--gap-15);
+  }
+
+  .active {
+    background-color: var(--brand-1);
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .inative {
+    background-color: var(--grey-4);
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
 `;
