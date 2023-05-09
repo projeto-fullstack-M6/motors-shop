@@ -18,7 +18,9 @@ import {
 
 export const AdvertiserAdPage = () => {
   const { announcements, actualPage } = useContext(UserContext);
-  const { nextPage, previousPage, carDetails } = useContext(AdminContext);
+
+  const { nextPage, previousPage, carDetails, allAnnouncements } =
+    useContext(AdminContext);
 
   return (
     <>
@@ -45,23 +47,28 @@ export const AdvertiserAdPage = () => {
 
       <StyledMainContentAdmin>
         <div>
-          {!carDetails ? (
+          {!allAnnouncements ? (
             <StyledTitle tag="span" fontSize="body-1-400">
               Ainda não possui nenhum anúncio
             </StyledTitle>
           ) : (
-            <Card
-              key={carDetails.id}
-              images={carDetails.images}
-              brand={carDetails.brand}
-              model={carDetails.model}
-              year={carDetails.year}
-              km={carDetails.km}
-              price={carDetails.price}
-              description={carDetails.description}
-              user={carDetails.user}
-              id={carDetails.id}
-            />
+            allAnnouncements?.map((ad: any) =>
+              ad.user.id == carDetails.user.id ? (
+                <Card
+                  key={ad.id}
+                  images={ad.images}
+                  brand={ad.brand}
+                  model={ad.model}
+                  year={ad.year}
+                  km={ad.km}
+                  price={ad.price}
+                  description={ad.description}
+                  user={ad.user}
+                  id={ad.id}
+                  isActive={ad.isActive}
+                />
+              ) : null
+            )
           )}
         </div>
       </StyledMainContentAdmin>

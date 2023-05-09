@@ -103,6 +103,7 @@ export const AdminDashboard = () => {
                     description,
                     isGoodToSale,
                     images,
+                    isActive,
                     user,
                   }: any) => (
                     <Card
@@ -118,6 +119,7 @@ export const AdminDashboard = () => {
                       isGoodToSale={isGoodToSale}
                       images={images}
                       user={user}
+                      isActive={isActive}
                     />
                   )
                 )

@@ -5,7 +5,6 @@ import { Footer } from "../../components/Footer/Footer";
 import { StyledButton } from "../../styles/button";
 import { StyledImg, StyledPageSection, StyledSection } from "./style";
 
-import { cars } from "../../../mock";
 import { useContext, useEffect, useState } from "react";
 import { StyledTitle } from "../../styles/typography";
 import { AdminContext } from "../../providers/AdminContext";
@@ -17,9 +16,11 @@ export const HomePage = () => {
     allAnnouncements,
     isEditAndDeleteAdModalActive,
   } = useContext(AdminContext);
+
   useEffect(() => {
     getAllAnnouncementsToHomePage();
   }, []);
+
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedYear, setSelectedYear] = useState(0);
@@ -29,6 +30,7 @@ export const HomePage = () => {
     min: 0,
     max: 0,
   });
+
   const [selectedPrice, setSelectedPrice] = useState({
     min: "",
     max: "",
@@ -272,6 +274,7 @@ export const HomePage = () => {
               price={car.price}
               description={car.description}
               user={car.user}
+              isActive={car.isActive}
               id={car.id}
             />
           ))}
