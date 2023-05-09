@@ -66,6 +66,7 @@ export const AdvertiserAdPage = () => {
                   user={ad.user}
                   id={ad.id}
                   isActive={ad.isActive}
+                  isGoodToSale={ad.isGoodToSale}
                 />
               ) : null
             )
