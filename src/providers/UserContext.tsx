@@ -142,6 +142,7 @@ export const UserProvider = ({ children }: IChildren) => {
 		setShowDropdown(false);
 		localStorage.removeItem("@motors:token");
 		localStorage.removeItem("@motors:id");
+		localStorage.clear();
 		toast("Desconectado com sucesso!");
 		navigate("/");
 	};
@@ -161,10 +162,10 @@ export const UserProvider = ({ children }: IChildren) => {
 		}
 	};
 
-	const getComments = async () => {
+	const getComments = async (carId: string) => {
 		setLoading(true);
 		try {
-			const response = await ApiRequests.get("/comments");
+			const response = await ApiRequests.get(`/comments/${carId}`);
 			setComments(response.data);
 			setLoading(false);
 		} catch (error) {
@@ -189,6 +190,50 @@ export const UserProvider = ({ children }: IChildren) => {
 		} catch (error) {
 			console.log(error);
 			toast.error("Comentário não pode ser enviado");
+			setLoading(false);
+		}
+	};
+
+	const updateComment = async (text: any, id: string) => {
+		setLoading(true);
+		try {
+			const token = localStorage.getItem("@motors:token");
+			const { data } = await ApiRequests.patch(`/comments/${id}`, text, {
+				headers: { Authorization: `Bearer ${token}` },
+			});
+			setComments(() => {
+				return comments.map((comment: any) => {
+					if (comment.id === id) {
+						comment.text = data.text;
+						return comment;
+					}
+					return comment;
+				});
+			});
+			setLoading(false);
+			toast.success("Comentário editado com sucesso.");
+		} catch (error) {
+			console.log(error);
+			toast.error("Comentário não pode ser editado");
+			setLoading(false);
+		}
+	};
+
+	const deleteComment = async (id: string) => {
+		setLoading(true);
+		try {
+			const token = localStorage.getItem("@motors:token");
+			const { data } = await ApiRequests.delete(`/comments/${id}`, {
+				headers: { Authorization: `Bearer ${token}` },
+			});
+			setComments(() => {
+				return comments.filter((comment: any) => comment.id !== id);
+			});
+			setLoading(false);
+			toast.success("Comentário excluído com sucesso.");
+		} catch (error) {
+			console.log(error);
+			toast.error("Comentário não pode ser excluído");
 			setLoading(false);
 		}
 	};
@@ -224,6 +269,8 @@ export const UserProvider = ({ children }: IChildren) => {
 				getComments,
 				comments,
 				newComment,
+				updateComment,
+				deleteComment,
 			}}
 		>
 			{children}
