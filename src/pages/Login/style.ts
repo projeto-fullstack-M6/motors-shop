@@ -6,6 +6,7 @@ export const StyledLogin = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: transition 2s;
 
   .section-login {
     width: 412px;
@@ -41,6 +42,15 @@ export const StyledLogin = styled.div`
 
     @media (max-width: 415px) {
       padding: 40px 0;
+    }
+  }
+
+  @keyframes transition {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 `;

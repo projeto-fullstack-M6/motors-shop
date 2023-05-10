@@ -4,6 +4,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  animation: transition 2s;
 
   height: 140px;
   background-color: var(--grey-0);
@@ -34,5 +35,14 @@ export const StyledFooter = styled.footer`
   @media (max-width: 280px) {
     text-align: justify;
     padding: 0 20px;
+  }
+
+  @keyframes transition {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;

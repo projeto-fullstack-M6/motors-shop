@@ -8,6 +8,7 @@ export const StyledImg = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  animation: transition 2s;
 
   > div {
     display: flex;
@@ -18,6 +19,15 @@ export const StyledImg = styled.div`
     height: 100%;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
   }
+
+  @keyframes transition {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export const StyledSection = styled.section`
@@ -25,6 +35,7 @@ export const StyledSection = styled.section`
   justify-content: space-around;
   width: 100vw;
   margin-top: 3rem;
+  animation: transition 2s;
 
   > aside {
     width: 20%;
@@ -82,6 +93,7 @@ export const StyledPageSection = styled.section`
   align-items: center;
   width: 100vw;
   height: 15vh;
+  animation: transition 2s;
 
   > div {
     display: flex;
