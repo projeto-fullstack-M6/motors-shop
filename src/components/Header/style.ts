@@ -80,6 +80,10 @@ export const StyledHeader = styled.header`
       z-index: 0;
       display: flex;
     }
+
+    div {
+      display: none;
+    }
   }
 
   @keyframes transition {

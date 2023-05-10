@@ -26,29 +26,39 @@ export const Header = () => {
         </Link>
 
         {token ? (
-          <div onClick={() => setShowDropdown(!showDropdown)}>
-            <StyledTitle
-              tag="p"
-              fontSize="body-2-700"
-              color="white"
-              className="acronym"
-            >
-              {userLoginAdminInfo?.name
-                .split(" ")
-                .map((name) => name.charAt(0))
-                .join("")
-                .toUpperCase()}
-            </StyledTitle>
+          <>
+            <div onClick={() => setShowDropdown(!showDropdown)}>
+              <StyledTitle
+                tag="p"
+                fontSize="body-2-700"
+                color="white"
+                className="acronym"
+              >
+                {userLoginAdminInfo?.name
+                  .split(" ")
+                  .map((name) => name.charAt(0))
+                  .join("")
+                  .toUpperCase()}
+              </StyledTitle>
 
-            <StyledTitle
-              tag="p"
-              fontSize="body-1-400"
-              color="grey-2"
-              className="ellipsis"
-            >
-              {userLoginAdminInfo?.name}
-            </StyledTitle>
-          </div>
+              <StyledTitle
+                tag="p"
+                fontSize="body-1-400"
+                color="grey-2"
+                className="ellipsis"
+              >
+                {userLoginAdminInfo?.name}
+              </StyledTitle>
+            </div>
+
+            <span>
+              <GiHamburgerMenu
+                cursor={"pointer"}
+                size={"25px"}
+                onClick={() => setLoginRegisterCard(!loginRegisterCard)}
+              />
+            </span>
+          </>
         ) : (
           <>
             <nav>
