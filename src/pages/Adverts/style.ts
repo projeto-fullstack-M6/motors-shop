@@ -56,7 +56,7 @@ export const StyledAdvertDetailing = styled.div`
         gap: var(--gap-20);
         border-radius: var(--border-radius-4);
         background-color: var(--grey-10);
-        
+
         div {
           padding-top: 15px;
           display: flex;
@@ -67,6 +67,23 @@ export const StyledAdvertDetailing = styled.div`
             display: flex;
             justify-content: center;
             gap: var(--gap-15);
+          }
+        }
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 108px;
+          height: 38px;
+          background-color: var(--brand-1);
+          color: var(--white);
+          font-size: var(--size-body-2);
+          font-family: var(--font-family-inter);
+          font-weight: var(--weight-500);
+          border-radius: var(--border-radius-4);
+          &:hover {
+            background-color: var(--brand-2);
           }
         }
       }

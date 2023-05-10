@@ -35,6 +35,7 @@ const Adverts = () => {
 
   const token = localStorage.getItem("@motors:token");
 
+  console.log(carDetails)
   return (
     <>
       <Header />
@@ -97,13 +98,13 @@ const Adverts = () => {
                 Descrição
               </StyledTitle>
               <StyledTitle
-								tag="p"
-								fontSize="body-1-400"
-								color="grey-2"
-								className="text-bio"
-							>
-								{carDetails.description}
-							</StyledTitle>
+                tag="p"
+                fontSize="body-1-400"
+                color="grey-2"
+                className="text-bio"
+              >
+                {carDetails.description}
+              </StyledTitle>
             </div>
 
             <div className="card4">
