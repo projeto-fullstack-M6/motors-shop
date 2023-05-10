@@ -41,9 +41,11 @@ export interface IUserContext {
   setAnnouncements: React.Dispatch<React.SetStateAction<IAdResponse[] | null>>;
   actualPage: number;
   setActualPage: React.Dispatch<React.SetStateAction<number>>;
-  getComments: () => Promise<void>;
+  getComments: (carId: string) => Promise<void>;
   comments: any;
   newComment: (data: any, id: string) => Promise<void>;
+  updateComment: (text: any, id: string) => Promise<void>;
+  deleteComment: (id: string) => Promise<void>;
   loadingLogin: boolean;
   setLoadingLogin: React.Dispatch<React.SetStateAction<boolean>>;
   loadingRegister: boolean;

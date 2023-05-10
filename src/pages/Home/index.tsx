@@ -16,9 +16,11 @@ export const HomePage = () => {
     isEditAndDeleteAdModalActive,
     loadingAnnouncements,
   } = useContext(AdminContext);
+
   useEffect(() => {
     getAllAnnouncementsToHomePage();
   }, []);
+
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedYear, setSelectedYear] = useState(0);
@@ -28,6 +30,7 @@ export const HomePage = () => {
     min: 0,
     max: 0,
   });
+
   const [selectedPrice, setSelectedPrice] = useState({
     min: "",
     max: "",
@@ -262,20 +265,24 @@ export const HomePage = () => {
           {loadingAnnouncements ? (
             <LoadingAds />
           ) : (
-            filteredCars?.map((car: any, index: any) => (
-              <Card
-                key={index}
-                images={car.images}
-                brand={car.brand}
-                model={car.model}
-                year={car.year}
-                km={car.km}
-                price={car.price}
-                description={car.description}
-                user={car.user}
-                id={car.id}
-              />
-            ))
+            filteredCars?.map((car: any, index: any) =>
+              car.isActive ? (
+                <Card
+                  key={index}
+                  images={car.images}
+                  brand={car.brand}
+                  model={car.model}
+                  year={car.year}
+                  km={car.km}
+                  price={car.price}
+                  description={car.description}
+                  user={car.user}
+                  isActive={car.isActive}
+                  id={car.id}
+                  isGoodToSale={car.isGoodToSale}
+                />
+              ) : null
+            )
           )}
         </main>
       </StyledSection>

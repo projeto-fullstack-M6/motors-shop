@@ -20,8 +20,8 @@ const Adverts = () => {
     useContext(UserContext);
 
   useEffect(() => {
-    getComments();
-  }, [loading]);
+    getComments(carDetails.id);
+  }, []);
 
   const onSubmitFunc = (event: any) => {
     event.preventDefault();
@@ -96,15 +96,6 @@ const Adverts = () => {
               <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
                 Descrição
               </StyledTitle>
-
-              <StyledTitle
-                tag="p"
-                fontSize="body-1-400"
-                color="grey-2"
-                className="description"
-              >
-                {carDetails.description}
-              </StyledTitle>
             </div>
 
             <div className="card4">
@@ -116,12 +107,14 @@ const Adverts = () => {
                   <Comments
                     key={index}
                     comment={comment.text}
-                    user={comment.user}
+                    commentUser={comment.user}
                     date={comment.createdAt
                       .slice(0, 10)
                       .split("-")
                       .reverse()
                       .join("/")}
+                    id={comment.id}
+                    commentUserId={comment.user.id}
                   />
                 ))
               ) : (
