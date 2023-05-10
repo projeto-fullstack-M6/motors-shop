@@ -215,8 +215,8 @@ export const AdminProvider = ({ children }: IChildren) => {
         "Não foi possível deletar o anúncio. Tente novamente mais tarde"
       );
     } finally {
-      // setDeletingAd(false);
-      // setConfirmDeleteAd(false);
+      setDeletingAd(false);
+      setConfirmDeleteAd(false);
     }
   };
 
