@@ -16,21 +16,12 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route
-        path="/login"
-        element={loadingRegister ? <LoadingPage /> : <LoginPage />}
-      />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
-
       <Route path="/adverts" element={<Adverts />} />
       <Route path="/advertiser" element={<AdvertiserAdPage />} />
-
-      <Route
-        path="/dashboard"
-        element={loadingLogin ? <LoadingPage /> : <AdminDashboard />}
-      />
-
+      <Route path="/dashboard" element={<AdminDashboard />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
