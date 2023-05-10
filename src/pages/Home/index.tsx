@@ -1,21 +1,20 @@
 import { Header } from "../../components/Header/Header";
 import { Card } from "../../components/Card/Card";
 import { Footer } from "../../components/Footer/Footer";
-
 import { StyledButton } from "../../styles/button";
 import { StyledImg, StyledPageSection, StyledSection } from "./style";
-
-import { cars } from "../../../mock";
 import { useContext, useEffect, useState } from "react";
 import { StyledTitle } from "../../styles/typography";
 import { AdminContext } from "../../providers/AdminContext";
 import ModalEditAds from "../../components/Modals/ModalEditandDeleteAd";
+import { LoadingAds } from "../../components/LoadingAnnouncements";
 
 export const HomePage = () => {
   const {
     getAllAnnouncementsToHomePage,
     allAnnouncements,
     isEditAndDeleteAdModalActive,
+    loadingAnnouncements,
   } = useContext(AdminContext);
   useEffect(() => {
     getAllAnnouncementsToHomePage();
@@ -85,7 +84,6 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-
       <StyledImg>
         <div>
           <StyledTitle tag="h2" fontSize="heading-1-700" color="white">
@@ -261,20 +259,24 @@ export const HomePage = () => {
         </aside>
 
         <main>
-          {filteredCars?.map((car: any, index: any) => (
-            <Card
-              key={index}
-              images={car.images}
-              brand={car.brand}
-              model={car.model}
-              year={car.year}
-              km={car.km}
-              price={car.price}
-              description={car.description}
-              user={car.user}
-              id={car.id}
-            />
-          ))}
+          {loadingAnnouncements ? (
+            <LoadingAds />
+          ) : (
+            filteredCars?.map((car: any, index: any) => (
+              <Card
+                key={index}
+                images={car.images}
+                brand={car.brand}
+                model={car.model}
+                year={car.year}
+                km={car.km}
+                price={car.price}
+                description={car.description}
+                user={car.user}
+                id={car.id}
+              />
+            ))
+          )}
         </main>
       </StyledSection>
 

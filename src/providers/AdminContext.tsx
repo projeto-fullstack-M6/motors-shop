@@ -18,7 +18,6 @@ export const AdminProvider = ({ children }: IChildren) => {
     announcements,
     setUserLoginAdminInfo,
     setAnnouncements,
-    navigate,
     actualPage,
     setActualPage,
   } = useContext(UserContext);
@@ -45,10 +44,19 @@ export const AdminProvider = ({ children }: IChildren) => {
   const [defaultModelValueEditModal, setDefaultModelValueEditModal] =
     useState("");
   const [allAnnouncements, setAllAnnouncements] = useState<any>(null);
+  const [loadingAnnouncements, setLoadingAnnouncements] = useState(false);
+  const [loginRegisterCard, setLoginRegisterCard] = useState(false);
 
   const getAllAnnouncementsToHomePage = async () => {
-    const everyAnnouncement = await ApiRequests.get("/announcements/?page=1");
-    setAllAnnouncements(everyAnnouncement.data.data);
+    try {
+      setLoadingAnnouncements(true);
+      const everyAnnouncement = await ApiRequests.get("/announcements/?page=1");
+      setAllAnnouncements(everyAnnouncement.data.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingAnnouncements(false);
+    }
   };
 
   const getTheBrands = (response: any) => {
@@ -207,8 +215,8 @@ export const AdminProvider = ({ children }: IChildren) => {
         "Não foi possível deletar o anúncio. Tente novamente mais tarde"
       );
     } finally {
-      setDeletingAd(false);
-      setConfirmDeleteAd(false);
+      // setDeletingAd(false);
+      // setConfirmDeleteAd(false);
     }
   };
 
@@ -229,8 +237,6 @@ export const AdminProvider = ({ children }: IChildren) => {
         } catch (error) {
           console.log(error);
         }
-      } else {
-        // navigate("/");
       }
     }
     loadAdminUser();
@@ -282,6 +288,10 @@ export const AdminProvider = ({ children }: IChildren) => {
         setDefaultModelValueEditModal,
         allAnnouncements,
         setAllAnnouncements,
+        loadingAnnouncements,
+        setLoadingAnnouncements,
+        loginRegisterCard,
+        setLoginRegisterCard,
       }}
     >
       {children}

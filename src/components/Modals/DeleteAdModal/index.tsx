@@ -50,7 +50,7 @@ const ModalCofirmDeleteAd = () => {
             onClick={() => handleDeleteAnnouncement()}
             disabled={deletingAd ? true : false}
           >
-            {deletingAd ? "Sim, excluir anúncio" : "Excluindo"}
+            {deletingAd ? "Excluindo..." : "Sim, excluir anúncio"}
           </StyledButton>
         </div>
       </div>

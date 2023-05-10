@@ -24,6 +24,7 @@ const ModalAds = () => {
     carYearClosedOption,
     carFuelClosedOption,
     carFipePriceClosedOption,
+    loadingAdminPage,
   } = useContext(AdminContext);
   const {
     register,
@@ -163,7 +164,7 @@ const ModalAds = () => {
                 buttonStyled="blue"
                 type="submit"
               >
-                Criar Anuncio
+                {loadingAdminPage ? "Criando" : "Criar Anuncio"}
               </StyledButton>
             </div>
           </StyledForm>

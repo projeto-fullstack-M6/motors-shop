@@ -12,6 +12,7 @@ export const StyledSectionModal = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: showDropDown 2s;
 
   .div-modal {
     width: 29%;
@@ -57,5 +58,17 @@ export const StyledSectionModal = styled.section`
     justify-content: center;
     gap: var(--gap-10);
     width: 100%;
+  }
+
+  @keyframes showDropDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
 `;
