@@ -96,6 +96,14 @@ const Adverts = () => {
               <StyledTitle tag="h3" fontSize="heading-6-600" color="grey-1">
                 Descrição
               </StyledTitle>
+              <StyledTitle
+								tag="p"
+								fontSize="body-1-400"
+								color="grey-2"
+								className="text-bio"
+							>
+								{carDetails.description}
+							</StyledTitle>
             </div>
 
             <div className="card4">
