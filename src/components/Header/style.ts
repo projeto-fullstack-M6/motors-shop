@@ -78,6 +78,7 @@ export const StyledHeader = styled.header`
     }
     span {
       z-index: 0;
+      display: flex;
     }
   }
 
